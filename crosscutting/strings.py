@@ -1,5 +1,5 @@
-REQUIRES_PYTHON = "Requires python"
-STOPPED = "Stopped"
 ERROR = "ERROR"
 EXCEPTION = "EXCEPTION"
+REQUIRES_PYTHON = "Requires python"
+STOPPED = "Stopped"
 WARNING = "WARNING"
