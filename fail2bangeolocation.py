@@ -6,15 +6,12 @@ from crosscutting.constants import REQUIRED_PYTHON_VERSION
 from presentation.utils.screen import clear_screen
 
 if __name__ == '__main__':
-
     signal.signal(signal.SIGINT, exit_signal_handler)
-
     clear_screen()
-
     interpreter_version = get_interpreter_version()
 
     if interpreter_version == REQUIRED_PYTHON_VERSION:
         pass
     else:
-        print_error('Requires Python {0}'.format(REQUIRED_PYTHON_VERSION))
+        print_error(f"{STR_REQUIRES_PYTHON} {REQUIRED_PYTHON_VERSION}")
         exit(0)

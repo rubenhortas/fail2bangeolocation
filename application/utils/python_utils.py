@@ -1,5 +1,5 @@
 from sys import version_info
-from crosscutting import condition_messages
+from crosscutting import condition_messages, strings
 
 
 def get_interpreter_version():
@@ -9,5 +9,5 @@ def get_interpreter_version():
 
 # noinspection PyUnusedLocal
 def exit_signal_handler(signal, frame):
-    condition_messages.print_info("Stopped")
+    condition_messages.print_info(strings.STOPPED)
     exit(0)

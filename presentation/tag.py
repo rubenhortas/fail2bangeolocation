@@ -1,9 +1,10 @@
 from presentation.color import Color
+from crosscutting import strings
 
 
 class Tag:
     debug = ">>"
-    error = "[{0}ERROR{1}]".format(Color.bold_red, Color.end)
-    exception = "[{0}EXCEPTION{1}]".format(Color.bold_red, Color.end)
-    info = "[{0}*{1}]".format(Color.green, Color.end)
-    warning = "[{0}Warning{1}]".format(Color.bold_orange, Color.end)
+    error = f"[{Color.bold_red}{strings.ERROR}{Color.end}]"
+    exception = f"[{Color.bold_red}{strings.EXCEPTION}{Color.end}]"
+    info = f"[{Color.green}*{Color.end}]"
+    warning = f"[{Color.bold_orange}{strings.WARNING}{Color.end}]"
