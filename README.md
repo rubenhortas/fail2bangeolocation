@@ -1,2 +1,2 @@
-# fail2banlocation
-fail2banlocation
+# fail2bangeolocation
+fail2bangeolocation
