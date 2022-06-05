@@ -6,7 +6,7 @@ setup(name='',
       author='Ruben Hortas Astariz',
       author_email='rubenhortas@gmail.com',
       url='https://github.com/rubenhortas/fail2bangeolocation',
-      install_requires=[],
+      install_requires=[],  # geoip2
       dependency_links=[],
       packages=[],
       )
