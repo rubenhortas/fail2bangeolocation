@@ -4,10 +4,10 @@ from crosscutting import strings, constants
 from crosscutting.condition_messages import print_info, print_error
 
 
-def analyze(log_file):
+def analyze(log_file, add_unbaned):
     if os.path.exists(log_file):
-        banned_ip_regex = re.compile(r'^.*\s(Found|Ban)\s\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}.*$')
-        unbanned_ip_regex = re.compile(r'^.*\sUnban\s\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}.*$')
+        banned_ip_regex = re.compile(r'^.*\s(Found|Ban)\s(?P<ip>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}).*$')
+        unbanned_ip_regex = re.compile(r'^.*\sUnban\s(?P<ip>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}).*$')
         banned_ips = set()
 
         print_info(f"{strings.ANALYZING}: {log_file}")
@@ -16,22 +16,18 @@ def analyze(log_file):
         lines = log.readlines()
 
         for line in lines:
-            banned_ip = re.match(banned_ip_regex, line)
+            match = banned_ip_regex.search(line)
 
-            if banned_ip:
-                banned_ips.add(banned_ip)
+            if match:
+                banned_ips.add(match.group("ip"))
             else:
-                if not constants.IGNORE_UNBANNED_IPS:
-                    unbanned_ip = re.match(unbanned_ip_regex, line)
+                match = unbanned_ip_regex.search(line)
 
-                    if unbanned_ip:
-                        banned_ips.discard(unbanned_ip)
+                if match:
+                    if add_unbaned:
+                        banned_ips.add(match.group("ip"))
+                    else:
+                        banned_ips.discard(match.group("ip"))
 
-        # [sshd] Found 171.217.64.241
-        # [sshd] Ban 171.217.64.241
-        # [sshd] Restore Ban 1.202.77.126
-        # [sshd] Unban 196.38.70.24
-
-        # geo = GeoIP.new(GeoIP.GEOIP_MEMORY_CACHE)
     else:
         print_error(f"{log_file} {strings.DOES_NOT_EXISTS}")
