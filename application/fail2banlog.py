@@ -21,11 +21,11 @@ def analyze(log_file):
             if banned_ip:
                 banned_ips.add(banned_ip)
             else:
-                if constants.DISCARD_UNBANNED_IPS:
+                if not constants.IGNORE_UNBANNED_IPS:
                     unbanned_ip = re.match(unbanned_ip_regex, line)
 
                     if unbanned_ip:
-                        set.discard(unbanned_ip)
+                        banned_ips.discard(unbanned_ip)
 
         # [sshd] Found 171.217.64.241
         # [sshd] Ban 171.217.64.241
