@@ -1,7 +1,7 @@
 import argparse
 import signal
 
-from application.fail2banlog import analyze
+from application.location import get_locations
 from application.utils.python_utils import exit_signal_handler, get_interpreter_version
 from crosscutting import strings, constants
 from crosscutting.condition_messages import print_error, print_info
@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
         print_info("fail2bangeolocation")
 
-        analyze(args.log[0], args.add_unbaned)
+        get_locations(args.log[0], args.add_unbaned)
     else:
         print_error(f"{strings.REQUIRES_PYTHON} {constants.REQUIRED_PYTHON_VERSION}")
         exit(0)
