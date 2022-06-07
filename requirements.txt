@@ -1,0 +1,2 @@
+setuptools~=60.2.0
+django-os-geocoder~=0.1.6
