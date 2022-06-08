@@ -1,7 +1,7 @@
 import argparse
 import signal
 
-from application.location import get_locations
+from application.locationService import get_locations
 from application.utils.python_utils import exit_signal_handler, get_interpreter_version
 from crosscutting import strings, constants
 from crosscutting.condition_messages import print_error, print_info

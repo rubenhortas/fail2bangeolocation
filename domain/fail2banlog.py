@@ -34,14 +34,14 @@ def __get_baned_ips(log_file, add_unbaned):
         match = banned_ip_regex.search(line)
 
         if match:
-            banned_ips.add(match.group("ip"))
+            banned_ips.add(match.group('ip'))
         else:
             match = unbanned_ip_regex.search(line)
 
             if match:
                 if add_unbaned:
-                    banned_ips.add(match.group("ip"))
+                    banned_ips.add(match.group('ip'))
                 else:
-                    banned_ips.discard(match.group("ip"))
+                    banned_ips.discard(match.group('ip'))
 
     return banned_ips
