@@ -34,7 +34,10 @@ class GeoLocationServiceTests(unittest.TestCase):
         location = Location("Japan", "Tokyo")
         locations.append(location)
 
-        geolocation_service.get_stats(locations)
+        expected_stats = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'Portugal': {'Lisboa': 1}, 'USA': {'New York': 1}, 'Japan': {'Tokyo': 1}}
+        stats = geolocation_service.get_stats(locations)
+
+        self.assertDictEqual(expected_stats, stats)
 
 
 if __name__ == "__main__":
