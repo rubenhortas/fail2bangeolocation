@@ -1,28 +1,29 @@
 from application import geolocationdb, fail2banlog
-from domain.CountryStats import CountryStats
 from domain.Location import Location
 
 
 def analyze(log_file, add_unbaned):
     baned_ips = fail2banlog.get_baned_ips(log_file, add_unbaned)
     locations = __get_locations(baned_ips)
-    countries = get_stats(locations)
+    stats = get_stats(locations)
 
 
 def get_stats(locations):
-    countries_stats = {}
+    stats = {}
 
     for location in locations:
         country = location.get_country()
         city = location.get_city()
 
-        if country in countries_stats:
-            country_stats = countries_stats[country]
-            country_stats.add_city(city)
-        else:
-            country_stats = CountryStats(country, city)
-            countries_stats[country] = country_stats
-    return []
+        if country not in stats:
+            stats[country] = {city: 0}
+
+        if city not in stats[country]:
+            (stats[country])[city] = 0
+
+        (stats[country])[city] = (stats[country])[city] + 1
+
+    return stats
 
 
 def __get_locations(ips):
