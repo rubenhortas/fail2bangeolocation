@@ -5,14 +5,6 @@ from domain.Location import Location
 
 
 class GeoLocationServiceTests(unittest.TestCase):
-    def set_ip(self):
-        """Call before every test case."""
-        pass
-
-    def tear_down(self):
-        """Call after every test case."""
-        pass
-
     def test_get_stats(self):
         locations = []
 
@@ -25,7 +17,7 @@ class GeoLocationServiceTests(unittest.TestCase):
         location = Location("Spain", "Lugo")
         locations.append(location)
 
-        location = Location("Portugal", "Lisboa")
+        location = Location("Portugal", "Lisbon")
         locations.append(location)
 
         location = Location("USA", "New York")
@@ -34,7 +26,14 @@ class GeoLocationServiceTests(unittest.TestCase):
         location = Location("Japan", "Tokyo")
         locations.append(location)
 
-        expected_stats = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'Portugal': {'Lisboa': 1}, 'USA': {'New York': 1}, 'Japan': {'Tokyo': 1}}
+        location = Location("France", None)
+        locations.append(location)
+
+        location = Location("France", None)
+        locations.append(location)
+
+        expected_stats = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'Portugal': {'Lisbon': 1}, 'USA': {'New York': 1},
+                          'Japan': {'Tokyo': 1}, 'France': {None: 2}}
         stats = geolocation_service.get_stats(locations)
 
         self.assertDictEqual(expected_stats, stats)
