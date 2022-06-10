@@ -14,4 +14,4 @@ def get_geolocation_info(ip):
 
         return result['country_name'], result['city']
     except requests.RequestException:
-        return ()
+        return None, None
