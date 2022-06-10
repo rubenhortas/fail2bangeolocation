@@ -31,7 +31,9 @@ def __get_locations(ips):
 
     for ip in ips:
         country_name, city_name = geolocationdb.get_geolocation_info(ip)
-        location = Location(country_name, city_name)
-        locations.append(location)
+
+        if country_name:
+            location = Location(country_name, city_name)
+            locations.append(location)
 
     return locations
