@@ -51,7 +51,6 @@ def __get_locations(ips):
 
 def __sort_by_country(stats):
     country_totals = {}
-    country_totals_sorted = {}
 
     for country in stats:
         country_total = 0
