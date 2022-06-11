@@ -29,23 +29,9 @@ def get_stats(locations):
 
 def sort(stats, group_by_city):
     if group_by_city:
-        pass
+        return __sort_by_city(stats)
     else:
-        country_totals = {}
-        country_totals_sorted = {}
-
-        for country in stats:
-            country_total = 0
-
-            for city in stats[country]:
-                country_total = country_total + (stats[country])[city]
-
-            country_totals[country] = country_total
-
-        for total in sorted(country_totals.items(), key=lambda x: x[1], reverse=True):
-            country_totals_sorted[total[0]] = total[1]
-
-        return country_totals_sorted
+        return __sort_by_country(stats)
 
 
 def __get_locations(ips):
@@ -59,3 +45,36 @@ def __get_locations(ips):
             locations.append(location)
 
     return locations
+
+
+def __sort_by_country(stats):
+    country_totals = {}
+    country_totals_sorted = {}
+
+    for country in stats:
+        country_total = 0
+
+        for city in stats[country]:
+            country_total = country_total + (stats[country])[city]
+
+        country_totals[country] = country_total
+
+    for total in sorted(country_totals.items(), key=lambda x: x[1], reverse=True):
+        country_totals_sorted[total[0]] = total[1]
+
+    return country_totals_sorted
+
+
+def __sort_by_city(stats):
+    stats_sorted_by_country = __sort_by_country(stats)
+    stats_sorted_by_city = {}
+    result = {}
+
+    for country in stats:
+        sorted_cities = sorted(stats[country].items(), key=lambda x: x[1], reverse=True)
+        stats_sorted_by_city[country] = sorted_cities
+
+    for country in stats_sorted_by_country:
+        result[country] = stats_sorted_by_city[country]
+
+    return result
