@@ -6,7 +6,7 @@ setup(name='',
       author='Ruben Hortas Astariz',
       author_email='rubenhortas@gmail.com',
       url='https://github.com/rubenhortas/fail2bangeolocation',
-      install_requires=[],  # geocoder
+      install_requires=[],
       dependency_links=[],
       packages=[],
       )
