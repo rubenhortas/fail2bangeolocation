@@ -61,8 +61,7 @@ def __sort_by_country(stats):
 
         country_totals[country] = country_total
 
-    for total in sorted(country_totals.items(), key=lambda x: x[1], reverse=True):
-        country_totals_sorted[total[0]] = total[1]
+    country_totals_sorted = {k: v for k, v in sorted(country_totals.items(), key=lambda item: item[1], reverse=True)}
 
     return country_totals_sorted
 
@@ -75,7 +74,7 @@ def __sort_by_city(stats):
     for country in stats:
         sorted_cities = {}
 
-        for city in sorted(stats[country].items(), key=lambda x: x[1], reverse=True):
+        for city in sorted(stats[country].items(), key=lambda item: item[1], reverse=True):
             if city[0] is None:
                 sorted_cities[strings.UNKNOWN] = city[1]
             else:
