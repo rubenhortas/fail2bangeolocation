@@ -7,6 +7,7 @@ def analyze(log_file, add_unbaned, group_by_city):
     locations = __get_locations(baned_ips)
     stats = get_stats(locations)
     sorted_stats = sort(stats, group_by_city)
+    print_stats(sorted_stats, group_by_city)
 
 
 def get_stats(locations):
@@ -71,10 +72,26 @@ def __sort_by_city(stats):
     result = {}
 
     for country in stats:
-        sorted_cities = sorted(stats[country].items(), key=lambda x: x[1], reverse=True)
+        sorted_cities = {}
+
+        for city in sorted(stats[country].items(), key=lambda x: x[1], reverse=True):
+            sorted_cities[city[0]] = city[1]
+
         stats_sorted_by_city[country] = sorted_cities
 
     for country in stats_sorted_by_country:
         result[country] = stats_sorted_by_city[country]
 
     return result
+
+
+def print_stats(stats, group_by_city):
+    if group_by_city:
+        for country in stats:
+            print(f"{country}")
+
+            for city in stats[country]:
+                print(f"\t{city}: {(stats[country])[city]}")
+    else:
+        for country in stats:
+            print(f"{country}: {stats[country]}")

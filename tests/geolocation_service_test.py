@@ -49,9 +49,18 @@ class GeoLocationServiceTests(unittest.TestCase):
 
     def test_print_stats_grouped_by_city(self):
         result = geolocation_service.sort(self.expected_stats, True)
-        expected_result = {'Spain': [('Lugo', 2), ('A Coruña', 1)], 'France': [(None, 2)], 'Portugal': [('Lisbon', 1)], 'USA': [('New York', 1)], 'Japan': [('Tokyo', 1)]}
+        expected_result = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'France': {None: 2}, 'Portugal': {'Lisbon': 1},
+                           'USA': {'New York': 1}, 'Japan': {'Tokyo': 1}}
 
         self.assertDictEqual(result, expected_result)
+
+    def test_print_stats(self):
+        result = {'Spain': 3, 'France': 2, 'Portugal': 1, 'USA': 1, 'Japan': 1}
+        result_by_city = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'France': {None: 2}, 'Portugal': {'Lisbon': 1},
+                          'USA': {'New York': 1}, 'Japan': {'Tokyo': 1}}
+
+        geolocation_service.print_stats(result, False)
+        geolocation_service.print_stats(result_by_city, True)
 
 
 if __name__ == "__main__":
