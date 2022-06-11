@@ -36,6 +36,11 @@ class GeoLocationServiceTests(unittest.TestCase):
         self.expected_stats = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'Portugal': {'Lisbon': 1}, 'USA': {'New York': 1},
                                'Japan': {'Tokyo': 1}, 'France': {None: 2}}
 
+        self.expected_result_sorted_by_country = {'Spain': 3, 'France': 2, 'Portugal': 1, 'USA': 1, 'Japan': 1}
+
+        self.expected_result_sorted_by_city = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'France': {None: 2},
+                                               'Portugal': {'Lisbon': 1}, 'USA': {'New York': 1}, 'Japan': {'Tokyo': 1}}
+
     def test_get_stats(self):
         stats = geolocation_service.get_stats(self.locations)
 
@@ -43,24 +48,17 @@ class GeoLocationServiceTests(unittest.TestCase):
 
     def test_sort(self):
         result = geolocation_service.sort(self.expected_stats, False)
-        expected_result = {'Spain': 3, 'France': 2, 'Portugal': 1, 'USA': 1, 'Japan': 1}
 
-        self.assertDictEqual(result, expected_result)
+        self.assertDictEqual(self.expected_result_sorted_by_country, result)
 
     def test_print_stats_grouped_by_city(self):
         result = geolocation_service.sort(self.expected_stats, True)
-        expected_result = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'France': {None: 2}, 'Portugal': {'Lisbon': 1},
-                           'USA': {'New York': 1}, 'Japan': {'Tokyo': 1}}
 
-        self.assertDictEqual(result, expected_result)
+        self.assertDictEqual(self.expected_result_sorted_by_city, result)
 
     def test_print_stats(self):
-        result = {'Spain': 3, 'France': 2, 'Portugal': 1, 'USA': 1, 'Japan': 1}
-        result_by_city = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'France': {None: 2}, 'Portugal': {'Lisbon': 1},
-                          'USA': {'New York': 1}, 'Japan': {'Tokyo': 1}}
-
-        geolocation_service.print_stats(result, False)
-        geolocation_service.print_stats(result_by_city, True)
+        geolocation_service.print_stats(self.expected_result_sorted_by_country, False)
+        geolocation_service.print_stats(self.expected_result_sorted_by_city, True)
 
 
 if __name__ == "__main__":
