@@ -5,38 +5,50 @@ from domain.Location import Location
 
 
 class GeoLocationServiceTests(unittest.TestCase):
-    def test_get_stats(self):
-        locations = []
+    def setUp(self):
+        """Call before every test case."""
+        self.locations = []
 
         location = Location("Spain", "Lugo")
-        locations.append(location)
+        self.locations.append(location)
 
         location = Location("Spain", "A Coruña")
-        locations.append(location)
+        self.locations.append(location)
 
         location = Location("Spain", "Lugo")
-        locations.append(location)
+        self.locations.append(location)
 
         location = Location("Portugal", "Lisbon")
-        locations.append(location)
+        self.locations.append(location)
 
         location = Location("USA", "New York")
-        locations.append(location)
+        self.locations.append(location)
 
         location = Location("Japan", "Tokyo")
-        locations.append(location)
+        self.locations.append(location)
 
         location = Location("France", None)
-        locations.append(location)
+        self.locations.append(location)
 
         location = Location("France", None)
-        locations.append(location)
+        self.locations.append(location)
 
-        expected_stats = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'Portugal': {'Lisbon': 1}, 'USA': {'New York': 1},
-                          'Japan': {'Tokyo': 1}, 'France': {None: 2}}
-        stats = geolocation_service.get_stats(locations)
+        self.expected_stats = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'Portugal': {'Lisbon': 1}, 'USA': {'New York': 1},
+                               'Japan': {'Tokyo': 1}, 'France': {None: 2}}
 
-        self.assertDictEqual(expected_stats, stats)
+    def test_get_stats(self):
+        stats = geolocation_service.get_stats(self.locations)
+
+        self.assertDictEqual(self.expected_stats, stats)
+
+    def test_sort(self):
+        result = geolocation_service.sort(self.expected_stats, False)
+        expected_result = {'Spain': 3, 'France': 2, 'Portugal': 1, 'USA': 1, 'Japan': 1}
+
+        self.assertDictEqual(result, expected_result)
+
+    # def test_print_stats_grouped_by_city(self):
+    #     geolocation_service.print_stats(self.locations, False)
 
 
 if __name__ == "__main__":
