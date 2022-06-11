@@ -7,7 +7,6 @@ from domain.Location import Location
 
 class GeoLocationServiceTests(unittest.TestCase):
     def setUp(self):
-        """Call before every test case."""
         self.locations = []
 
         location = Location("Spain", "Lugo")
