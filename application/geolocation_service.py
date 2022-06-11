@@ -1,4 +1,5 @@
 from application import geolocationdb, fail2banlog
+from crosscutting import strings
 from domain.Location import Location
 
 
@@ -75,7 +76,10 @@ def __sort_by_city(stats):
         sorted_cities = {}
 
         for city in sorted(stats[country].items(), key=lambda x: x[1], reverse=True):
-            sorted_cities[city[0]] = city[1]
+            if city[0] is None:
+                sorted_cities[strings.UNKNOWN] = city[1]
+            else:
+                sorted_cities[city[0]] = city[1]
 
         stats_sorted_by_city[country] = sorted_cities
 

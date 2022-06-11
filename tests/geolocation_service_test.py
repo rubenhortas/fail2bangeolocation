@@ -1,6 +1,7 @@
 import unittest
 
 from application import geolocation_service
+from crosscutting import strings
 from domain.Location import Location
 
 
@@ -38,7 +39,7 @@ class GeoLocationServiceTests(unittest.TestCase):
 
         self.expected_result_sorted_by_country = {'Spain': 3, 'France': 2, 'Portugal': 1, 'USA': 1, 'Japan': 1}
 
-        self.expected_result_sorted_by_city = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'France': {None: 2},
+        self.expected_result_sorted_by_city = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'France': {strings.UNKNOWN: 2},
                                                'Portugal': {'Lisbon': 1}, 'USA': {'New York': 1}, 'Japan': {'Tokyo': 1}}
 
     def test_get_stats(self):
