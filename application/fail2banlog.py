@@ -7,13 +7,13 @@ from crosscutting import strings
 from crosscutting.condition_messages import print_info
 
 
-def get_baned_ips(log_file, add_unbaned):
+def get_baned_ips(log_file, add_unbanned):
     try:
         if os.path.exists(log_file):
             if os.path.isfile(log_file):
                 print_info(f"{strings.ANALYZING}: {log_file}")
 
-                return __get_baned_ips(log_file, add_unbaned)
+                return __get_baned_ips(log_file, add_unbanned)
             else:
                 handle_error(f"{log_file} {strings.IS_NOT_A_FILE}", True)
         else:
