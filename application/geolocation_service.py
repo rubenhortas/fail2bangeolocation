@@ -2,11 +2,13 @@ import time
 
 from application import geolocationdb, fail2banlog
 from crosscutting import strings
+from crosscutting.condition_messages import print_info
 from domain.Location import Location
 
 
 def analyze(log_file, add_unbaned, group_by_city):
     baned_ips = fail2banlog.get_baned_ips(log_file, add_unbaned)
+    print_info(f"{len(baned_ips)} baned ips")
     locations = __get_locations(baned_ips)
     stats = get_stats(locations)
     sorted_stats = sort(stats, group_by_city)
