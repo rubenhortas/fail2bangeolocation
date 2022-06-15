@@ -57,7 +57,12 @@ class GeoLocationServiceTests(unittest.TestCase):
         self.assertDictEqual(self.expected_result_sorted_by_city, result)
 
     def test_print_stats(self):
+        print("Sorted by country")
         geolocation_service.print_stats(self.expected_result_sorted_by_country, False)
+
+        print()
+
+        print("Sorted by country and city")
         geolocation_service.print_stats(self.expected_result_sorted_by_city, True)
 
 

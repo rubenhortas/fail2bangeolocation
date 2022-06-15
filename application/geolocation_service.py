@@ -5,6 +5,7 @@ from application import geolocationdb, fail2banlog
 from crosscutting import strings
 from crosscutting.condition_messages import print_info
 from domain.Location import Location
+from presentation import messages
 
 
 def analyze(log_file, add_unbaned, group_by_city):
@@ -98,10 +99,10 @@ def __sort_by_city(stats):
 def print_stats(stats, group_by_city):
     if group_by_city:
         for country in stats:
-            print(f"{country}")
+            messages.print_country(country)
 
             for city in stats[country]:
-                print(f"\t{city}: {(stats[country])[city]}")
+                messages.print_city(city, (stats[country])[city])
     else:
         for country in stats:
-            print(f"{country}: {stats[country]}")
+            messages.print_country(country, stats[country])
