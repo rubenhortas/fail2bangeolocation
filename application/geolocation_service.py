@@ -1,4 +1,5 @@
 import time
+from tqdm import tqdm
 
 from application import geolocationdb, fail2banlog
 from crosscutting import strings
@@ -9,6 +10,7 @@ from domain.Location import Location
 def analyze(log_file, add_unbaned, group_by_city):
     baned_ips = fail2banlog.get_baned_ips(log_file, add_unbaned)
     print_info(f"{len(baned_ips)} baned ips")
+    print_info("Geolocating ips...")
     locations = __get_locations(baned_ips)
     stats = get_stats(locations)
     sorted_stats = sort(stats, group_by_city)
@@ -43,7 +45,7 @@ def sort(stats, group_by_city):
 def __get_locations(ips):
     locations = []
 
-    for ip in ips:
+    for ip in tqdm(ips):
         country_name, city_name = geolocationdb.get_geolocation_info(ip)
 
         if country_name:
