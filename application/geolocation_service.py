@@ -1,3 +1,5 @@
+import time
+
 from tqdm import tqdm
 
 from application import geolocationdb, fail2banlog
@@ -9,12 +11,18 @@ from presentation import messages
 
 def analyze(log_file, add_unbaned, group_by_city):
     baned_ips = fail2banlog.get_baned_ips(log_file, add_unbaned)
-    print_info(f"{len(baned_ips)} baned ips")
-    print_info("Geolocating ips...")
-    locations = __get_locations(baned_ips)
+
+    print_info(f'{len(baned_ips)} {strings.IPS_FOUND}')
+    print_info(strings.GEOLOCATING_IPS)
+
+    locations, ips_not_geolocated = __get_locations(baned_ips)
     stats = get_stats(locations)
     sorted_stats = sort(stats, group_by_city)
+
+    print_info(strings.LOCATIONS)
+
     print_stats(sorted_stats, group_by_city)
+    print_not_geolocated(ips_not_geolocated)
 
 
 def get_stats(locations):
@@ -32,6 +40,8 @@ def get_stats(locations):
 
         (stats[country])[city] = (stats[country])[city] + 1
 
+        time.sleep(1)
+
     return stats
 
 
@@ -42,8 +52,25 @@ def sort(stats, group_by_city):
         return __sort_by_country(stats)
 
 
+def print_stats(stats, group_by_city):
+    if group_by_city:
+        for country in stats:
+            messages.print_country(country)
+
+            for city in stats[country]:
+                messages.print_city(city, (stats[country])[city])
+    else:
+        for country in stats:
+            messages.print_country(country, stats[country])
+
+
+def print_not_geolocated(ips):
+    messages.print_error(f'{strings.IPS_NOT_GEOLOCATED} {", ".join(ips)}')
+
+
 def __get_locations(ips):
     locations = []
+    ips_not_geolocated = []
 
     for ip in tqdm(ips):
         country_name, city_name = geolocationdb.get_geolocation_info(ip)
@@ -51,8 +78,10 @@ def __get_locations(ips):
         if country_name:
             location = Location(country_name, city_name)
             locations.append(location)
+        else:
+            ips_not_geolocated.append(ip)
 
-    return locations
+    return locations, ips_not_geolocated
 
 
 def __sort_by_country(stats):
@@ -91,15 +120,3 @@ def __sort_by_city(stats):
         result[country] = stats_sorted_by_city[country]
 
     return result
-
-
-def print_stats(stats, group_by_city):
-    if group_by_city:
-        for country in stats:
-            messages.print_country(country)
-
-            for city in stats[country]:
-                messages.print_city(city, (stats[country])[city])
-    else:
-        for country in stats:
-            messages.print_country(country, stats[country])
