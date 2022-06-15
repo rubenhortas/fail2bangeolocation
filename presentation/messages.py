@@ -16,4 +16,4 @@ def print_city(city, counter=None):
 
 
 def print_error(msg):
-    print(f'\t{Color.bold_red}(!){Color.end} {msg}')
+    print(f'{Color.bold_red}(!){Color.end} {msg}')
