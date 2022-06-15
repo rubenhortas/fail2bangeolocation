@@ -1,5 +1,3 @@
-import time
-
 from tqdm import tqdm
 
 from application import geolocationdb, fail2banlog
@@ -39,8 +37,6 @@ def get_stats(locations):
             (stats[country])[city] = 0
 
         (stats[country])[city] = (stats[country])[city] + 1
-
-        time.sleep(1)
 
     return stats
 
