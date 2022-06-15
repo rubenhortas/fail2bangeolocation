@@ -9,9 +9,13 @@ def get_geolocation_info(ip):
         request_url = f'https://geolocation-db.com/jsonp/{ip}'
         response = requests.get(request_url)
         result = response.content.decode()
-        result = result.split("(")[1].strip(")")
-        result = json.loads(result)
 
-        return result['country_name'], result['city']
+        if result:
+            result = result.split("(")[1].strip(")")
+            result = json.loads(result)
+
+            return result['country_name'], result['city']
+        else:
+            return None, None
     except requests.RequestException:
         return None, None
