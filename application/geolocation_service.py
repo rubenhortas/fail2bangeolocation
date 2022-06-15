@@ -1,4 +1,3 @@
-import time
 from tqdm import tqdm
 
 from application import geolocationdb, fail2banlog
@@ -52,8 +51,6 @@ def __get_locations(ips):
         if country_name:
             location = Location(country_name, city_name)
             locations.append(location)
-
-        time.sleep(1)  # I don't want to DOS the service
 
     return locations
 
