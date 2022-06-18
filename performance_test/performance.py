@@ -2,7 +2,7 @@ import timeit
 
 from application import fail2banlog
 from application.geolocation import _get_locations, _get_attempts, _sort_by_country, _sort_by_city
-from performace_test.cached_sorting import sort_by_country, sort_by_city
+from performance_test.cached_sorting import sort_by_country, sort_by_city
 
 
 def _measure_time(function):
