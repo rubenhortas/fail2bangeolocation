@@ -1,7 +1,6 @@
-# Condition messages
+# Condition strings
 ERROR = "ERROR"
 EXCEPTION = "EXCEPTION"
-WARNING = "WARNING"
 
 # Strings
 ANALYZING = "Analyzing"
