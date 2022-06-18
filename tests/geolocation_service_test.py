@@ -1,6 +1,6 @@
 import unittest
 
-from application import geolocation_service
+from application import geolocation
 from crosscutting import strings
 from domain.Location import Location
 
