@@ -13,7 +13,7 @@ if __name__ == '__main__':
     interpreter_version = get_interpreter_version()
 
     if interpreter_version == constants.REQUIRED_PYTHON_VERSION:
-        parser = argparse.ArgumentParser(description="Shows geolocation stats from fail2ban log")
+        parser = argparse.ArgumentParser(description="Shows geolocation attempts from fail2ban log")
         parser.add_argument('log', nargs=1, help="fail2ban log file")
         parser.add_argument('-u', '--add-unbaned', default=False, action='store_true', help="add unbaned ips")
         parser.add_argument('-c', '--show-city', default=False, action='store_true', help="group by city")

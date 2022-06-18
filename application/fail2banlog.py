@@ -13,7 +13,7 @@ def get_baned_ips(log_file, add_unbanned):
             if os.path.isfile(log_file):
                 print_info(f'{strings.ANALYZING}: {log_file}')
 
-                return __get_baned_ips(log_file, add_unbanned)
+                return _get_baned_ips(log_file, add_unbanned)
             else:
                 handle_error(f'{log_file} {strings.IS_NOT_A_FILE}', True)
         else:
@@ -22,7 +22,7 @@ def get_baned_ips(log_file, add_unbanned):
         handle_exception(e)
 
 
-def __get_baned_ips(log_file, add_unbaned):
+def _get_baned_ips(log_file, add_unbaned):
     banned_ip_regex = re.compile(r'^.*\s(Found|Ban)\s(?P<ip>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}).*$')
     unbanned_ip_regex = re.compile(r'^.*\sUnban\s(?P<ip>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}).*$')
     banned_ips = set()
