@@ -78,4 +78,4 @@ fabric.properties
 
 # Project specific
 fail2ban.log
-performance_test
+performance_test/
