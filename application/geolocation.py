@@ -16,12 +16,12 @@ def analyze(log_file, add_unbaned, group_by_city):
     print_info(strings.GEOLOCATING_IPS)
 
     locations, ips_not_found = _get_locations(baned_ips)
-    stats = _get_attempts(locations)
-    sorted_stats = _sort(stats, group_by_city)
+    attempts = _get_attempts(locations)
+    sorted_attempts = _sort(attempts, group_by_city)
 
     print_info(strings.LOCATIONS)
 
-    _print_stats(sorted_stats, group_by_city)
+    _print_attempts(sorted_attempts, group_by_city)
     _print_not_found(ips_not_found)
 
 
@@ -111,7 +111,7 @@ def _sort_by_city(attempts):
     return result
 
 
-def _print_stats(stats, group_by_city):
+def _print_attempts(stats, group_by_city):
     if group_by_city:
         for country in stats:
             messages.print_country(country)
