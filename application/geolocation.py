@@ -87,7 +87,6 @@ def _sort_by_country(attempts):
 
 
 def _sort_by_city(attempts):
-    renamed_cities_attempts = {}
     attempts_sorted_by_city = {}
     attempts_sorted_by_country = _sort_by_country(attempts)
     result = {}
