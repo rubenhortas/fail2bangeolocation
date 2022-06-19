@@ -94,7 +94,7 @@ def _sort_by_city(attempts):
 
     for country in attempts:
         renamed_cities_attempts = {}
-        
+
         for k in attempts[country]:
             if (k is None) or (k == NOT_FOUND):
                 renamed_cities_attempts[strings.UNKNOWN] = (attempts[country])[k]
@@ -105,8 +105,8 @@ def _sort_by_city(attempts):
                                                     sorted(renamed_cities_attempts.items(), key=lambda item: item[0],
                                                            reverse=False)}
 
-        attempts_sorted_by_city[country] = sorted(attempts_sorted_by_cities_alphabetically.items(),
-                                                  key=lambda item: item[1], reverse=True)
+        attempts_sorted_by_city[country] = {k: v for k, v in sorted(attempts_sorted_by_cities_alphabetically.items(),
+                                                                    key=lambda item: item[1], reverse=True)}
 
     for country in attempts_sorted_by_country:
         result[country] = attempts_sorted_by_city[country]
