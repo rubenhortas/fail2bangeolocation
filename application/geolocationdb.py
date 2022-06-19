@@ -1,5 +1,18 @@
+from urllib.request import urlopen
+
 import requests
 import json
+
+GEOLOCATIONDB_URL = 'https://geolocation-db.com'
+
+
+def is_online():
+    # noinspection PyBroadException
+    try:
+        urlopen(GEOLOCATIONDB_URL, timeout=10)
+        return True
+    except Exception:
+        return False
 
 
 def get_geolocation_info(ip):
