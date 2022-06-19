@@ -87,23 +87,26 @@ def _sort_by_country(attempts):
 
 
 def _sort_by_city(attempts):
-    attempts_sorted_by_country = _sort_by_country(attempts)
+    renamed_cities_attempts = {}
     attempts_sorted_by_city = {}
+    attempts_sorted_by_country = _sort_by_country(attempts)
     result = {}
 
     for country in attempts:
-        sorted_cities = {}
-
-        attempts_sorted_by_cities_alphabetically = {k: v for k, v in sorted(attempts[country].items(),
-                                                                            key=lambda item: item[0], reverse=False)}
-
-        for city in sorted(attempts_sorted_by_cities_alphabetically.items(), key=lambda item: item[1], reverse=True):
-            if (city[0] is None) or (city[0] == NOT_FOUND):
-                sorted_cities[strings.UNKNOWN] = city[1]
+        renamed_cities_attempts = {}
+        
+        for k in attempts[country]:
+            if (k is None) or (k == NOT_FOUND):
+                renamed_cities_attempts[strings.UNKNOWN] = (attempts[country])[k]
             else:
-                sorted_cities[city[0]] = city[1]
+                renamed_cities_attempts[k] = (attempts[country])[k]
 
-        attempts_sorted_by_city[country] = sorted_cities
+        attempts_sorted_by_cities_alphabetically = {k: v for k, v in
+                                                    sorted(renamed_cities_attempts.items(), key=lambda item: item[0],
+                                                           reverse=False)}
+
+        attempts_sorted_by_city[country] = sorted(attempts_sorted_by_cities_alphabetically.items(),
+                                                  key=lambda item: item[1], reverse=True)
 
     for country in attempts_sorted_by_country:
         result[country] = attempts_sorted_by_city[country]
