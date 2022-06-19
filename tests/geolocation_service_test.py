@@ -11,11 +11,12 @@ class GeoLocationServiceTests(unittest.TestCase):
 
         location = Location('Spain', 'Lugo')
         self.locations.append(location)
+        self.locations.append(location)
 
         location = Location('Spain', 'A Coruña')
         self.locations.append(location)
 
-        location = Location('Spain', 'Lugo')
+        location = Location('Spain', None)
         self.locations.append(location)
 
         location = Location('Portugal', 'Lisbon')
@@ -32,18 +33,16 @@ class GeoLocationServiceTests(unittest.TestCase):
 
         location = Location('France', None)
         self.locations.append(location)
-
-        location = Location('France', None)
         self.locations.append(location)
 
-        self.expected_attempts = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'Portugal': {'Lisbon': 1},
-                                  'USA': {'New York': 1}, 'Japan': {'Tokyo': 1, 'Yokohama': 1}, 'France': {None: 2}}
+        self.expected_attempts = {'Spain': {'Lugo': 2, 'A Coruña': 1, None: 1}, 'Portugal': {'Lisbon': 1},
+                                  'USA': {'New York': 1}, 'Japan': {'Yokohama': 1, 'Tokyo': 1}, 'France': {None: 2}}
 
-        self.expected_result_sorted_by_country = {'Spain': 3, 'France': 2, 'Japan': 2, 'Portugal': 1, 'USA': 1}
+        self.expected_result_sorted_by_country = {'Spain': 4, 'France': 2, 'Japan': 2, 'Portugal': 1, 'USA': 1}
 
-        self.expected_result_sorted_by_city = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'France': {strings.UNKNOWN: 2},
-                                               'Japan': {'Tokyo': 1, 'Yokohama': 1}, 'Portugal': {'Lisbon': 1},
-                                               'USA': {'New York': 1}}
+        self.expected_result_sorted_by_city = {'Spain': {'Lugo': 2, 'A Coruña': 1, strings.UNKNOWN: 1},
+                                               'France': {strings.UNKNOWN: 2}, 'Japan': {'Tokyo': 1, 'Yokohama': 1},
+                                               'Portugal': {'Lisbon': 1}, 'USA': {'New York': 1}}
 
         self.ips_not_geolocated = ['1.2.3.4', '4.5.6.7', '10.11.12.13.14']
 
@@ -51,20 +50,20 @@ class GeoLocationServiceTests(unittest.TestCase):
         attempts = geolocation._get_attempts(self.locations)
         self.assertDictEqual(self.expected_attempts, attempts)
 
-    def test_sort(self):
+    def test_sort_by_country(self):
         result = geolocation._sort(self.expected_attempts, False)
         self.assertDictEqual(self.expected_result_sorted_by_country, result)
 
-    def test_print_stats_grouped_by_city(self):
+    def test_sort_by_city(self):
         result = geolocation._sort(self.expected_attempts, True)
         self.assertDictEqual(self.expected_result_sorted_by_city, result)
 
-    def test_print_stats(self):
+    def test_print_stats_by_country(self):
         print('Sorted by country')
         geolocation._print_attempts(self.expected_result_sorted_by_country, False)
-
         print()
 
+    def test_print_stats_by_city(self):
         print('Sorted by country and city')
         geolocation._print_attempts(self.expected_result_sorted_by_city, True)
 
