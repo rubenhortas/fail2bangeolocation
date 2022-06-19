@@ -36,8 +36,8 @@ class GeoLocationServiceTests(unittest.TestCase):
         location = Location('France', None)
         self.locations.append(location)
 
-        self.expected_attempts = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'Portugal': {'Lisbon': 1}, 'USA': {'New York': 1},
-                               'Japan': {'Tokyo': 1, 'Yokohama': 1}, 'France': {None: 2}}
+        self.expected_attempts = {'Spain': {'Lugo': 2, 'A Coruña': 1}, 'Portugal': {'Lisbon': 1},
+                                  'USA': {'New York': 1}, 'Japan': {'Tokyo': 1, 'Yokohama': 1}, 'France': {None: 2}}
 
         self.expected_result_sorted_by_country = {'Spain': 3, 'France': 2, 'Japan': 2, 'Portugal': 1, 'USA': 1}
 
