@@ -28,6 +28,7 @@ def analyze(log_file, add_unbaned, group_by_city):
         print_error(f"{geolocationdb.GEOLOCATIONDB_URL} {strings.IS_NOT_REACHABLE}")
         exit(0)
 
+
 def _get_locations(ips):
     locations = []
     ips_not_found = []
