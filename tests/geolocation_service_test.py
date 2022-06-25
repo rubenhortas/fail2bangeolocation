@@ -1,6 +1,6 @@
 import unittest
 
-from application import geolocation
+from application import geolocation, fail2ban
 from crosscutting import strings
 from domain.Location import Location
 
@@ -46,6 +46,10 @@ class GeoLocationServiceTests(unittest.TestCase):
 
         self.ips_not_geolocated = ['1.2.3.4', '4.5.6.7', '10.11.12.13.14']
 
+        self.fail2ban_banned_ips = {'sshd': ['1.1.1.1', '1.1.1.2', '1.1.1.3'],
+                                    'other': ['2.2.2.1', '2.2.2.2', '2.2.2.3']}
+        self.expected_result_fail2ban_banned_ips = ['1.1.1.1', '1.1.1.2', '1.1.1.3', '2.2.2.1', '2.2.2.2', '2.2.2.3']
+
     def test_get_attempts(self):
         attempts = geolocation._get_attempts(self.locations)
         self.assertDictEqual(self.expected_attempts, attempts)
@@ -69,6 +73,10 @@ class GeoLocationServiceTests(unittest.TestCase):
 
     def test_print_not_geolocated(self):
         geolocation._print_not_found(self.ips_not_geolocated)
+
+    def test_parse_banned_ips(self):
+        result = fail2ban._parse_banned_ips(self.fail2ban_banned_ips)
+        self.assertListEqual(self.expected_result_fail2ban_banned_ips, result)
 
 
 if __name__ == '__main__':

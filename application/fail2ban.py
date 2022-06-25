@@ -1,3 +1,5 @@
+from application.utils.system import execute_command
+
 FAIL2BAN_CLIENT_BANNED_COMMAND = 'fail2ban-client banned'
 FAIL2BAN_CLIENT_STATUS_COMMAND = 'fail2ban-client status'
 
@@ -10,7 +12,17 @@ def get_banned_ips(server=None):
 
 
 def _get_banned_ips():
-    return []
+    output_command = execute_command(FAIL2BAN_CLIENT_BANNED_COMMAND)
+    return _parse_banned_ips(output_command)
+
+
+def _parse_banned_ips(service_banned_ips):
+    ips = []
+
+    for service in service_banned_ips:
+        ips.extend(service_banned_ips[service])
+
+    return ips
 
 
 def _get_server_banned_ips(server):
