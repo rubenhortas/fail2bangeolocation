@@ -38,11 +38,11 @@ if __name__ == '__main__':
         print_info('fail2bangeolocation')
 
         if args.__contains__(OUTPUT_OPTION):
-            print_info(f'output!')
+            analyze(fail2ban_output=True, group_by_city=args.show_city)
         elif args.__contains__(LOG_OPTION):
-            analyze(args.log[0], args.add_unbaned, args.show_city)
+            analyze(log_file=args.log[0], add_unbaned=args.add_unbaned, group_by_city=args.show_city)
         elif args.__contains__(SERVER_OPTION):
-            print_info(f'server {args.server[0]}! ')
+            analyze(server=True, group_by_city=args.show_city)
     else:
         print_error(f'{strings.REQUIRES_PYTHON} {constants.REQUIRED_PYTHON_VERSION}')
         exit(0)
