@@ -10,6 +10,8 @@ NOT_FOUND = "Not found"
 
 
 def analyze(fail2ban_output=None, server=None, log_file=None, add_unbaned=None, group_by_city=None):
+    banned_ips = []
+    
     if geolocationdb.is_online():
         if fail2ban_output is not None:
             banned_ips = []

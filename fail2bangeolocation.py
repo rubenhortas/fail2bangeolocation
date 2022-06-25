@@ -42,7 +42,7 @@ if __name__ == '__main__':
         elif args.__contains__(LOG_OPTION):
             analyze(log_file=args.log[0], add_unbaned=args.add_unbaned, group_by_city=args.show_city)
         elif args.__contains__(SERVER_OPTION):
-            analyze(server=True, group_by_city=args.show_city)
+            analyze(server=args.server[0], group_by_city=args.show_city)
     else:
         print_error(f'{strings.REQUIRES_PYTHON} {constants.REQUIRED_PYTHON_VERSION}')
         exit(0)
