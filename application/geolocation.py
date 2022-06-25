@@ -1,6 +1,6 @@
 from tqdm import tqdm
 
-from application import geolocationdb, fail2banlog
+from application import geolocationdb, fail2banlog, fail2ban
 from crosscutting import strings
 from crosscutting.condition_messages import print_info, print_error
 from domain.Location import Location
@@ -11,12 +11,12 @@ NOT_FOUND = "Not found"
 
 def analyze(fail2ban_output=None, server=None, log_file=None, add_unbaned=None, group_by_city=None):
     banned_ips = []
-    
+
     if geolocationdb.is_online():
         if fail2ban_output is not None:
-            banned_ips = []
+            banned_ips = fail2ban.get_banned_ips()
         elif server is not None:
-            banned_ips = []
+            banned_ips = fail2ban.get_banned_ips(server)
         elif log_file is not None:
             banned_ips = fail2banlog.get_baned_ips(log_file, add_unbaned)
 
