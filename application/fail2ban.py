@@ -12,8 +12,8 @@ def get_banned_ips(server=None):
 
 
 def _get_banned_ips():
-    output_command = execute_command(FAIL2BAN_CLIENT_BANNED_COMMAND)
-    return _parse_banned_ips(output_command)
+    output = execute_command(FAIL2BAN_CLIENT_BANNED_COMMAND)
+    return _parse_banned_ips(output)
 
 
 def _parse_banned_ips(service_banned_ips):
@@ -26,4 +26,10 @@ def _parse_banned_ips(service_banned_ips):
 
 
 def _get_server_banned_ips(server):
+    output = execute_command(f'{FAIL2BAN_CLIENT_BANNED_COMMAND} {server}')
+    return _parse_server_banned_ips(output)
+
+
+def _parse_server_banned_ips(output):
+    # TODO
     return []
