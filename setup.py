@@ -11,6 +11,5 @@ setup(
     author='Rubén Hortas Astariz',
     author_email='ruben.hortas@gmail.com',
     description='Identify the geographical locations of failed attempts to log into your system',
-    long_description='Identify the geographical locations of failed attempts to log in to your system',
     install_requires=['requests', 'tqdm', 'colorama']
 )
