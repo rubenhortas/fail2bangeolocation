@@ -1,3 +1,10 @@
+# Argument strings
+ADD_UNBANNED_IPS = "add unbaned ips"
+DESCRIPTION = "Shows geolocation attempts from fail2ban log"
+FAIL2BAN_LOG_FILE = "fail2ban log file"
+FAIL2BAN_SERVER = "fail2ban server (e.g. sshd)"
+GROUP_BY_CITY = "group by city"
+
 # Condition strings
 ERROR = "ERROR"
 EXCEPTION = "EXCEPTION"
