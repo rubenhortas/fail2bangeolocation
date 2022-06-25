@@ -18,15 +18,15 @@ if __name__ == '__main__':
         subparsers = parser.add_subparsers(help=f'{strings.THIS_OPTIONS_ARE_MUTUALLY_EXCLUSIVE}')
 
         parser_output = subparsers.add_parser('output', help=f'{strings.OUTPUT_OPTIONS_HELP}')
-        parser_output.add_argument('-o', '--output', nargs=1, help=f'{strings.OUTPUT_OPTION_HELP}')
+        parser_output.add_argument('output', nargs=1, help=f'{strings.OUTPUT_OPTION_HELP}')
 
         parser_log = subparsers.add_parser('log', help=f'{strings.LOG_OPTIONS_HELP}')
-        parser_log.add_argument('-l', '--log', nargs=1, help=f'{strings.LOG_OPTION_HELP}')
+        parser_log.add_argument('log', nargs=1, help=f'{strings.LOG_OPTION_HELP}')
         parser_log.add_argument('-u', '--add-unbaned', default=False, action='store_true',
                                 help=f'{strings.UNBANNED_IPS_OPTION_HELP}')
 
         parser_server = subparsers.add_parser('server', help=f'{strings.SERVER_OPTIONS_HELP}')
-        parser_server.add_argument('-s', '--service', nargs=1, help=f'{strings.SERVER_OPTION_HELP}')
+        parser_server.add_argument('server', nargs=1, help=f'{strings.SERVER_OPTION_HELP}')
 
         args = parser.parse_args()
 
