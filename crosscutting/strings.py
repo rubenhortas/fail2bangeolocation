@@ -9,7 +9,7 @@ OUTPUT_OPTIONS_HELP = "analyze all banned IPs by fail2ban (default without argum
 SERVER_OPTION_HELP = "fail2ban jailed server (e.g. sshd)"
 SERVER_OPTIONS_HELP = "analyze all banned IPs by fail2ban (e.g. \"server sshd\")"
 THIS_OPTIONS_ARE_MUTUALLY_EXCLUSIVE = "This options are mutually exclusive"
-UNBANNED_IPS_OPTION_HELP = "add unbaned ips"
+UNBANNED_IPS_OPTION_HELP = "add unbanned ips"
 
 # Condition strings
 ERROR = "ERROR"

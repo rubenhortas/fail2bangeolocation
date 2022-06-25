@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
         parser_log = subparsers.add_parser(LOG_OPTION, help=f'{strings.LOG_OPTIONS_HELP}')
         parser_log.add_argument(LOG_OPTION, nargs=1, help=f'{strings.LOG_OPTION_HELP}')
-        parser_log.add_argument('-u', '--add-unbaned', default=False, action='store_true',
+        parser_log.add_argument('-u', '--add-unbanned', default=False, action='store_true',
                                 help=f'{strings.UNBANNED_IPS_OPTION_HELP}')
 
         parser_server = subparsers.add_parser(SERVER_OPTION, help=f'{strings.SERVER_OPTIONS_HELP}')
@@ -40,7 +40,7 @@ if __name__ == '__main__':
         if args.__contains__(OUTPUT_OPTION):
             analyze(fail2ban_output=True, group_by_city=args.show_city)
         elif args.__contains__(LOG_OPTION):
-            analyze(log_file=args.log[0], add_unbaned=args.add_unbaned, group_by_city=args.show_city)
+            analyze(log_file=args.log[0], add_unbanned=args.add_unbanned, group_by_city=args.show_city)
         elif args.__contains__(SERVER_OPTION):
             analyze(server=args.server[0], group_by_city=args.show_city)
     else:

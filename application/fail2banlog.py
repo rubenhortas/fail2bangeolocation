@@ -7,13 +7,13 @@ from crosscutting import strings
 from crosscutting.condition_messages import print_info
 
 
-def get_baned_ips(log_file, add_unbanned):
+def get_banned_ips(log_file, add_unbanned):
     try:
         if os.path.exists(log_file):
             if os.path.isfile(log_file):
                 print_info(f'{strings.ANALYZING}: {log_file}')
 
-                return _get_baned_ips(log_file, add_unbanned)
+                return _get_banned_ips(log_file, add_unbanned)
             else:
                 handle_error(f'{log_file} {strings.IS_NOT_A_FILE}', True)
         else:
@@ -22,7 +22,7 @@ def get_baned_ips(log_file, add_unbanned):
         handle_exception(e)
 
 
-def _get_baned_ips(log_file, add_unbaned):
+def _get_banned_ips(log_file, add_unbanned):
     banned_ip_regex = re.compile(r'^.*\s(Found|Ban)\s(?P<ip>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}).*$')
     unbanned_ip_regex = re.compile(r'^.*\sUnban\s(?P<ip>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}).*$')
     banned_ips = set()
@@ -39,7 +39,7 @@ def _get_baned_ips(log_file, add_unbaned):
             match = unbanned_ip_regex.search(line)
 
             if match:
-                if add_unbaned:
+                if add_unbanned:
                     banned_ips.add(match.group('ip'))
                 else:
                     banned_ips.discard(match.group('ip'))

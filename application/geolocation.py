@@ -9,7 +9,7 @@ from presentation import messages
 NOT_FOUND = "Not found"
 
 
-def analyze(fail2ban_output=None, server=None, log_file=None, add_unbaned=None, group_by_city=None):
+def analyze(fail2ban_output=None, server=None, log_file=None, add_unbanned=None, group_by_city=None):
     banned_ips = []
 
     if geolocationdb.is_online():
@@ -18,7 +18,7 @@ def analyze(fail2ban_output=None, server=None, log_file=None, add_unbaned=None, 
         elif server is not None:
             banned_ips = fail2ban.get_banned_ips(server)
         elif log_file is not None:
-            banned_ips = fail2banlog.get_baned_ips(log_file, add_unbaned)
+            banned_ips = fail2banlog.get_banned_ips(log_file, add_unbanned)
 
         print_info(f'{len(banned_ips)} {strings.IPS_FOUND}')
         print_info(strings.GEOLOCATING_IPS)
