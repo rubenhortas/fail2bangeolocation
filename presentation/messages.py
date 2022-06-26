@@ -1,19 +1,19 @@
-from presentation.color import Color
+from colorama import Fore, Style
 
 
 def print_country(country, counter=None):
     if not counter:
-        print(f'{Color.bold_green}{country}{Color.end}')
+        print(f'{Style.BRIGHT}{Fore.GREEN}{country}{Style.RESET_ALL}')
     else:
-        print(f'{Color.bold_green}{country}{Color.end}: {counter}')
+        print(f'{Style.BRIGHT}{Fore.GREEN}{country}{Style.RESET_ALL}: {counter}')
 
 
 def print_city(city, counter=None):
     if not counter:
-        print(f'\t{Color.bold_yellow}{city}{Color.end}')
+        print(f'\t{Style.BRIGHT}{Fore.YELLOW}{city}{Style.RESET_ALL}')
     else:
-        print(f'\t{Color.bold_yellow}{city}{Color.end}: {counter}')
+        print(f'\t{Style.BRIGHT}{Fore.YELLOW}{city}{Style.RESET_ALL}: {counter}')
 
 
 def print_error(msg):
-    print(f'{Color.bold_red}(!){Color.end} {msg}')
+    print(f'{Style.BRIGHT}{Fore.RED}(!){Style.RESET_ALL} {msg}')

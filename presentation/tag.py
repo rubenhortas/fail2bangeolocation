@@ -1,8 +1,8 @@
-from presentation.color import Color
 from crosscutting import strings
+from colorama import Fore, Style
 
 
 class Tag:
-    error = f'[{Color.bold_red}{strings.ERROR}{Color.end}]'
-    exception = f'[{Color.bold_red}{strings.EXCEPTION}{Color.end}]'
-    info = f'[{Color.green}*{Color.end}]'
+    error = f'[{Style.BRIGHT}{Fore.RED}{strings.ERROR}{Style.RESET_ALL}]'
+    exception = f'[{Style.BRIGHT}{Fore.RED}{strings.EXCEPTION}{Style.RESET_ALL}]'
+    info = f'[{Style.BRIGHT}{Fore.GREEN}*{Style.RESET_ALL}]'

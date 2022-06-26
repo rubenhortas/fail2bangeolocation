@@ -1,11 +1,15 @@
 from setuptools import setup
 
-setup(name='fail2bangeolocation',
-      version='1.0',
-      description='Identify the geographical locations of failed attempts to log in to your system',
-      author='Ruben Hortas Astariz',
-      author_email='rubenhortas@gmail.com',
-      url='https://github.com/rubenhortas/fail2bangeolocation',
-      packages=['fail2bangeolocation'],
-      install_requires=['requests', 'tqdm'],
-      )
+setup(
+    name='fail2bangeolocation',
+    version='1.0',
+    packages=['domain', 'application', 'application.utils', 'application.handlers', 'crosscutting', 'presentation',
+              'presentation.utils'],
+    url='https://github.com/rubenhortas/fail2bangeolocation',
+    download_url='https://github.com/rubenhortas/fail2bangeolocation',
+    license='GPL-3.0',
+    author='Rubén Hortas Astariz',
+    author_email='ruben.hortas@gmail.com',
+    description='Identify the geographical locations of failed attempts to log into your system',
+    install_requires=['requests', 'tqdm', 'colorama']
+)

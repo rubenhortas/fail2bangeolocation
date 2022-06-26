@@ -77,5 +77,5 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 # Project specific
-fail2ban.log
+*.log
 performance_test/
