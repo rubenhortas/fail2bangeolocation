@@ -18,6 +18,7 @@ EXCEPTION = "EXCEPTION"
 # Strings
 ANALYZING = "Analyzing"
 DOES_NOT_EXISTS = "does not exists"
+EXECUTING = "Executing"
 GEOLOCATING_IPS = "Geolocating IPs..."
 IPS_FOUND = "IPs found"
 IPS_NOT_FOUND = "The following IPs where not found:"
