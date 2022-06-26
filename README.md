@@ -52,7 +52,8 @@ optional arguments:
 
 * ### Analyze all IPs registered by fail2ban 
 
-Requires root privileges  
+:warning: Requires root privileges  
+
 You can run it without parameters or using the *output* parameter:
 
 ```shell
@@ -65,14 +66,14 @@ $ fail2bangeolocation output
 
 * ### Analyze all IPs registered by fail2ban for a given jailed server/service, e.g. sshd 
 
-Requires root privileges
+:warning: Requires root privileges
 
 ```shell
 $ fail2bangeolocation server sshd
 ```
 
 * ### Analyze a log file
-May require root privileges depending on the file to be analyzed
+:warning: May require root privileges depending on the file to be analyzed
 
 ```shell
 $ fail2bangeolocation log /var/log/fai2ban.log
