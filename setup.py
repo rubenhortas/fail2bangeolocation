@@ -7,6 +7,5 @@ setup(name='fail2bangeolocation',
       author_email='rubenhortas@gmail.com',
       url='https://github.com/rubenhortas/fail2bangeolocation',
       packages=['fail2bangeolocation'],
-      install_requires=['fail2bangeolocation'],
-      dependency_links=[],
+      install_requires=['requests', 'tqdm'],
       )
