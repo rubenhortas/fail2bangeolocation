@@ -79,3 +79,4 @@ fabric.properties
 # Project specific
 *.log
 performance_test/
+*.xcf
