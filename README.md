@@ -1,7 +1,7 @@
 # fail2bangeolocation
 
 Shows geolocation of failed attempts registered by fail2ban.  
-It's useful to know from which locations you are being attacked the most.
+It's useful to know from which locations you are being attacked the most.  
 You can group locations by country or by country and city.  
 
 ## Requirements
