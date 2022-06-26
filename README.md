@@ -1,8 +1,8 @@
 # fail2bangeolocation
 
 Shows geolocation of failed attempts registered by fail2ban.  
-Groups locations by country or by country and city.  
 It's useful to know from which locations you are being attacked the most.
+You can group locations by country or by country and city.  
 
 ## Requirements
 
@@ -11,10 +11,10 @@ It's useful to know from which locations you are being attacked the most.
 
 ## Installation 
 
-You can run this application directly or install it via pip3
+You can run this application directly or install it via *pip3*
 
 ```shell
-pip3 install fail2bangeolocation
+$ pip3 install fail2bangeolocation
 ```
 
 ## Usage
@@ -36,34 +36,38 @@ optional arguments:
 
 ```
 
-* ### Analyze all IPs registered by fail2ban
+* ### Analyze all IPs registered by fail2ban 
 
+Requires root privileges
 You can run it without parameters or using the *output* parameter:
 
 ```shell
-fail2bangeolocation
+$ fail2bangeolocation
 ```
 
 ```shell
-fail2bangeolocation output
+$ fail2bangeolocation output
 ```
 
-* ### Analyze all IPs registered by fail2ban for a given jailed server/service, e.g. sshd
+* ### Analyze all IPs registered by fail2ban for a given jailed server/service, e.g. sshd 
+
+Requires root privileges
 
 ```shell
-fail2bangeolocation server sshd
+$ fail2bangeolocation server sshd
 ```
 
 * ### Analyze a log file
+May require root privileges depending on the file to be analyzed
 
 ```shell
-fail2bangeolocation log /var/log/fai2ban.log
+$ fail2bangeolocation log /var/log/fai2ban.log
 ```
 
 You can geolocate also the unbanned IPs contained in the log with the *-u* flag:
 
 ```shell
-fail2bangeolocation log -u /var/log/fai2ban.log
+$ fail2bangeolocation log -u /var/log/fai2ban.log
 ```
 
 ## Troubleshooting
