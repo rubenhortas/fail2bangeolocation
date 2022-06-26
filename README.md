@@ -98,6 +98,6 @@ $ pip3 install fail2bangeolocation
 
 In case of any problem create an [issue](https://github.com/rubenhortas/fail2bangeolocation/issues/new)
 
-## :star: Support
+## Support
 
 If you find this application useful you can star this repo.
