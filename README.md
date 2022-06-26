@@ -1,8 +1,8 @@
 # fail2bangeolocation
 
-Shows geolocation of failed attempts registered by fail2ban.  
+Shows geolocation of failed attempts registered by *fail2ban*.  
 It's useful to know from which locations you are being attacked the most.  
-You can group locations by country or by country and city.  
+You can group locations by country or by country and by city.  
 
 ## Requirements
 
@@ -11,7 +11,7 @@ You can group locations by country or by country and city.
 
 ## Installation 
 
-You can run this application directly or install it via *pip3*
+You can run *fail2bangeolocation* directly, without installation, or you can install it via *pip3*:
 
 ```shell
 $ pip3 install fail2bangeolocation
@@ -19,13 +19,13 @@ $ pip3 install fail2bangeolocation
 
 ## Usage
 
-* If you installed fail2bangeolocation directly from *pip3* you can run it directly from the command line interface:
+* If you installed *fail2bangeolocation* with *pip3* you can run it directly from the command line interface:
 
 ```shell
 $ fail2bangeolocation -h
 ```
 
-* If you want run fail2bangeolocation without installing it you need to call the *fail2bangeolocation.py* script with *python3*
+* You can run *fail2bangeolocation* without installation calling the *fail2bangeolocation.py* script with *python3*
 
 ```shell
 $ python3 fail2bangeolocation.py -h
