@@ -4,6 +4,15 @@ Shows geolocation of failed attempts registered by *fail2ban*.
 It's useful to know from which locations you are being attacked the most.  
 You can group locations by country or by country and by city.  
 
+## Screenshots
+
+* Grouped by country
+<img src="screenshots/screenshot_grouped_by_country.png" alt="Output grouped by country" width="600">
+
+
+* Grouped by country and city
+<img src="screenshots/screenshot_grouped_by_country_and_city.png" alt="Output grouped by country and city" width="600">
+
 ## Requirements
 
 * python3
