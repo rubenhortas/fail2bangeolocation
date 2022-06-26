@@ -38,7 +38,7 @@ optional arguments:
 
 * ### Analyze all IPs registered by fail2ban 
 
-Requires root privileges
+Requires root privileges  
 You can run it without parameters or using the *output* parameter:
 
 ```shell
