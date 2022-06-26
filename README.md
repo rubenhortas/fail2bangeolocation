@@ -40,7 +40,7 @@ $ pip3 install fail2bangeolocation
   $ python3 fail2bangeolocation.py -h
   ```
 
-* fail2bangeolocation arguments
+* *fail2bangeolocation* arguments
 
   ```shell
   usage: fail2bangeolocation.py [-h] [-c] {output,log,server} ...
