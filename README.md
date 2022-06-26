@@ -31,7 +31,7 @@ $ fail2bangeolocation -h
 $ python3 fail2bangeolocation.py -h
 ```
 
-* Arguments
+* fail2bangeolocation arguments
 
 ```shell
 usage: fail2bangeolocation.py [-h] [-c] {output,log,server} ...
@@ -78,7 +78,7 @@ May require root privileges depending on the file to be analyzed
 $ fail2bangeolocation log /var/log/fai2ban.log
 ```
 
-You can geolocate also the unbanned IPs contained in the log with the *-u* flag:
+You can also geolocate the unbanned IPs contained in the log with the *-u* flag:
 
 ```shell
 $ fail2bangeolocation log -u /var/log/fai2ban.log
