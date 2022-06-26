@@ -19,6 +19,20 @@ $ pip3 install fail2bangeolocation
 
 ## Usage
 
+* If you installed fail2bangeolocation directly from *pip3* you can run it directly from the command line interface:
+
+```shell
+$ fail2bangeolocation -h
+```
+
+* If you want run fail2bangeolocation without installing it you need to call the *fail2bangeolocation.py* script with *python3*
+
+```shell
+$ python3 fail2bangeolocation.py -h
+```
+
+* Arguments
+
 ```shell
 usage: fail2bangeolocation.py [-h] [-c] {output,log,server} ...
 
@@ -76,4 +90,4 @@ In case of any problem create an [issue](https://github.com/rubenhortas/fail2ban
 
 ## :star: Support
 
-If you find this widget useful you can star this repo.
+If you find this application useful you can star this repo.
