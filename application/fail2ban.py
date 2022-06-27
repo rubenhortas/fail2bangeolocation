@@ -35,14 +35,11 @@ def _get_server_banned_ips(server):
 
 
 def _parse_server_banned_ips(command_output):
-    # FIX: This regular expression
-    ips_regex = re.compile(r'.*(?P<ips>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}).*')
-    banned_ips = set()
+    ips_regex = re.compile(r'(?P<ips>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}.*)')
 
-    match = ips_regex.search(command_output.decode('UTF-8'))
+    command_output_ips = ips_regex.findall(command_output.decode('UTF-8'))
 
-    if match:
-        banned_ips.add(match.group('ips'))
-
-    # TODO: Return ips
-    return []
+    if command_output_ips is not None:
+        return str.split(command_output_ips[0])
+    else:
+        return None
