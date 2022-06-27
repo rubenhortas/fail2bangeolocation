@@ -1,5 +1,7 @@
 from setuptools import setup
 
+from crosscutting import strings
+
 setup(
     name='fail2bangeolocation',
     version='1.0',
@@ -10,6 +12,7 @@ setup(
     license='GPL-3.0',
     author='Rubén Hortas Astariz',
     author_email='ruben.hortas@gmail.com',
-    description='Identify the geographical locations of failed attempts to log into your system',
+    description=f'{strings.DESCRIPTION}',
+    long_description=f'{strings.LONG_DESCRIPTION}',
     install_requires=['requests', 'tqdm', 'colorama']
 )
