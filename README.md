@@ -34,8 +34,12 @@ $ pip3 install fail2bangeolocation
   $ fail2bangeolocation -h
   ```
 
-* You can run *fail2bangeolocation* without installation calling the *fail2bangeolocation.py* script with *python3*
+* You can run *fail2bangeolocation* without installation running the *fail2bangeolocation.py* script
 
+  ```shell
+  $ ./fail2bangeolocation.py -h
+  ```
+  or
   ```shell
   $ python3 fail2bangeolocation.py -h
   ```
