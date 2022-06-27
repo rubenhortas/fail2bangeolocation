@@ -46,8 +46,8 @@ class GeoLocationServiceTests(unittest.TestCase):
 
         self.ips_not_geolocated = ['1.2.3.4', '4.5.6.7', '10.11.12.13.14']
 
-        self.fail2ban_banned_ips = {'sshd': ['1.1.1.1', '1.1.1.2', '1.1.1.3'],
-                                    'other': ['2.2.2.1', '2.2.2.2', '2.2.2.3']}
+        self.fail2ban_banned_ips = [{'sshd': ['1.1.1.1', '1.1.1.2', '1.1.1.3']},
+                                    {'other': ['2.2.2.1', '2.2.2.2', '2.2.2.3']}]
         self.expected_result_fail2ban_banned_ips = ['1.1.1.1', '1.1.1.2', '1.1.1.3', '2.2.2.1', '2.2.2.2', '2.2.2.3']
 
     def test_get_attempts(self):
