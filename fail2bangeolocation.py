@@ -9,7 +9,7 @@ from crosscutting import strings, constants
 from crosscutting.condition_messages import print_error, print_info
 from presentation.utils.screen import clear_screen
 
-OUTPUT_OPTION = 'output'
+OUTPUT_OPTION = 'command_output'
 LOG_OPTION = 'log'
 SERVER_OPTION = 'server'
 

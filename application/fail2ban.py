@@ -1,3 +1,5 @@
+import re
+
 from application.utils.system import execute_command
 
 FAIL2BAN_CLIENT = 'fail2ban-client'
@@ -28,10 +30,19 @@ def _parse_banned_ips(service_banned_ips):
 
 
 def _get_server_banned_ips(server):
-    output = execute_command(FAIL2BAN_CLIENT, STATUS, server)
-    return _parse_server_banned_ips(output)
+    command_output = execute_command(FAIL2BAN_CLIENT, STATUS, server)
+    return _parse_server_banned_ips(command_output)
 
 
-def _parse_server_banned_ips(output):
-    # TODO
-    return output
+def _parse_server_banned_ips(command_output):
+    # FIX: This regular expression
+    ips_regex = re.compile(r'.*(?P<ips>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}).*')
+    banned_ips = set()
+
+    match = ips_regex.search(command_output.decode('UTF-8'))
+
+    if match:
+        banned_ips.add(match.group('ips'))
+
+    # TODO: Return ips
+    return []
