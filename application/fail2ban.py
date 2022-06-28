@@ -42,4 +42,4 @@ def _parse_server_banned_ips(command_output):
     if command_output_ips is not None:
         return str.split(command_output_ips[0])
     else:
-        return None
+        return []
