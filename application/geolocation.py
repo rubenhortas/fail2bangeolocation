@@ -129,7 +129,12 @@ def _sort_by_city(attempts):
 def _print_attempts(stats, group_by_city):
     if group_by_city:
         for country in stats:
-            messages.print_country(country)
+            country_total = 0
+
+            for city in stats[country]:
+                country_total = country_total + (stats[country])[city]
+
+            messages.print_country(country, country_total)
 
             for city in stats[country]:
                 messages.print_city(city, (stats[country])[city])
