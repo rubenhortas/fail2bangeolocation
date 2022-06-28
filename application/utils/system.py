@@ -1,5 +1,5 @@
 from crosscutting import strings
-from crosscutting.condition_messages import print_info
+from crosscutting.condition_messages import print_info, print_error
 
 import subprocess
 
@@ -10,6 +10,9 @@ def execute_command(command, *args):
 
     print_info(f'{strings.EXECUTING} {command} {" ".join(args)}')
 
-    result = subprocess.run(subprocess_command, stdout=subprocess.PIPE)
-
-    return result.stdout
+    try:
+        result = subprocess.run(subprocess_command, stdout=subprocess.PIPE)
+        return result.stdout
+    except Exception as e:
+        print_error(e)
+        return None
