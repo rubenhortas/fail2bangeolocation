@@ -99,7 +99,7 @@ $ pip3 install fail2bangeolocation
   ```
   
 * ### Group the output by country and city
-  You must enter "-c" as first argument:
+  You must enter "**-c**" as first argument:
 
   ```shell
   $ fail2bangeolocation -c {command_output,log,server}
