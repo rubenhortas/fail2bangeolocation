@@ -97,7 +97,14 @@ $ pip3 install fail2bangeolocation
   ```shell
   $ fail2bangeolocation log -u /var/log/fai2ban.log
   ```
+  
+* ### Group the output by country and city
+  You must enter "-c" as first argument:
 
+  ```shell
+  $ fail2bangeolocation -c {command_output,log,server}
+  ```
+  
 ## Troubleshooting
 
 In case of any problem create an [issue](https://github.com/rubenhortas/fail2bangeolocation/issues/new)
