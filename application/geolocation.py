@@ -25,7 +25,7 @@ def analyze(fail2ban_output=None, server=None, log_file=None, add_unbanned=None,
         if len(banned_ips) > 0:
             print_info(strings.GEOLOCATING_IPS)
 
-            locations, ips_not_found = _get_locations(banned_ips)
+            locations, ips_not_found = _geolocate(banned_ips)
             attempts = _get_attempts(locations)
             sorted_attempts = _sort(attempts, group_by_city)
 
@@ -38,7 +38,7 @@ def analyze(fail2ban_output=None, server=None, log_file=None, add_unbanned=None,
         exit(0)
 
 
-def _get_locations(ips):
+def _geolocate(ips):
     locations = []
     ips_not_found = []
 
