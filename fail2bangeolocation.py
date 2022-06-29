@@ -4,7 +4,7 @@ import argparse
 import signal
 
 from application.geolocation import analyze
-from application.utils.python_utils import exit_signal_handler, get_interpreter_version
+from application.utils.python import exit_signal_handler, get_interpreter_version
 from crosscutting import strings, constants
 from crosscutting.condition_messages import print_error, print_info
 from presentation.utils.screen import clear_screen
