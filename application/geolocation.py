@@ -37,6 +37,7 @@ def analyze(fail2ban_output=None, server=None, log_file=None, add_unbanned=None,
             locations, ips_not_found = _geolocate(banned_ips)
             locations = _rename_unknown_locations(locations)
             failed_attempts = _get_failed_attempts(locations)
+            sorted_attempts = _sort(failed_attempts, group_by_city)
     else:
         print_error(f"{geolocationdb.GEOLOCATIONDB_URL} {strings.IS_NOT_REACHABLE}")
         exit(0)
@@ -91,13 +92,23 @@ def _get_failed_attempts(locations):
     return failed_attempts
 
 
-# def _sort(attempts, group_by_city):
-#     if group_by_city:
-#         return _sort_by_city(attempts)
-#     else:
-#         return _sort_by_country(attempts)
-#
-#
+def _sort(attempts, group_by_city):
+    if group_by_city:
+        return _sort_by_country_and_city(attempts)
+    else:
+        return _sort_by_country(attempts)
+
+
+def _sort_by_country_and_city(attempts):
+    # TODO
+    pass
+
+
+def _sort_by_country(attempts):
+    # TODO
+    pass
+
+
 # def _sort_by_country(attempts):
 #     countries_totals = {}
 #
@@ -145,21 +156,21 @@ def _get_failed_attempts(locations):
 #     return result
 
 
-def _print_attempts(stats, group_by_city):
+def _print_attempts(attempts, group_by_city):
     if group_by_city:
-        for country in stats:
+        for country in attempts:
             country_total = 0
 
-            for city in stats[country]:
-                country_total = country_total + (stats[country])[city]
+            for city in attempts[country]:
+                country_total = country_total + (attempts[country])[city]
 
             messages.print_country(country, country_total)
 
-            for city in stats[country]:
-                messages.print_city(city, (stats[country])[city])
+            for city in attempts[country]:
+                messages.print_city(city, (attempts[country])[city])
     else:
-        for country in stats:
-            messages.print_country(country, stats[country])
+        for country in attempts:
+            messages.print_country(country, attempts[country])
 
 
 def _print_not_found(ips):
