@@ -4,6 +4,7 @@ from application import geolocationdb, fail2banlog, fail2ban
 from crosscutting import strings
 from crosscutting.condition_messages import print_info, print_error
 from domain.Attempt import Attempt
+from presentation import messages
 
 NOT_FOUND = "Not found"
 
@@ -74,35 +75,20 @@ def _get_failed_attempts(locations):
     for location in locations:
         exists = False
 
+        # TODO: Optimize this
         for failed_attempt in failed_attempts:
-            if failed_attempt.country == location[0]:
+            if failed_attempt.get_country() == location[0]:
                 failed_attempt.add_city(location[1])
                 exists = True
                 break
 
         if not exists:
+            # TODO: Fix this constructor
             new_failed_attempt = Attempt(location[0])
             new_failed_attempt.add_city(location[1])
             failed_attempts.append(new_failed_attempt)
 
     return failed_attempts
-
-# def _get_attempts(locations):
-#     attempts = {}
-#
-#     for location in locations:
-#         country = location.country
-#         city = location.city
-#
-#         if country not in attempts:
-#             attempts[country] = {city: 0}
-#
-#         if city not in attempts[country]:
-#             (attempts[country])[city] = 0
-#
-#         (attempts[country])[city] = (attempts[country])[city] + 1
-#
-#     return attempts
 
 
 # def _sort(attempts, group_by_city):
@@ -115,13 +101,13 @@ def _get_failed_attempts(locations):
 # def _sort_by_country(attempts):
 #     countries_totals = {}
 #
-#     for country in attempts:
+#     for __country in attempts:
 #         country_total = 0
 #
-#         for city in attempts[country]:
-#             country_total = country_total + (attempts[country])[city]
+#         for city in attempts[__country]:
+#             country_total = country_total + (attempts[__country])[city]
 #
-#         countries_totals[country] = country_total
+#         countries_totals[__country] = country_total
 #
 #     country_totals_alphabetically_sorted = {k: v for k, v in
 #                                             sorted(countries_totals.items(), key=lambda item: item[0], reverse=False)}
@@ -137,44 +123,44 @@ def _get_failed_attempts(locations):
 #     attempts_sorted_by_country = _sort_by_country(attempts)
 #     result = {}
 #
-#     for country in attempts:
+#     for __country in attempts:
 #         renamed_cities_attempts = {}
 #
-#         for k in attempts[country]:
+#         for k in attempts[__country]:
 #             if (k is None) or (k == NOT_FOUND):
-#                 renamed_cities_attempts[strings.UNKNOWN] = (attempts[country])[k]
+#                 renamed_cities_attempts[strings.UNKNOWN] = (attempts[__country])[k]
 #             else:
-#                 renamed_cities_attempts[k] = (attempts[country])[k]
+#                 renamed_cities_attempts[k] = (attempts[__country])[k]
 #
 #         attempts_sorted_by_cities_alphabetically = {k: v for k, v in
 #                                                     sorted(renamed_cities_attempts.items(), key=lambda item: item[0],
 #                                                            reverse=False)}
 #
-#         attempts_sorted_by_city[country] = {k: v for k, v in sorted(attempts_sorted_by_cities_alphabetically.items(),
+#         attempts_sorted_by_city[__country] = {k: v for k, v in sorted(attempts_sorted_by_cities_alphabetically.items(),
 #                                                                     key=lambda item: item[1], reverse=True)}
 #
-#     for country in attempts_sorted_by_country:
-#         result[country] = attempts_sorted_by_city[country]
+#     for __country in attempts_sorted_by_country:
+#         result[__country] = attempts_sorted_by_city[__country]
 #
 #     return result
-#
-#
-# def _print_attempts(stats, group_by_city):
-#     if group_by_city:
-#         for country in stats:
-#             country_total = 0
-#
-#             for city in stats[country]:
-#                 country_total = country_total + (stats[country])[city]
-#
-#             messages.print_country(country, country_total)
-#
-#             for city in stats[country]:
-#                 messages.print_city(city, (stats[country])[city])
-#     else:
-#         for country in stats:
-#             messages.print_country(country, stats[country])
 
 
-# def _print_not_found(ips):
-#     messages.print_error(f'{strings.IPS_NOT_FOUND} {", ".join(ips)}')
+def _print_attempts(stats, group_by_city):
+    if group_by_city:
+        for country in stats:
+            country_total = 0
+
+            for city in stats[country]:
+                country_total = country_total + (stats[country])[city]
+
+            messages.print_country(country, country_total)
+
+            for city in stats[country]:
+                messages.print_city(city, (stats[country])[city])
+    else:
+        for country in stats:
+            messages.print_country(country, stats[country])
+
+
+def _print_not_found(ips):
+    messages.print_error(f'{strings.IPS_NOT_FOUND} {", ".join(ips)}')

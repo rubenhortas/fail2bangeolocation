@@ -59,7 +59,7 @@ $ pip3 install fail2bangeolocation
 
   optional arguments:
     -h, --help           show this help message and exit
-    -c, --show-city      group IPs by country and city
+    -c, --show-city      group IPs by __country and city
 
   ```
 

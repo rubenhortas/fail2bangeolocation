@@ -1,6 +1,6 @@
 # Argument strings
 DESCRIPTION = "Shows geolocation of failed attempts registered by fail2ban"
-GROUP_BY_CITY = "group IPs by country and city"
+GROUP_BY_CITY = "group IPs by __country and city"
 LOG_OPTION_HELP = "fail2ban log file"
 LOG_OPTIONS_HELP = "analyze a fail2ban log file. Use \"log -h\" to see more options."
 LONG_DESCRIPTION = "Identify the geographical locations of failed attempts to log into your system registered by fail2ban"
