@@ -58,8 +58,8 @@ def _get_attempts(locations):
     attempts = {}
 
     for location in locations:
-        country = location.get_country()
-        city = location.get_city()
+        country = location.country
+        city = location.city
 
         if country not in attempts:
             attempts[country] = {city: 0}
