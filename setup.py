@@ -5,7 +5,7 @@ from crosscutting import strings
 setup(
     name='fail2bangeolocation',
     version='1.0',
-    packages=['domain', 'application', 'application.utils', 'application.handlers', 'crosscutting', 'presentation',
+    packages=['application', 'application.utils', 'application.handlers', 'crosscutting', 'presentation',
               'presentation.utils'],
     url='https://github.com/rubenhortas/fail2bangeolocation',
     download_url='https://github.com/rubenhortas/fail2bangeolocation',
