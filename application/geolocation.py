@@ -93,7 +93,7 @@ def _sort(attempts, group_by_city):
 
 
 def _sort_by_country_and_city(attempts):
-    attempts_sorted_by_country, _ = _sort_by_country(attempts)
+    attempts_sorted_by_country = _sort_by_country(attempts)[0]
     attempts_sorted_by_city = {}
 
     for country in attempts:
