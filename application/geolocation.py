@@ -24,18 +24,14 @@ def analyze(fail2ban_output=None, server=None, log_file=None, add_unbanned=None,
         if len(banned_ips) > 0:
             print_info(strings.GEOLOCATING_IPS)
 
-            # locations, ips_not_found = _geolocate(banned_ips)
-            # attempts = _get_attempts(locations)
-            # sorted_attempts = _sort(attempts, group_by_city)
-            #
-            # print_info(strings.LOCATIONS)
-            #
-            # _print_attempts(sorted_attempts, group_by_city)
-            # _print_not_found(ips_not_found)
-
             locations, ips_not_found = _geolocate(banned_ips)
             locations = _rename_unknown_locations(locations)
             failed_attempts = _get_failed_attempts(locations)
+            sorted_failed_attempts = _sort(failed_attempts, group_by_city)
+
+            print_info(strings.LOCATIONS)
+            _print_attempts(sorted_failed_attempts, group_by_city)
+            _print_not_found(ips_not_found)
     else:
         print_error(f"{geolocationdb.GEOLOCATIONDB_URL} {strings.IS_NOT_REACHABLE}")
         exit(0)
@@ -94,60 +90,50 @@ def _sort(attempts, group_by_city):
 
 
 def _sort_by_country_and_city(attempts):
-    # TODO
-    pass
+    result = {}
+    # attempts_sorted_by_city = {}
+    # attempts_sorted_by_country = _sort_by_country(attempts)
+    #
+    # for country in attempts:
+    #     renamed_cities_attempts = {}
+    #
+    #     for k in attempts[country]:
+    #         if (k is None) or (k == NOT_FOUND):
+    #             renamed_cities_attempts[strings.UNKNOWN] = (attempts[country])[k]
+    #         else:
+    #             renamed_cities_attempts[k] = (attempts[country])[k]
+    #
+    #     attempts_sorted_by_cities_alphabetically = {k: v for k, v in
+    #                                                 sorted(renamed_cities_attempts.items(), key=lambda item: item[0],
+    #                                                        reverse=False)}
+    #
+    #     attempts_sorted_by_city[country] = {k: v for k, v in sorted(attempts_sorted_by_cities_alphabetically.items(),
+    #                                                                 key=lambda item: item[1], reverse=True)}
+    #
+    # for country in attempts_sorted_by_country:
+    #     result[country] = attempts_sorted_by_city[country]
+
+    return result
 
 
 def _sort_by_country(attempts):
-    # TODO
-    pass
+    countries_totals = {}
 
+    for country in attempts:
+        country_total = 0
 
-# def _sort_by_country(attempts):
-#     countries_totals = {}
-#
-#     for __country in attempts:
-#         country_total = 0
-#
-#         for city in attempts[__country]:
-#             country_total = country_total + (attempts[__country])[city]
-#
-#         countries_totals[__country] = country_total
-#
-#     country_totals_alphabetically_sorted = {k: v for k, v in
-#                                             sorted(countries_totals.items(), key=lambda item: item[0], reverse=False)}
-#     country_totals_sorted = {k: v for k, v in
-#                              sorted(country_totals_alphabetically_sorted.items(), key=lambda item: item[1],
-#                                     reverse=True)}
-#
-#     return country_totals_sorted
-#
-#
-# def _sort_by_city(attempts):
-#     attempts_sorted_by_city = {}
-#     attempts_sorted_by_country = _sort_by_country(attempts)
-#     result = {}
-#
-#     for __country in attempts:
-#         renamed_cities_attempts = {}
-#
-#         for k in attempts[__country]:
-#             if (k is None) or (k == NOT_FOUND):
-#                 renamed_cities_attempts[strings.UNKNOWN] = (attempts[__country])[k]
-#             else:
-#                 renamed_cities_attempts[k] = (attempts[__country])[k]
-#
-#         attempts_sorted_by_cities_alphabetically = {k: v for k, v in
-#                                                     sorted(renamed_cities_attempts.items(), key=lambda item: item[0],
-#                                                            reverse=False)}
-#
-#         attempts_sorted_by_city[__country] = {k: v for k, v in sorted(attempts_sorted_by_cities_alphabetically.items(),
-#                                                                     key=lambda item: item[1], reverse=True)}
-#
-#     for __country in attempts_sorted_by_country:
-#         result[__country] = attempts_sorted_by_city[__country]
-#
-#     return result
+        for city in attempts[country]:
+            country_total = country_total + (attempts[country])[city]
+
+        countries_totals[country] = country_total
+
+    countries_totals_alphabetically_sorted = {k: v for k, v in
+                                              sorted(countries_totals.items(), key=lambda item: item[0], reverse=False)}
+    countries_totals_sorted = {k: v for k, v in
+                               sorted(countries_totals_alphabetically_sorted.items(), key=lambda item: item[1],
+                                      reverse=True)}
+
+    return countries_totals_sorted
 
 
 def _print_attempts(attempts, group_by_city):

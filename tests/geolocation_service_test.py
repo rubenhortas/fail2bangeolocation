@@ -58,10 +58,10 @@ class GeoLocationServiceTests(unittest.TestCase):
         failed_attempts = geolocation._get_failed_attempts(self.renamed_locations)
         self.assertEqual(self.failed_attempts, failed_attempts)
 
-    # def test_sort_by_country(self):
-    #     result = geolocation._sort(self.failed_attempts, False)
-    #     self.assertDictEqual(self.expected_result_sorted_by_country, result)
-    #
+    def test_sort_by_country(self):
+        result = geolocation._sort(self.failed_attempts, False)
+        self.assertDictEqual(self.expected_result_sorted_by_country, result)
+
     # def test_sort_by_city(self):
     #     result = geolocation._sort(self.failed_attempts, True)
     #     self.assertDictEqual(self.expected_result_sorted_by_city, result)
