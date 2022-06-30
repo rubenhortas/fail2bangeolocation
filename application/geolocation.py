@@ -91,22 +91,18 @@ def _sort(attempts, group_by_city):
 
 
 def _sort_by_country_and_city(attempts):
-    attempts_sorted_by_country_and_city = {}
     attempts_sorted_by_country = _sort_by_country(attempts)
     attempts_sorted_by_city = {}
 
-    # for country in attempts:
-    #     attempts_sorted_by_city_alphabetically = {k: v for k, v in
-    #                                               sorted(attempts.items(), key=lambda item: item[0],
-    #                                                      reverse=False)}
-    #
-    #     attempts_sorted_by_city[country] = {k: v for k, v in sorted(attempts_sorted_by_city_alphabetically.items(),
-    #                                                                 key=lambda item: item[1], reverse=True)}
-    #
-    # for country in attempts_sorted_by_country:
-    #     attempts_sorted_by_country_and_city[country] = attempts_sorted_by_city[country]
-    #
-    return attempts_sorted_by_country, attempts_sorted_by_country_and_city
+    for country in attempts:
+        attempts_sorted_by_city_alphabetically = {k: v for k, v in
+                                                  sorted(attempts[country].items(), key=lambda item: item[0],
+                                                         reverse=False)}
+
+        attempts_sorted_by_city[country] = {k: v for k, v in sorted(attempts_sorted_by_city_alphabetically.items(),
+                                                                    key=lambda item: item[1], reverse=True)}
+
+    return attempts_sorted_by_country, attempts_sorted_by_city
 
 
 def _sort_by_country(attempts):
