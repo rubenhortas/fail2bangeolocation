@@ -43,10 +43,12 @@ class GeoLocationServiceTests(unittest.TestCase):
                                 'USA': {'New York': 1}, 'Japan': {'Yokohama': 1, 'Tokyo': 1},
                                 'France': {strings.UNKNOWN: 2}}
 
-        self.expected_result_sorted_by_country = {'Spain': 4, 'France': 2, 'Japan': 2, 'Portugal': 1, 'USA': 1}
-        self.expected_result_sorted_by_city = {'Spain': {'Lugo': 2, 'A Coruña': 1, strings.UNKNOWN: 1},
-                                               'France': {strings.UNKNOWN: 2}, 'Japan': {'Tokyo': 1, 'Yokohama': 1},
-                                               'Portugal': {'Lisbon': 1}, 'USA': {'New York': 1}}
+        self.attempts_sorted_by_country = {'Spain': 4, 'France': 2, 'Japan': 2, 'Portugal': 1, 'USA': 1}
+
+        self.attempts_sorted_by_country_and_city = {'Spain': {'Lugo': 2, 'A Coruña': 1, strings.UNKNOWN: 1},
+                                                    'France': {strings.UNKNOWN: 2},
+                                                    'Japan': {'Tokyo': 1, 'Yokohama': 1},
+                                                    'Portugal': {'Lisbon': 1}, 'USA': {'New York': 1}}
 
         self.ips_not_geolocated = ['1.2.3.4', '4.5.6.7', '10.11.12.13.14']
 
@@ -59,12 +61,13 @@ class GeoLocationServiceTests(unittest.TestCase):
         self.assertEqual(self.failed_attempts, failed_attempts)
 
     def test_sort_by_country(self):
-        result = geolocation._sort(self.failed_attempts, False)
-        self.assertDictEqual(self.expected_result_sorted_by_country, result)
+        attempts_sorted_by_country = geolocation._sort(self.failed_attempts, False)
+        self.assertDictEqual(self.attempts_sorted_by_country, attempts_sorted_by_country)
 
-    # def test_sort_by_city(self):
-    #     result = geolocation._sort(self.failed_attempts, True)
-    #     self.assertDictEqual(self.expected_result_sorted_by_city, result)
+    def test_sort_by_city(self):
+        attempts_sorted_by_country, attempts_sorted_by_country_and_city = geolocation._sort(self.failed_attempts, True)
+        self.assertDictEqual(self.attempts_sorted_by_country, attempts_sorted_by_country)
+        self.assertDictEqual(self.attempts_sorted_by_country_and_city, attempts_sorted_by_country_and_city)
 
 
 if __name__ == '__main__':
