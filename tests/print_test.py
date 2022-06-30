@@ -14,12 +14,12 @@ class PrintTest(unittest.TestCase):
         self.ips_not_geolocated = ['1.2.3.4', '4.5.6.7', '10.11.12.13.14']
 
     def test_print_stats_by_country(self):
-        print('Sorted by __country')
+        print('Sorted by country')
         geolocation._print_attempts(self.expected_result_sorted_by_country, False)
         print()
 
     def test_print_stats_by_city(self):
-        print('Sorted by __country and city')
+        print('Sorted by country and city')
         geolocation._print_attempts(self.expected_result_sorted_by_city, True)
         print()
 
