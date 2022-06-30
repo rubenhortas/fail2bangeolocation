@@ -93,7 +93,7 @@ def _sort(attempts, group_by_city):
 
 
 def _sort_by_country_and_city(attempts):
-    attempts_sorted_by_country = _sort_by_country(attempts)
+    attempts_sorted_by_country, _ = _sort_by_country(attempts)
     attempts_sorted_by_city = {}
 
     for country in attempts:
@@ -124,7 +124,7 @@ def _sort_by_country(attempts):
                                         sorted(countries_totals_sorted_alphabetically.items(), key=lambda item: item[1],
                                                reverse=True)}
 
-    return countries_totals_sorted_by_total
+    return countries_totals_sorted_by_total, None
 
 
 def _print_attempts(attempts_sorted_by_country, attempts_sorted_by_country_and_city):
