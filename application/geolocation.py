@@ -3,7 +3,6 @@ from tqdm import tqdm
 from application import geolocationdb, fail2banlog, fail2ban
 from crosscutting import strings
 from crosscutting.condition_messages import print_info, print_error
-from domain.Attempt import Attempt
 from presentation import messages
 
 NOT_FOUND = "Not found"
@@ -37,7 +36,6 @@ def analyze(fail2ban_output=None, server=None, log_file=None, add_unbanned=None,
             locations, ips_not_found = _geolocate(banned_ips)
             locations = _rename_unknown_locations(locations)
             failed_attempts = _get_failed_attempts(locations)
-            sorted_attempts = _sort(failed_attempts, group_by_city)
     else:
         print_error(f"{geolocationdb.GEOLOCATIONDB_URL} {strings.IS_NOT_REACHABLE}")
         exit(0)
@@ -71,23 +69,19 @@ def _rename_unknown_locations(locations):
 
 
 def _get_failed_attempts(locations):
-    failed_attempts = []
+    failed_attempts = {}
 
     for location in locations:
-        exists = False
+        country = location[0]
+        city = location[1]
 
-        # TODO: Optimize this
-        for failed_attempt in failed_attempts:
-            if failed_attempt.get_country() == location[0]:
-                failed_attempt.add_city(location[1])
-                exists = True
-                break
+        if country not in failed_attempts:
+            failed_attempts[country] = {city: 0}
 
-        if not exists:
-            # TODO: Fix this constructor
-            new_failed_attempt = Attempt(location[0])
-            new_failed_attempt.add_city(location[1])
-            failed_attempts.append(new_failed_attempt)
+        if city not in failed_attempts[country]:
+            (failed_attempts[country])[city] = 0
+
+        (failed_attempts[country])[city] = (failed_attempts[country])[city] + 1
 
     return failed_attempts
 

@@ -2,7 +2,6 @@ import unittest
 
 from application import geolocation
 from crosscutting import strings
-from domain.Attempt import Attempt
 
 
 class GeoLocationServiceTests(unittest.TestCase):
@@ -40,32 +39,9 @@ class GeoLocationServiceTests(unittest.TestCase):
                                   ('Japan', 'Yokohama'), ('Japan', 'Tokyo'), ('France', strings.UNKNOWN),
                                   ('France', strings.UNKNOWN)]
 
-        self.failed_attempts = []
-
-        attempt = Attempt('Spain')
-        attempt._Attempt__cities = {'Lugo': 2, 'A Coruña': 1, strings.UNKNOWN: 1}
-        attempt._Attempt__total = 4
-        self.failed_attempts.append(attempt)
-
-        attempt = Attempt('Portugal')
-        attempt._Attempt__cities = {'Lisbon': 1}
-        attempt._Attempt__total = 1
-        self.failed_attempts.append(attempt)
-
-        attempt = Attempt('USA')
-        attempt._Attempt__cities = {'New York': 1}
-        attempt._Attempt__total = 1
-        self.failed_attempts.append(attempt)
-
-        attempt = Attempt('Japan')
-        attempt._Attempt__cities = {'Yokohama': 1, 'Tokyo': 1}
-        attempt._Attempt__total = 2
-        self.failed_attempts.append(attempt)
-
-        attempt = Attempt('France')
-        attempt._Attempt__cities = {strings.UNKNOWN: 2}
-        attempt._Attempt__total = 2
-        self.failed_attempts.append(attempt)
+        self.failed_attempts = {'Spain': {'Lugo': 2, 'A Coruña': 1, strings.UNKNOWN: 1}, 'Portugal': {'Lisbon': 1},
+                                'USA': {'New York': 1}, 'Japan': {'Yokohama': 1, 'Tokyo': 1},
+                                'France': {strings.UNKNOWN: 2}}
 
         self.expected_result_sorted_by_country = {'Spain': 4, 'France': 2, 'Japan': 2, 'Portugal': 1, 'USA': 1}
         self.expected_result_sorted_by_city = {'Spain': {'Lugo': 2, 'A Coruña': 1, strings.UNKNOWN: 1},
