@@ -37,14 +37,14 @@ if __name__ == '__main__':
 
         args = parser.parse_args()
 
-        print_info('fail2bangeolocation')
-
         if args.__contains__(OUTPUT_OPTION):
             analyze(fail2ban_output=True, group_by_city=args.show_city)
         elif args.__contains__(LOG_OPTION):
             analyze(log_file=args.log[0], add_unbanned=args.add_unbanned, group_by_city=args.show_city)
         elif args.__contains__(SERVER_OPTION):
             analyze(server=args.server[0], group_by_city=args.show_city)
+        else:
+            parser.print_help()
     else:
         print_error(f'{strings.REQUIRES_PYTHON} {constants.REQUIRED_PYTHON_VERSION}')
         exit(0)
