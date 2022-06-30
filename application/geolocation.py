@@ -27,10 +27,11 @@ def analyze(fail2ban_output=None, server=None, log_file=None, add_unbanned=None,
             locations, ips_not_found = _geolocate(banned_ips)
             locations = _rename_unknown_locations(locations)
             failed_attempts = _get_failed_attempts(locations)
-            sorted_failed_attempts = _sort(failed_attempts, group_by_city)
+            sorted_failed_attempts_by_country, sorted_failed_attempts_by_country_and_city = _sort(failed_attempts,
+                                                                                                  group_by_city)
 
             print_info(strings.LOCATIONS)
-            _print_attempts(sorted_failed_attempts, group_by_city)
+            _print_attempts(sorted_failed_attempts_by_country, sorted_failed_attempts_by_country_and_city)
             _print_not_found(ips_not_found)
     else:
         print_error(f"{geolocationdb.GEOLOCATIONDB_URL} {strings.IS_NOT_REACHABLE}")
@@ -90,30 +91,22 @@ def _sort(attempts, group_by_city):
 
 
 def _sort_by_country_and_city(attempts):
-    result = {}
-    # attempts_sorted_by_city = {}
-    # attempts_sorted_by_country = _sort_by_country(attempts)
-    #
-    # for country in attempts:
-    #     renamed_cities_attempts = {}
-    #
-    #     for k in attempts[country]:
-    #         if (k is None) or (k == NOT_FOUND):
-    #             renamed_cities_attempts[strings.UNKNOWN] = (attempts[country])[k]
-    #         else:
-    #             renamed_cities_attempts[k] = (attempts[country])[k]
-    #
-    #     attempts_sorted_by_cities_alphabetically = {k: v for k, v in
-    #                                                 sorted(renamed_cities_attempts.items(), key=lambda item: item[0],
-    #                                                        reverse=False)}
-    #
-    #     attempts_sorted_by_city[country] = {k: v for k, v in sorted(attempts_sorted_by_cities_alphabetically.items(),
-    #                                                                 key=lambda item: item[1], reverse=True)}
-    #
-    # for country in attempts_sorted_by_country:
-    #     result[country] = attempts_sorted_by_city[country]
+    attempts_sorted_by_country_and_city = {}
+    attempts_sorted_by_country = _sort_by_country(attempts)
+    attempts_sorted_by_city = {}
 
-    return result
+    for country in attempts_sorted_by_country:
+        attempts_sorted_by_city_alphabetically = {k: v for k, v in
+                                                  sorted(attempts_sorted_by_country.items(), key=lambda item: item[0],
+                                                         reverse=False)}
+
+        attempts_sorted_by_city[country] = {k: v for k, v in sorted(attempts_sorted_by_city_alphabetically.items(),
+                                                                    key=lambda item: item[1], reverse=True)}
+
+    for country in attempts_sorted_by_country:
+        attempts_sorted_by_country_and_city[country] = attempts_sorted_by_city[country]
+
+    return attempts_sorted_by_country, attempts_sorted_by_country_and_city
 
 
 def _sort_by_country(attempts):
@@ -138,16 +131,17 @@ def _sort_by_country(attempts):
 
 def _print_attempts(attempts, group_by_city):
     if group_by_city:
-        for country in attempts:
-            country_total = 0
-
-            for city in attempts[country]:
-                country_total = country_total + (attempts[country])[city]
-
-            messages.print_country(country, country_total)
-
-            for city in attempts[country]:
-                messages.print_city(city, (attempts[country])[city])
+        pass
+        # for country in attempts:
+        #     country_total = 0
+        #
+        #     for city in attempts[country]:
+        #         country_total = country_total + (attempts[country])[city]
+        #
+        #     messages.print_country(country, country_total)
+        #
+        #     for city in attempts[country]:
+        #         messages.print_city(city, (attempts[country])[city])
     else:
         for country in attempts:
             messages.print_country(country, attempts[country])
