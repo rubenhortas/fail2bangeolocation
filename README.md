@@ -109,6 +109,9 @@ $ pip3 install fail2bangeolocation
 
 In case of any problem create an [issue](https://github.com/rubenhortas/fail2bangeolocation/issues/new)
 
+## Discussions
+If you want ask (or answer) a question, leave an opinion or have a open-ended conversation you can create (or join) a [discussion](https://github.com/rubenhortas/fail2bangeolocation/discussions/new)
+
 ## Support
 
 If you find this application useful you can star this repo.
