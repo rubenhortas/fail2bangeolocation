@@ -8,11 +8,8 @@ def print_country(country, counter=None):
         print(f'{Style.BRIGHT}{Fore.GREEN}{country}{Style.RESET_ALL}: {counter}')
 
 
-def print_city(city, counter=None):
-    if not counter:
-        print(f'\t{Style.BRIGHT}{Fore.YELLOW}{city}{Style.RESET_ALL}')
-    else:
-        print(f'\t{Style.BRIGHT}{Fore.YELLOW}{city}{Style.RESET_ALL}: {counter}')
+def print_city(city, counter):
+    print(f'\t{Style.BRIGHT}{Fore.YELLOW}{city}{Style.RESET_ALL}: {counter}')
 
 
 def print_error(msg):

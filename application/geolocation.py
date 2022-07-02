@@ -1,35 +1,46 @@
 from tqdm import tqdm
 
-from application import geolocationdb, fail2banlog
+from application import geolocationdb, fail2banlog, fail2ban
 from crosscutting import strings
 from crosscutting.condition_messages import print_info, print_error
-from domain.Location import Location
 from presentation import messages
 
 NOT_FOUND = "Not found"
 
 
-def analyze(log_file, add_unbanned, group_by_city):
+def analyze(fail2ban_output=None, server=None, log_file=None, add_unbanned=None, group_by_city=None):
+    banned_ips = []
+
+    print_info('fail2bangeolocation')
+
     if geolocationdb.is_online():
-        banned_ips = fail2banlog.get_banned_ips(log_file, add_unbanned)
+        if fail2ban_output is not None:
+            banned_ips = fail2ban.get_banned_ips()
+        elif server is not None:
+            banned_ips = fail2ban.get_banned_ips(server)
+        elif log_file is not None:
+            banned_ips = fail2banlog.get_banned_ips(log_file, add_unbanned)
 
         print_info(f'{len(banned_ips)} {strings.IPS_FOUND}')
-        print_info(strings.GEOLOCATING_IPS)
 
-        locations, ips_not_found = _get_locations(banned_ips)
-        attempts = _get_attempts(locations)
-        sorted_attempts = _sort(attempts, group_by_city)
+        if len(banned_ips) > 0:
+            print_info(strings.GEOLOCATING_IPS)
 
-        print_info(strings.LOCATIONS)
+            locations, ips_not_found = _geolocate(banned_ips)
+            locations = _rename_unknown_locations(locations)
+            failed_attempts = _get_failed_attempts(locations)
+            failed_attempts_sorted_by_country, failed_attempts_sorted_by_country_and_city = _sort(failed_attempts,
+                                                                                                  group_by_city)
 
-        _print_attempts(sorted_attempts, group_by_city)
-        _print_not_found(ips_not_found)
+            print_info(strings.LOCATIONS)
+            _print_attempts(failed_attempts_sorted_by_country, failed_attempts_sorted_by_country_and_city)
+            _print_not_found(ips_not_found)
     else:
         print_error(f"{geolocationdb.GEOLOCATIONDB_URL} {strings.IS_NOT_REACHABLE}")
         exit(0)
 
 
-def _get_locations(ips):
+def _geolocate(ips):
     locations = []
     ips_not_found = []
 
@@ -37,37 +48,63 @@ def _get_locations(ips):
         country_name, city_name = geolocationdb.get_geolocation_info(ip)
 
         if country_name and (country_name != NOT_FOUND):
-            location = Location(country_name, city_name)
-            locations.append(location)
+            locations.append((country_name, city_name))
         else:
             ips_not_found.append(ip)
 
     return locations, ips_not_found
 
 
-def _get_attempts(locations):
-    attempts = {}
+def _rename_unknown_locations(locations):
+    renamed_locations = []
 
     for location in locations:
-        country = location.get_country()
-        city = location.get_city()
+        if location[1] is None or location[1] == NOT_FOUND:
+            renamed_locations.append((location[0], strings.UNKNOWN))
+        else:
+            renamed_locations.append(location)
 
-        if country not in attempts:
-            attempts[country] = {city: 0}
+    return renamed_locations
 
-        if city not in attempts[country]:
-            (attempts[country])[city] = 0
 
-        (attempts[country])[city] = (attempts[country])[city] + 1
+def _get_failed_attempts(locations):
+    failed_attempts = {}
 
-    return attempts
+    for location in locations:
+        country = location[0]
+        city = location[1]
+
+        if country not in failed_attempts:
+            failed_attempts[country] = {city: 0}
+
+        if city not in failed_attempts[country]:
+            (failed_attempts[country])[city] = 0
+
+        (failed_attempts[country])[city] = (failed_attempts[country])[city] + 1
+
+    return failed_attempts
 
 
 def _sort(attempts, group_by_city):
     if group_by_city:
-        return _sort_by_city(attempts)
+        return _sort_by_country_and_city(attempts)
     else:
         return _sort_by_country(attempts)
+
+
+def _sort_by_country_and_city(attempts):
+    attempts_sorted_by_country = _sort_by_country(attempts)[0]
+    attempts_sorted_by_city = {}
+
+    for country in attempts:
+        attempts_sorted_by_city_alphabetically = {k: v for k, v in
+                                                  sorted(attempts[country].items(), key=lambda item: item[0],
+                                                         reverse=False)}
+
+        attempts_sorted_by_city[country] = {k: v for k, v in sorted(attempts_sorted_by_city_alphabetically.items(),
+                                                                    key=lambda item: item[1], reverse=True)}
+
+    return attempts_sorted_by_country, attempts_sorted_by_city
 
 
 def _sort_by_country(attempts):
@@ -81,52 +118,25 @@ def _sort_by_country(attempts):
 
         countries_totals[country] = country_total
 
-    country_totals_alphabetically_sorted = {k: v for k, v in
-                                            sorted(countries_totals.items(), key=lambda item: item[0], reverse=False)}
-    country_totals_sorted = {k: v for k, v in
-                             sorted(country_totals_alphabetically_sorted.items(), key=lambda item: item[1],
-                                    reverse=True)}
+    countries_totals_sorted_alphabetically = {k: v for k, v in
+                                              sorted(countries_totals.items(), key=lambda item: item[0], reverse=False)}
+    countries_totals_sorted_by_total = {k: v for k, v in
+                                        sorted(countries_totals_sorted_alphabetically.items(), key=lambda item: item[1],
+                                               reverse=True)}
 
-    return country_totals_sorted
-
-
-def _sort_by_city(attempts):
-    attempts_sorted_by_city = {}
-    attempts_sorted_by_country = _sort_by_country(attempts)
-    result = {}
-
-    for country in attempts:
-        renamed_cities_attempts = {}
-
-        for k in attempts[country]:
-            if (k is None) or (k == NOT_FOUND):
-                renamed_cities_attempts[strings.UNKNOWN] = (attempts[country])[k]
-            else:
-                renamed_cities_attempts[k] = (attempts[country])[k]
-
-        attempts_sorted_by_cities_alphabetically = {k: v for k, v in
-                                                    sorted(renamed_cities_attempts.items(), key=lambda item: item[0],
-                                                           reverse=False)}
-
-        attempts_sorted_by_city[country] = {k: v for k, v in sorted(attempts_sorted_by_cities_alphabetically.items(),
-                                                                    key=lambda item: item[1], reverse=True)}
-
-    for country in attempts_sorted_by_country:
-        result[country] = attempts_sorted_by_city[country]
-
-    return result
+    return countries_totals_sorted_by_total, None
 
 
-def _print_attempts(stats, group_by_city):
-    if group_by_city:
-        for country in stats:
-            messages.print_country(country)
+def _print_attempts(attempts_sorted_by_country, attempts_sorted_by_country_and_city):
+    if attempts_sorted_by_country_and_city:
+        for country in attempts_sorted_by_country_and_city:
+            messages.print_country(country, attempts_sorted_by_country[country])
 
-            for city in stats[country]:
-                messages.print_city(city, (stats[country])[city])
+            for city in attempts_sorted_by_country_and_city[country]:
+                messages.print_city(city, (attempts_sorted_by_country_and_city[country])[city])
     else:
-        for country in stats:
-            messages.print_country(country, stats[country])
+        for country in attempts_sorted_by_country:
+            messages.print_country(country, attempts_sorted_by_country[country])
 
 
 def _print_not_found(ips):
