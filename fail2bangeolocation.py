@@ -21,7 +21,7 @@ if __name__ == '__main__':
     if interpreter_version == constants.REQUIRED_PYTHON_VERSION:
         parser = argparse.ArgumentParser(description=f'{strings.DESCRIPTION}')
         parser.add_argument('-c', '--show-city', default=False, action='store_true', help=f'{strings.GROUP_BY_CITY}')
-        subparsers = parser.add_subparsers(help=f'{strings.THIS_OPTIONS_ARE_MUTUALLY_EXCLUSIVE}')
+        subparsers = parser.add_subparsers(help=f'{strings.THESE_OPTIONS_ARE_MUTUALLY_EXCLUSIVE}')
 
         parser_output = subparsers.add_parser(OUTPUT_OPTION, help=f'{strings.OUTPUT_OPTIONS_HELP}')
         parser_output.add_argument(OUTPUT_OPTION, default=False, action='store_true',
