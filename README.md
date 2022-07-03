@@ -73,7 +73,7 @@ $ pip3 install fail2bangeolocation
   ```
 
   ```shell
-  $ fail2bangeolocation command_output
+  $ fail2bangeolocation output
   ```
 
 * ### Analyze all IPs registered by fail2ban for a given jailed server/service, e.g. sshd 
@@ -103,7 +103,7 @@ $ pip3 install fail2bangeolocation
   Run *fail2bangeolocation* with "**-c**" as first argument:
 
   ```shell
-  $ fail2bangeolocation -c {command_output,log,server}
+  $ fail2bangeolocation -c {output,log,server}
   ```
   
 ## Troubleshooting
