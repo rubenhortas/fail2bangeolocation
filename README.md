@@ -47,20 +47,19 @@ $ pip3 install fail2bangeolocation
 * *fail2bangeolocation* arguments
 
   ```shell
-  usage: fail2bangeolocation.py [-h] [-c] {command_output,log,server} ...
+usage: fail2bangeolocation.py [-h] [-c] {output,log,server} ...
 
-  Shows geolocation of failed attempts registered by fail2ban
+Shows geolocation of failed attempts registered by fail2ban
 
-  positional arguments:
-    {command_output,log,server}  This options are mutually exclusive
-      command_output             analyze all banned IPs by fail2ban (default without arguments).
-      log                analyze a fail2ban log file. Use "log -h" to see more options.
-      server             analyze all banned IPs by fail2ban (e.g. "server sshd")
+positional arguments:
+  {output,log,server}  These options are mutually exclusive
+    output             analyze all banned IPs by fail2ban (default without arguments).
+    log                analyze a fail2ban log file. Use "log -h" to see more options.
+    server             analyze all banned IPs by fail2ban (e.g. "server sshd")
 
-  optional arguments:
-    -h, --help           show this help message and exit
-    -c, --show-city      group IPs by country and city
-
+optional arguments:
+  -h, --help           show this help message and exit
+  -c, --show-city      group IPs by country and city
   ```
 
 * ### Analyze all IPs registered by fail2ban 
