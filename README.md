@@ -66,7 +66,7 @@ $ pip3 install fail2bangeolocation
 
   :warning: Requires root privileges  
 
-  You can run it without parameters or using the *output* parameter:
+  Run *fail2bangeolocation* without argument or using the *output* argument:
 
   ```shell
   $ fail2bangeolocation
@@ -79,6 +79,7 @@ $ pip3 install fail2bangeolocation
 * ### Analyze all IPs registered by fail2ban for a given jailed server/service, e.g. sshd 
 
   :warning: Requires root privileges
+  Run *fail2bangeolocation* with the *server* argument and the jailed server name:
 
   ```shell
   $ fail2bangeolocation server sshd
@@ -86,19 +87,20 @@ $ pip3 install fail2bangeolocation
 
 * ### Analyze a log file
   :warning: May require root privileges depending on the file to be analyzed
+  Run *fail2bangeolocation* with the *log* argument and the path to the log file:
 
   ```shell
   $ fail2bangeolocation log /var/log/fai2ban.log
   ```
 
-  You can also geolocate the unbanned IPs contained in the log with the *-u* flag:
+  You can also geolocate the unbanned IPs contained in the log adding the **-u** argument:
 
   ```shell
   $ fail2bangeolocation log -u /var/log/fai2ban.log
   ```
   
 * ### Group the output by country and city
-  You must enter "**-c**" as first argument:
+  Run *fail2bangeolocation* with "**-c**" as first argument:
 
   ```shell
   $ fail2bangeolocation -c {command_output,log,server}
