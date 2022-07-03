@@ -78,7 +78,7 @@ $ pip3 install fail2bangeolocation
 
 * ### Analyze all IPs registered by fail2ban for a given jailed server/service, e.g. sshd 
 
-  :warning: Requires root privileges
+  :warning: Requires root privileges  
   Run *fail2bangeolocation* with the *server* argument and the jailed server name:
 
   ```shell
@@ -86,7 +86,7 @@ $ pip3 install fail2bangeolocation
   ```
 
 * ### Analyze a log file
-  :warning: May require root privileges depending on the file to be analyzed
+  :warning: May require root privileges depending on the file to be analyzed  
   Run *fail2bangeolocation* with the *log* argument and the path to the log file:
 
   ```shell
