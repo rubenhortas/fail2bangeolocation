@@ -11,13 +11,13 @@ def get_banned_ips(log_file, add_unbanned):
     try:
         if os.path.exists(log_file):
             if os.path.isfile(log_file):
-                print_info(f'{strings.ANALYZING}: {log_file}')
+                print_info(f"{strings.ANALYZING}: {log_file}")
 
                 return _get_banned_ips(log_file, add_unbanned)
             else:
-                handle_error(f'{log_file} {strings.IS_NOT_A_FILE}', True)
+                handle_error(f"{log_file} {strings.IS_NOT_A_FILE}", True)
         else:
-            handle_error(f'{log_file} {strings.DOES_NOT_EXISTS}', True)
+            handle_error(f"{log_file} {strings.DOES_NOT_EXISTS}", True)
     except Exception as e:
         handle_exception(e)
 

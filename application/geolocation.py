@@ -21,7 +21,7 @@ def analyze(fail2ban_output=None, server=None, log_file=None, add_unbanned=None,
         elif log_file is not None:
             banned_ips = fail2banlog.get_banned_ips(log_file, add_unbanned)
 
-        print_info(f'{len(banned_ips)} {strings.IPS_FOUND}')
+        print_info(f"{len(banned_ips)} {strings.IPS_FOUND}")
 
         if len(banned_ips) > 0:
             print_info(strings.GEOLOCATING_IPS)
@@ -140,4 +140,4 @@ def _print_attempts(attempts_sorted_by_country, attempts_sorted_by_country_and_c
 
 
 def _print_not_found(ips):
-    messages.print_error(f'{strings.IPS_NOT_FOUND} {", ".join(ips)}')
+    messages.print_error(f"{strings.IPS_NOT_FOUND} {', '.join(ips)}")

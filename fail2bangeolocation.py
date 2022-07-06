@@ -46,5 +46,5 @@ if __name__ == '__main__':
         else:
             parser.print_help()
     else:
-        print_error(f'{strings.REQUIRES_PYTHON} {constants.REQUIRED_PYTHON_VERSION}')
+        print_error(f"{strings.REQUIRES_PYTHON} {constants.REQUIRED_PYTHON_VERSION}")
         exit(0)
