@@ -27,7 +27,7 @@ def _get_banned_ips():
 def _parse_banned_ips(service_banned_ips):
     ips = []
 
-    sbi = ast.literal_eval(service_banned_ips)
+    sbi = ast.literal_eval(service_banned_ips.decode('UTF-8'))
 
     for service in sbi:
         for service_name in service:
