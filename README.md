@@ -49,49 +49,46 @@ $ pip3 install -r requirements.txt
 * If you installed *fail2bangeolocation* with *pip3* you can run it directly from the command line interface:
 
   ```shell
-  $ fail2bangeolocation [-h] [-c] {output,log,server}
+  $ fail2bangeolocation [-h] [-c] {fail2ban,log,server}
   ```
 
 * You can run *fail2bangeolocation* without installation running the *fail2bangeolocation.py* script
 
   ```shell
-  $ ./fail2bangeolocation.py [-h] [-c] {output,log,server}
+  $ ./fail2bangeolocation.py [-h] [-c] {fail2ban,log,server}
   ```
   or
   ```shell
-  $ python3 fail2bangeolocation.py [-h] [-c] {output,log,server}
+  $ python3 fail2bangeolocation.py [-h] [-c] {fail2ban,log,server}
   ```
 
 * *fail2bangeolocation* arguments
 
   ```shell
-  usage: fail2bangeolocation.py [-h] [-c] {output,log,server} ...
-
+  usage: fail2bangeolocation.py [-h] [-c] {fail2ban,log,server} ...
+  
   Shows geolocation of failed attempts registered by fail2ban
-
+  
   positional arguments:
-    {output,log,server}  These options are mutually exclusive
-      output             analyze all banned IPs by fail2ban (default without arguments).
-      log                analyze a fail2ban log file. Use "log -h" to see more options.
-      server             analyze all banned IPs by fail2ban (e.g. "server sshd")
-
+    {fail2ban,log,server}
+                          These options are mutually exclusive
+      fail2ban            analyze all banned IPs by fail2ban (default without arguments).
+      log                 analyze a fail2ban log file. Use "log -h" to see more options.
+      server              analyze all banned IPs by fail2ban (e.g. "server sshd")
+  
   optional arguments:
-    -h, --help           show this help message and exit
-    -c, --show-city      group IPs by country and city  
+    -h, --help            show this help message and exit
+    -c, --show-city       group IPs by country and city 
   ```
 
 * ### Analyze all IPs registered by fail2ban 
 
   :warning: Requires root privileges  
 
-  Run *fail2bangeolocation* without argument or using the *output* argument:
+  Run *fail2bangeolocation* using the *fail2ban* argument:
 
   ```shell
-  $ fail2bangeolocation
-  ```
-
-  ```shell
-  $ fail2bangeolocation output
+  $ fail2bangeolocation fail2ban
   ```
 
 * ### Analyze all IPs registered by fail2ban for a given jailed server/service, e.g. sshd 
@@ -121,7 +118,7 @@ $ pip3 install -r requirements.txt
   Run *fail2bangeolocation* with "**-c**" as first argument:
 
   ```shell
-  $ fail2bangeolocation -c {output,log,server}
+  $ fail2bangeolocation -c {fail2ban,log,server}
   ```
   
 ## Troubleshooting
