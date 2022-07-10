@@ -72,8 +72,8 @@ $ pip3 install -r requirements.txt
   positional arguments:
     {fail2ban,log,server}
                           These options are mutually exclusive
-      fail2ban            analyze all banned IPs by fail2ban (default without arguments).
-      log                 analyze a fail2ban log file. Use "log -h" to see more options.
+      fail2ban            analyze all banned IPs by fail2ban
+      log                 analyze a fail2ban log file. Use "log -h" to see more options
       server              analyze all banned IPs by fail2ban (e.g. "server sshd")
   
   optional arguments:
