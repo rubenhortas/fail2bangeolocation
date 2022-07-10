@@ -26,7 +26,11 @@ You can install *fail2bangeolocation* via *pip3*:
 $ pip3 install fail2bangeolocation
 ```
 
-You also can run *fail2bangeolocation* directly without installing it. 
+You also can run *fail2bangeolocation* directly without installing it, but you need to install the dependencies manually:
+
+```shell
+$ pip3 install -r requirements.txt
+```
 
 ## Usage
 
