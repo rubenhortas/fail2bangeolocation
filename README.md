@@ -93,7 +93,7 @@ $ sudo pip3 install -r requirements.txt
   Run *fail2bangeolocation* using the *fail2ban* argument:
 
   ```shell
-  $ fail2bangeolocation fail2ban
+  $ sudo fail2bangeolocation fail2ban
   ```
 
 * ### Analyze all IPs registered by fail2ban for a given jailed server/service, e.g. sshd 
@@ -102,7 +102,7 @@ $ sudo pip3 install -r requirements.txt
   Run *fail2bangeolocation* with the *server* argument and the jailed server name:
 
   ```shell
-  $ fail2bangeolocation server sshd
+  $ sudo fail2bangeolocation server sshd
   ```
 
 * ### Analyze a log file
