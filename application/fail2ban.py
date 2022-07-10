@@ -1,3 +1,4 @@
+import ast
 import re
 
 from application.utils.system import execute_command
@@ -26,7 +27,9 @@ def _get_banned_ips():
 def _parse_banned_ips(service_banned_ips):
     ips = []
 
-    for service in service_banned_ips:
+    sbi = ast.literal_eval(service_banned_ips)
+
+    for service in sbi:
         for service_name in service:
             ips.extend(service[service_name])
 
