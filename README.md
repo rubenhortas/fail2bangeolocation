@@ -4,6 +4,18 @@ Shows geolocation of failed attempts registered by *fail2ban*.
 It's useful to know from which locations you are being attacked the most.  
 You can group locations by country or by country and by city.  
 
+![GitHub repo file count](https://img.shields.io/github/directory-file-count/rubenhortas/fail2bangeolocation)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rubenhortas/fail2bangeolocation)
+![GitHub repo size](https://img.shields.io/github/repo-size/rubenhortas/fail2bangeolocation)
+
+![GitHub issues](https://img.shields.io/github/issues-raw/rubenhortas/fail2bangeolocation)
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/rubenhortas/fail2bangeolocation)
+
+![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/rubenhortas/fail2bangeolocation)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/rubenhortas/fail2bangeolocation)
+
+![GitHub](https://img.shields.io/github/license/rubenhortas/fail2bangeolocation)
+
 ## Screenshots
 
 * Grouped by country
