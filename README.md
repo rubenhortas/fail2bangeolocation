@@ -29,6 +29,11 @@ You can group locations by country or by country and by city.
 
 * python3
 * fail2ban
+* python libraries:
+  * setuptools
+  * requests
+  * tqdm
+  * colorama 
 
 ## Installation 
 
