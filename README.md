@@ -20,7 +20,7 @@ You can group locations by country or by country and by city.
 
 ## Installation 
 
-You install *fail2bangeolocation* via *pip3*:
+You can install *fail2bangeolocation* via *pip3*:
 
 ```shell
 $ pip3 install fail2bangeolocation
