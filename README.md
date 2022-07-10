@@ -33,17 +33,17 @@ You also can run *fail2bangeolocation* directly without installing it.
 * If you installed *fail2bangeolocation* with *pip3* you can run it directly from the command line interface:
 
   ```shell
-  $ fail2bangeolocation -h
+  $ fail2bangeolocation [-h] [-c] {output,log,server}
   ```
 
 * You can run *fail2bangeolocation* without installation running the *fail2bangeolocation.py* script
 
   ```shell
-  $ ./fail2bangeolocation.py -h
+  $ ./fail2bangeolocation.py [-h] [-c] {output,log,server}
   ```
   or
   ```shell
-  $ python3 fail2bangeolocation.py -h
+  $ python3 fail2bangeolocation.py [-h] [-c] {output,log,server}
   ```
 
 * *fail2bangeolocation* arguments
