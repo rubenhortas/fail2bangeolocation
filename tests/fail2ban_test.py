@@ -3,7 +3,7 @@ import unittest
 from application import fail2ban
 
 
-class GeoLocationServiceTests(unittest.TestCase):
+class Fail2banServiceTest(unittest.TestCase):
     def setUp(self):
         self.fail2ban_banned_ips = [{'sshd': ['1.1.1.1', '1.1.1.2', '1.1.1.3']},
                                     {'other': ['2.2.2.1', '2.2.2.2', '2.2.2.3']}]

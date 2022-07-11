@@ -4,7 +4,7 @@ from application import geolocation
 from crosscutting import strings
 
 
-class GeoLocationServiceTests(unittest.TestCase):
+class GeoLocationServiceTest(unittest.TestCase):
     def setUp(self):
         self.locations = []
 
