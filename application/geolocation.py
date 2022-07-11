@@ -128,15 +128,12 @@ def _sort_by_country(attempts):
 
 
 def _print_attempts(attempts_sorted_by_country, attempts_sorted_by_country_and_city):
-    if attempts_sorted_by_country_and_city:
-        for country in attempts_sorted_by_country_and_city:
-            messages.print_country(country, attempts_sorted_by_country[country])
+    for country in attempts_sorted_by_country:
+        messages.print_country(country, attempts_sorted_by_country[country])
 
+        if attempts_sorted_by_country_and_city:
             for city in attempts_sorted_by_country_and_city[country]:
                 messages.print_city(city, (attempts_sorted_by_country_and_city[country])[city])
-    else:
-        for country in attempts_sorted_by_country:
-            messages.print_country(country, attempts_sorted_by_country[country])
 
 
 def _print_not_found(ips):
