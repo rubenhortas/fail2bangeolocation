@@ -34,7 +34,9 @@ def analyze(fail2ban_output=None, server=None, log_file=None, add_unbanned=None,
 
             print_info(strings.LOCATIONS)
             _print_attempts(failed_attempts_sorted_by_country, failed_attempts_sorted_by_country_and_city)
-            _print_not_found(ips_not_found)
+
+            if len(ips_not_found) > 0:
+                _print_not_found(ips_not_found)
     else:
         print_error(f"{geolocationdb.GEOLOCATIONDB_URL} {strings.IS_NOT_REACHABLE}")
         exit(0)
