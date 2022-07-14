@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fail2bangeolocation"
+version = "1.0.0"
+authors = [
+  { name="Rubén Hortas", email="rubenhortas@gmail.com" },
+]
+description = "Shows geolocation of failed attempts registered by fail2ban"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.0"
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX",
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Developers",
+    "Topic :: Security",
+    "Topic :: System :: Monitoring",
+    "Topic :: System :: Networking",
+    ""
+]
+
+[project.urls]
+"Homepage" = "https://github.com/rubenhortas/fail2bangeolocation"
+"Bug Tracker" = "https://github.com/rubenhortas/fail2bangeolocation/issues"

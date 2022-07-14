@@ -1,6 +1,6 @@
 import unittest
 
-from application import fail2ban
+from src.fail2bangeolocation.application import fail2ban
 
 
 class Fail2banServiceTest(unittest.TestCase):
