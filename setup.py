@@ -4,7 +4,7 @@ from crosscutting import strings
 
 setup(
     name='fail2bangeolocation',
-    version='1.0',
+    version='1.0.0',
     packages=['application', 'application.utils', 'application.handlers', 'crosscutting', 'presentation',
               'presentation.utils'],
     url='https://github.com/rubenhortas/fail2bangeolocation',
