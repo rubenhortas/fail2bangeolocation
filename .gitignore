@@ -79,3 +79,7 @@ fabric.properties
 # Cache
 __pycache__
 .pytest_cache
+
+# Project specific
+*.log
+*.xcf
