@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "fail2bangeolocation"
@@ -23,7 +23,6 @@ classifiers = [
     "Topic :: Security",
     "Topic :: System :: Monitoring",
     "Topic :: System :: Networking",
-    ""
 ]
 
 [project.urls]
