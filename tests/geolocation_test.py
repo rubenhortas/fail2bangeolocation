@@ -1,7 +1,7 @@
 import unittest
 
-from application import geolocation
-from crosscutting import strings
+from src.fail2bangeolocation.application import geolocation
+from src import strings
 
 
 class GeoLocationServiceTest(unittest.TestCase):

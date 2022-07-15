@@ -1,10 +1,10 @@
 import os
 import re
 
-from application.handlers.error_handler import handle_error
-from application.handlers.exception_handler import handle_exception
-from crosscutting import strings
-from crosscutting.condition_messages import print_info
+from src.fail2bangeolocation.application.handlers.error_handler import handle_error
+from src.fail2bangeolocation.application.handlers.exception_handler import handle_exception
+from src.fail2bangeolocation.crosscutting import strings
+from src.fail2bangeolocation.crosscutting.condition_messages import print_info
 
 
 def get_banned_ips(log_file, add_unbanned):
