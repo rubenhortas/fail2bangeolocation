@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "fail2bangeolocation"
-version = "1.0.0"
+version = "1.0.1"
 authors = [
   { name="Rubén Hortas", email="rubenhortas@gmail.com" },
 ]
@@ -24,6 +24,9 @@ classifiers = [
     "Topic :: System :: Monitoring",
     "Topic :: System :: Networking",
 ]
+
+[project.scripts]
+fail2bangeolocation = "fail2bangeolocation.fail2bangeolocation:main"
 
 [project.urls]
 "Homepage" = "https://github.com/rubenhortas/fail2bangeolocation"

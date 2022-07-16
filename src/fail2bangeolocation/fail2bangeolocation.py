@@ -3,17 +3,18 @@
 import argparse
 import signal
 
-from application.geolocation import analyze
-from application.utils.python import exit_signal_handler, get_interpreter_version
-from crosscutting import strings, constants
-from crosscutting.condition_messages import print_error
-from presentation.utils.screen import clear_screen
+from fail2bangeolocation.application.geolocation import analyze
+from fail2bangeolocation.application.utils.python import exit_signal_handler, get_interpreter_version
+from fail2bangeolocation.crosscutting import constants, strings
+from fail2bangeolocation.crosscutting.condition_messages import print_error
+from fail2bangeolocation.presentation.utils.screen import clear_screen
 
 FAIL2BAN_OPTION = 'fail2ban'
 LOG_OPTION = 'log'
 SERVER_OPTION = 'server'
 
-if __name__ == '__main__':
+
+def main():
     signal.signal(signal.SIGINT, exit_signal_handler)
     clear_screen()
     interpreter_version = get_interpreter_version()
@@ -48,3 +49,7 @@ if __name__ == '__main__':
     else:
         print_error(f"{strings.REQUIRES_PYTHON} {constants.REQUIRED_PYTHON_VERSION}")
         exit(0)
+
+
+if __name__ == '__main__':
+    main()

@@ -1,5 +1,5 @@
 from sys import version_info
-from src.fail2bangeolocation.crosscutting import condition_messages, strings
+from fail2bangeolocation.crosscutting import condition_messages, strings
 
 
 def get_interpreter_version():
