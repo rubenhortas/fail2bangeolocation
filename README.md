@@ -36,14 +36,7 @@ You can group locations by country or by country and by city.
   * colorama 
 
 ## Installation 
-
-You can install *fail2bangeolocation* via *pip3*:
-
-```shell
-$ pip3 install fail2bangeolocation
-```
-
-You also can run *fail2bangeolocation* directly without installing it, but you need to install the dependencies manually:
+You can run *fail2bangeolocation* directly without installing it, but you need to install the dependencies manually:
 
 ```shell
 $ sudo pip3 install -r requirements.txt
@@ -51,13 +44,7 @@ $ sudo pip3 install -r requirements.txt
 
 ## Usage
 
-* If you installed *fail2bangeolocation* with *pip3* you can run it directly from the command line interface:
-
-  ```shell
-  $ fail2bangeolocation [-h] [-c] {fail2ban,log,server}
-  ```
-
-* You can run *fail2bangeolocation* without installation running the *fail2bangeolocation.py* script
+* You can run the *fail2bangeolocation.py* script
 
   ```shell
   $ ./fail2bangeolocation.py [-h] [-c] {fail2ban,log,server}
