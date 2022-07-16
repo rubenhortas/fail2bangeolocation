@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "fail2bangeolocation"
-version = "1.0.0"
+version = "1.0.12"
 authors = [
   { name="Rubén Hortas", email="rubenhortas@gmail.com" },
 ]
@@ -25,6 +25,9 @@ classifiers = [
     "Topic :: System :: Networking",
     ""
 ]
+
+[project.scripts]
+fail2bangeolocation = "fail2bangeolocation.fail2bangeolocation:run_f2bg"
 
 [project.urls]
 "Homepage" = "https://github.com/rubenhortas/fail2bangeolocation"
