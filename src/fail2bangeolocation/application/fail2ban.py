@@ -1,7 +1,7 @@
 import ast
 import re
 
-from src.fail2bangeolocation.application.utils.system import execute_command
+from fail2bangeolocation.application.utils.system import execute_command
 
 FAIL2BAN_CLIENT = 'fail2ban-client'
 BANNED = 'banned'
