@@ -1,7 +1,7 @@
 import unittest
 
-from src.fail2bangeolocation.application import geolocation
-from src import strings
+from fail2bangeolocation.application import geolocation
+from fail2bangeolocation.crosscutting import strings
 
 
 class GeoLocationServiceTest(unittest.TestCase):
@@ -43,7 +43,9 @@ class GeoLocationServiceTest(unittest.TestCase):
                                 'USA': {'New York': 1}, 'Japan': {'Yokohama': 1, 'Tokyo': 1},
                                 'France': {strings.UNKNOWN: 2}}
 
-        self.attempts_sorted_by_country = {'Spain': 4, 'France': 2, 'Japan': 2, 'Portugal': 1, 'USA': 1}
+        self.attempts_sorted_by_country_dict = {'Spain': 4, 'France': 2, 'Japan': 2, 'Portugal': 1, 'USA': 1}
+
+        self.attempts_sorted_by_country = (self.attempts_sorted_by_country_dict, None)
 
         self.attempts_sorted_by_country_and_city = {'Spain': {'Lugo': 2, 'A Coruña': 1, strings.UNKNOWN: 1},
                                                     'France': {strings.UNKNOWN: 2},
@@ -62,11 +64,11 @@ class GeoLocationServiceTest(unittest.TestCase):
 
     def test_sort_by_country(self):
         attempts_sorted_by_country = geolocation._sort(self.failed_attempts, False)
-        self.assertDictEqual(self.attempts_sorted_by_country, attempts_sorted_by_country)
+        self.assertTupleEqual(self.attempts_sorted_by_country, attempts_sorted_by_country)
 
     def test_sort_by_city(self):
         attempts_sorted_by_country, attempts_sorted_by_country_and_city = geolocation._sort(self.failed_attempts, True)
-        self.assertDictEqual(self.attempts_sorted_by_country, attempts_sorted_by_country)
+        self.assertDictEqual(self.attempts_sorted_by_country_dict, attempts_sorted_by_country)
         self.assertDictEqual(self.attempts_sorted_by_country_and_city, attempts_sorted_by_country_and_city)
 
 

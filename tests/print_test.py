@@ -1,7 +1,7 @@
 import unittest
 
-from src.fail2bangeolocation.application import geolocation
-from src import strings
+from fail2bangeolocation.application import geolocation
+from fail2bangeolocation.crosscutting import strings
 
 
 class PrintTest(unittest.TestCase):
