@@ -8,6 +8,10 @@ You can group locations by country or by country and by city.
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rubenhortas/fail2bangeolocation)
 ![GitHub repo size](https://img.shields.io/github/repo-size/rubenhortas/fail2bangeolocation)
 
+![PyPI - Implementation](https://img.shields.io/pypi/implementation/fail2bangeolocation)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/fail2bangeolocation)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/fail2bangeolocation)
+
 ![GitHub issues](https://img.shields.io/github/issues-raw/rubenhortas/fail2bangeolocation)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/rubenhortas/fail2bangeolocation)
 
@@ -15,6 +19,12 @@ You can group locations by country or by country and by city.
 ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/rubenhortas/fail2bangeolocation)
 
 ![GitHub](https://img.shields.io/github/license/rubenhortas/fail2bangeolocation)
+
+![PyPI - Downloads](https://img.shields.io/pypi/dm/fail2bangeolocation)
+
+![GitHub forks](https://img.shields.io/github/forks/rubenhortas/fail2bangeolocation?style=social)
+![GitHub Repo stars](https://img.shields.io/github/stars/rubenhortas/fail2bangeolocation?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/rubenhortas/fail2bangeolocation?style=social)
 
 ## Screenshots
 
