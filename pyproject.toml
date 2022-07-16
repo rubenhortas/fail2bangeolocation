@@ -23,7 +23,6 @@ classifiers = [
     "Topic :: Security",
     "Topic :: System :: Monitoring",
     "Topic :: System :: Networking",
-    ""
 ]
 
 [project.scripts]
