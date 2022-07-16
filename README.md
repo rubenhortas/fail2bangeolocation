@@ -62,7 +62,7 @@ $ sudo pip3 install -r requirements.txt
   $ fail2bangeolocation [-h] [-c] {fail2ban,log,server}
   ```
 
-* You can run *fail2bangeolocation* without installation running the *fail2bangeolocation.py* script
+* You can run *fail2bangeolocation* without installation executing the *fail2bangeolocation.py* script in the *src/* folder
 
   ```shell
   $ ./fail2bangeolocation.py [-h] [-c] {fail2ban,log,server}
