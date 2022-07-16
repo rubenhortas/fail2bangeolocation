@@ -136,4 +136,3 @@ If you want ask (or answer) a question, leave an opinion or have an open-ended c
 ## Support
 
 If you find this application useful you can star this repo.
-..
