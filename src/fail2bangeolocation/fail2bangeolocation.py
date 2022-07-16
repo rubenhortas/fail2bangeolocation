@@ -13,7 +13,8 @@ FAIL2BAN_OPTION = 'fail2ban'
 LOG_OPTION = 'log'
 SERVER_OPTION = 'server'
 
-if __name__ == '__main__':
+
+def runf2bg():
     signal.signal(signal.SIGINT, exit_signal_handler)
     clear_screen()
     interpreter_version = get_interpreter_version()
@@ -48,3 +49,6 @@ if __name__ == '__main__':
     else:
         print_error(f"{strings.REQUIRES_PYTHON} {constants.REQUIRED_PYTHON_VERSION}")
         exit(0)
+
+if __name__ == '__main__':
+    runf2bg()
