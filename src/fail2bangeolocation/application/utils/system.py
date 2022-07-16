@@ -1,5 +1,5 @@
-from fail2bangeolocation.crosscutting import strings
-from fail2bangeolocation.crosscutting.condition_messages import print_info, print_error
+from src.fail2bangeolocation.crosscutting import strings
+from src.fail2bangeolocation.crosscutting.condition_messages import print_info, print_error
 
 import subprocess
 

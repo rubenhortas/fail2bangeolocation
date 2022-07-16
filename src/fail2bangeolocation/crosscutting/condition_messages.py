@@ -1,4 +1,4 @@
-from fail2bangeolocation.presentation.tag import Tag
+from src.fail2bangeolocation.presentation.tag import Tag
 
 
 def print_error(msg):

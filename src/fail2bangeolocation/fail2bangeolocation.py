@@ -3,11 +3,11 @@
 import argparse
 import signal
 
-from fail2bangeolocation.application.geolocation import analyze
-from fail2bangeolocation.application.utils.python import exit_signal_handler, get_interpreter_version
-from fail2bangeolocation.crosscutting import constants, strings
-from fail2bangeolocation.crosscutting.condition_messages import print_error
-from fail2bangeolocation.presentation.utils.screen import clear_screen
+from src.fail2bangeolocation.application.geolocation import analyze
+from src.fail2bangeolocation.application.utils.python import exit_signal_handler, get_interpreter_version
+from src.fail2bangeolocation.crosscutting import constants, strings
+from src.fail2bangeolocation.crosscutting.condition_messages import print_error
+from src.fail2bangeolocation.presentation.utils.screen import clear_screen
 
 FAIL2BAN_OPTION = 'fail2ban'
 LOG_OPTION = 'log'
