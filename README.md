@@ -15,7 +15,6 @@ You can group locations by country or by country and by city.
 
 ![GitHub issues](https://img.shields.io/github/issues-raw/rubenhortas/fail2bangeolocation?color=red&logo=github)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/rubenhortas/fail2bangeolocation?color=brightgreen&logo=github)
-
 ![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/rubenhortas/fail2bangeolocation?color=red&logo=github)
 ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/rubenhortas/fail2bangeolocation?logo=github)
 
