@@ -44,4 +44,4 @@ def _get_banned_ips(log_file, add_unbanned):
                 else:
                     banned_ips.discard(match.group('ip'))
 
-    return banned_ips
+    return list(banned_ips)
