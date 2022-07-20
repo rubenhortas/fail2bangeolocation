@@ -11,11 +11,13 @@ You can group locations by country or by country and by city.
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/fail2bangeolocation?logo=python&logoColor=yellow)
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/fail2bangeolocation?logo=python&logoColor=yellow)
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/fail2bangeolocation?logo=pypi&logoColor=yellow)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/fail2bangeolocation?color=brightgreen&logo=pypi&logoColor=yellow)
 
-![GitHub issues](https://img.shields.io/github/issues-raw/rubenhortas/fail2bangeolocation?color=red&logo=github)
-![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/rubenhortas/fail2bangeolocation?color=brightgreen&logo=github)
-![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/rubenhortas/fail2bangeolocation?color=red&logo=github)
+![PyPI](https://img.shields.io/pypi/v/fail2bangeolocation?&logo=pypi&logoColor=yellow)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/fail2bangeolocation?&logo=pypi&logoColor=yellow)
+
+![GitHub issues](https://img.shields.io/github/issues-raw/rubenhortas/fail2bangeolocation?logo=github)
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/rubenhortas/fail2bangeolocation?logo=github)
+![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/rubenhortas/fail2bangeolocation?&logo=github)
 ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/rubenhortas/fail2bangeolocation?logo=github)
 
 ![GitHub](https://img.shields.io/github/license/rubenhortas/fail2bangeolocation)
