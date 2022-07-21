@@ -8,11 +8,10 @@ You can group locations by country or by country and by city.
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rubenhortas/fail2bangeolocation)
 ![GitHub repo size](https://img.shields.io/github/repo-size/rubenhortas/fail2bangeolocation)
 
+![PyPI](https://img.shields.io/pypi/v/fail2bangeolocation?&logo=pypi&logoColor=yellow)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/fail2bangeolocation?logo=python&logoColor=yellow)
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/fail2bangeolocation?logo=python&logoColor=yellow)
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/fail2bangeolocation?logo=pypi&logoColor=yellow)
-
-![PyPI](https://img.shields.io/pypi/v/fail2bangeolocation?&logo=pypi&logoColor=yellow)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/fail2bangeolocation?&logo=pypi&logoColor=yellow)
 
 ![GitHub issues](https://img.shields.io/github/issues-raw/rubenhortas/fail2bangeolocation?logo=github)
