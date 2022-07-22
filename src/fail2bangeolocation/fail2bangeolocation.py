@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+# from sys import path
+# path.append("../../")
+
+# Another fix: on the root dir -> python -m src.fail2bangeolocation.fail2bangeolocation
+
 import argparse
 import signal
 
