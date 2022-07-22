@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "fail2bangeolocation"
-version = "1.0.1"
+version = "1.0.2"
 authors = [
   { name="Rubén Hortas", email="rubenhortas@gmail.com" },
 ]
