@@ -25,11 +25,11 @@ You can group locations by country or by country and by city.
 ## Screenshots
 
 * Grouped by country
-<img src="screenshots/screenshot_grouped_by_country.png" alt="Output grouped by country" width="600">
+<img src="https://github.com/rubenhortas/fail2bangeolocation/blob/main/screenshots/screenshot_grouped_by_country.png" alt="Output grouped by country" width="600">
 
 
 * Grouped by country and city
-<img src="screenshots/screenshot_grouped_by_country_and_city.png" alt="Output grouped by country and city" width="600">
+<img src="https://github.com/rubenhortas/fail2bangeolocation/blob/main/screenshots/screenshot_grouped_by_country_and_city.png" alt="Output grouped by country and city" width="600">
 
 ## Geolocation DB
 
