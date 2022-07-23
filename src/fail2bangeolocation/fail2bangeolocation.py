@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+# TODO: Delete this fixed if the are commented
 # from sys import path
 # path.append("../../")
 
