@@ -7,8 +7,7 @@ exclude = [
     "/.github",
     "/.idea",
     "/screenshots",
-    "/tests",
-    ".gitignore" # TODO: exlude .gitignore
+    "/tests"
 ]
 
 [project]
