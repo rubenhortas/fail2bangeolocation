@@ -37,7 +37,7 @@ IP geolocation is done through [Geolocation DB](https://geolocation-db.com). Thi
 
 ## Requirements
 
-* An active internet connection
+* an active internet connection
 * python3
 * fail2ban
 * python libraries:
