@@ -2,6 +2,7 @@ import ast
 import re
 
 from src.fail2bangeolocation.application.utils.system import execute_command
+from src.fail2bangeolocation.crosscutting.constants import ENCODING
 
 FAIL2BAN_CLIENT = 'fail2ban-client'
 BANNED = 'banned'
@@ -26,7 +27,7 @@ def _get_banned_ips():
 
 def _parse_banned_ips(service_banned_ips):
     ips = []
-    sbi = ast.literal_eval(service_banned_ips.decode('UTF-8'))
+    sbi = ast.literal_eval(service_banned_ips.decode(ENCODING))
 
     for service in sbi:
         for service_name in service:
@@ -47,7 +48,7 @@ def _get_server_banned_ips(server):
 def _parse_server_banned_ips(command_stdout):
     ips_regex = re.compile(r'(?P<ips>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}.*)')
 
-    command_stdout_ips = ips_regex.findall(command_stdout.decode('UTF-8'))
+    command_stdout_ips = ips_regex.findall(command_stdout.decode(ENCODING))
 
     if command_stdout_ips:
         return str.split(command_stdout_ips[0])
