@@ -12,7 +12,9 @@ def execute_command(command, *args):
 
     try:
         result = subprocess.run(subprocess_command, stdout=subprocess.PIPE)
+
         return result.stdout
     except Exception as e:
         print_error(e)
+
         return None

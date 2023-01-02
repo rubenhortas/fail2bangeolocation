@@ -3,4 +3,5 @@ from src.fail2bangeolocation.crosscutting.condition_messages import print_except
 
 def handle_exception(e):
     print_exception(e)
+
     exit(1)

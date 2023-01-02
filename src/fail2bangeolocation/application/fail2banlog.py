@@ -26,7 +26,6 @@ def _get_banned_ips(log_file, add_unbanned):
     banned_ip_regex = re.compile(r'^.*\s(Found|Ban)\s(?P<ip>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}).*$')
     unbanned_ip_regex = re.compile(r'^.*\sUnban\s(?P<ip>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}).*$')
     banned_ips = set()
-
     log = open(log_file, 'r')
     lines = log.readlines()
 
