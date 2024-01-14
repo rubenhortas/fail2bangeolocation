@@ -6,7 +6,7 @@ from src.fail2bangeolocation.crosscutting import strings
 from src.fail2bangeolocation.crosscutting.condition_messages import print_info, print_error
 from src.fail2bangeolocation.presentation import messages
 
-NOT_FOUND = "Not found"
+NOT_FOUND = 'Not found'
 
 
 def analyze(fail2ban_output=None, server=None, log_file=None, add_unbanned=None, group_by_city=None):

@@ -20,7 +20,7 @@ def get_geolocation_info(ip):
     # 'longitude': 139.69, 'IPv4': '43.154.214.179', 'state': None}
     # noinspection PyBroadException
     try:
-        request_url = f'https://geolocation-db.com/jsonp/{ip}'
+        request_url = f"https://geolocation-db.com/jsonp/{ip}"
         response = requests.get(request_url)
         result = response.content.decode()
         result = result.split("(")[1].strip(")")

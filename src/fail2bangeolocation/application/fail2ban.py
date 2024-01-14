@@ -46,7 +46,7 @@ def _get_server_banned_ips(server):
 
 
 def _parse_server_banned_ips(command_stdout):
-    ips_regex = re.compile(r'(?P<ips>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}.*)')
+    ips_regex = re.compile(r"(?P<ips>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}.*)")
 
     command_stdout_ips = ips_regex.findall(command_stdout.decode(ENCODING))
 
