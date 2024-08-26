@@ -8,7 +8,7 @@ _STATUS = 'status'
 _REGEX_IP = re.compile(r'\b(?:\d{1,3}\.){3}\d{1,3}\b')
 
 
-def get_banned_ips(server=None) -> list:
+def get_banned_ips(server: str = None) -> list:
     if server is None:
         command_stdout = execute_command(_FAIL2BAN_CLIENT, _BANNED)
     else:
