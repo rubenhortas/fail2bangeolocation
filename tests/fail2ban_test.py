@@ -16,9 +16,9 @@ class Fail2banServiceTest(unittest.TestCase):
         self.assertListEqual(self.expected_result_fail2ban_banned_ips, result)
 
     def test_parse_server_banned_ips(self):
-        result = fail2ban._parse_server_banned_ips(self.fail2ban_server_banned_ips)
+        result = fail2ban._parse_banned_ips(self.fail2ban_server_banned_ips)
         self.assertListEqual(self.expected_result_fail2ban_server_banned_ips, result)
 
 
 if __name__ == '__main__':
-    unittest.main()  # run all tests
+    unittest.main()
