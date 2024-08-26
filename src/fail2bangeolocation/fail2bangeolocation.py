@@ -3,8 +3,9 @@
 import argparse
 import signal
 
+from fail2bangeolocation.application.handlers.signal_handler import handle_sigint
 from src.fail2bangeolocation.application.geolocation import analyze
-from src.fail2bangeolocation.application.utils.python import exit_signal_handler, get_interpreter_version
+from src.fail2bangeolocation.application.utils.python import get_interpreter_version
 from src.fail2bangeolocation.crosscutting import constants, strings
 from src.fail2bangeolocation.crosscutting.condition_messages import print_error
 from src.fail2bangeolocation.presentation.utils.screen import clear_screen
@@ -15,7 +16,7 @@ _SERVER_OPTION = 'server'
 
 
 def main():
-    signal.signal(signal.SIGINT, exit_signal_handler)
+    signal.signal(signal.SIGINT, handle_sigint)
     clear_screen()
 
     if get_interpreter_version() == constants.REQUIRED_PYTHON_VERSION:
