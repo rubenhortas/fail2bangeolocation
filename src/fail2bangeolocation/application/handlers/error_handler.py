@@ -1,8 +1,8 @@
 from src.fail2bangeolocation.crosscutting.condition_messages import print_error
 
 
-def handle_error(err, ext=False):
-    print_error(err)
+def handle_error(error, exit_=False):
+    print_error(error)
 
-    if ext:
+    if exit_:
         exit(1)
