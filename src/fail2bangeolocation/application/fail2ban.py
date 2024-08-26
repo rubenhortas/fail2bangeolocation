@@ -6,7 +6,7 @@ from src.fail2bangeolocation.application.utils.system import execute_command
 _FAIL2BAN_CLIENT = 'fail2ban-client'
 _BANNED = 'banned'
 _STATUS = 'status'
-_REGEX_IP = re.compile(r'\b(?:w{1,3}\.){3}\d{1,3}\b')
+_REGEX_IP = re.compile(r'\b(?:\d{1,3}\.){3}\d{1,3}\b')
 
 
 def get_banned_ips(server=None) -> list:
@@ -25,7 +25,7 @@ def _get_banned_ips() -> list:
         return []
 
 
-def _parse_banned_ips(service_banned_ips) -> list:
+def _parse_banned_ips(service_banned_ips: bytes) -> list:
     ips = []
     services = ast.literal_eval(service_banned_ips.decode('UTF-8'))
 
