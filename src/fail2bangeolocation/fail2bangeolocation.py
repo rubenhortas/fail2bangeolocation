@@ -5,7 +5,7 @@ import signal
 
 from fail2bangeolocation.application.handlers.signal_handler import handle_sigint
 from src.fail2bangeolocation.application.geolocation import analyze
-from src.fail2bangeolocation.application.utils.python import get_interpreter_version
+from src.fail2bangeolocation.application.utils.python_utils import get_interpreter_version
 from src.fail2bangeolocation.crosscutting import constants, strings
 from src.fail2bangeolocation.crosscutting.condition_messages import print_error
 from src.fail2bangeolocation.presentation.utils.screen import clear_screen
