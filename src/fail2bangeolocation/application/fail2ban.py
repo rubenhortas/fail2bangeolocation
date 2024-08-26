@@ -3,9 +3,9 @@ import re
 
 from src.fail2bangeolocation.application.utils.system import execute_command
 
-FAIL2BAN_CLIENT = 'fail2ban-client'
-BANNED = 'banned'
-STATUS = 'status'
+_FAIL2BAN_CLIENT = 'fail2ban-client'
+_BANNED = 'banned'
+_STATUS = 'status'
 
 
 def get_banned_ips(server=None):
@@ -16,7 +16,7 @@ def get_banned_ips(server=None):
 
 
 def _get_banned_ips():
-    command_stdout = execute_command(FAIL2BAN_CLIENT, BANNED)
+    command_stdout = execute_command(_FAIL2BAN_CLIENT, _BANNED)
 
     if command_stdout:
         return _parse_banned_ips(command_stdout)
@@ -36,7 +36,7 @@ def _parse_banned_ips(service_banned_ips):
 
 
 def _get_server_banned_ips(server):
-    command_stdout = execute_command(FAIL2BAN_CLIENT, STATUS, server)
+    command_stdout = execute_command(_FAIL2BAN_CLIENT, _STATUS, server)
 
     if command_stdout:
         return _parse_server_banned_ips(command_stdout)
