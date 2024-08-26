@@ -1,7 +1,7 @@
-from src.fail2bangeolocation.crosscutting import strings
-from src.fail2bangeolocation.crosscutting.condition_messages import print_info, print_error
-
 import subprocess
+
+from src.fail2bangeolocation.crosscutting import strings
+from src.fail2bangeolocation.crosscutting.condition_messages import print_info, print_exception
 
 
 def execute_command(command, *args):
@@ -15,6 +15,6 @@ def execute_command(command, *args):
 
         return result.stdout
     except Exception as e:
-        print_error(e)
+        print_exception(e)
 
         return None
