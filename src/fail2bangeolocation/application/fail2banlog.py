@@ -8,7 +8,7 @@ _REGEX_BANNED_IPS = re.compile(r'^.*\s(Found|Ban)\s(?P<ip>(\d{1,3}.){3}\d{1,3}).
 _REGEX_UNBANNED_IPS = re.compile(r'^.*\sUnban\s(?P<ip>(\d{1,3}.){3}\d{1,3}).*$')
 
 
-def get_banned_ips(log_file, add_unbanned):
+def get_banned_ips(log_file: str, add_unbanned: bool) -> list:
     banned_ips = set()
 
     try:
