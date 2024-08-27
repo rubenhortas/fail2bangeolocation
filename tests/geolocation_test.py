@@ -54,12 +54,8 @@ class GeoLocationServiceTest(unittest.TestCase):
 
         self.ips_not_geolocated = ['1.2.3.4', '4.5.6.7', '10.11.12.13.14']
 
-    def test_rename_locations(self):
-        renamed_locations = geolocation._rename_unknown_locations(self.locations)
-        self.assertListEqual(self.renamed_locations, renamed_locations)
-
     def test_get_failed_attempts(self):
-        failed_attempts = geolocation._get_failed_attempts(self.renamed_locations)
+        failed_attempts = geolocation._group_locations(self.renamed_locations)
         self.assertEqual(self.failed_attempts, failed_attempts)
 
     def test_sort_by_country(self):

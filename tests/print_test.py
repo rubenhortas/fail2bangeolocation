@@ -17,12 +17,12 @@ class PrintTest(unittest.TestCase):
 
     def test_print_sorted_by_country(self):
         print('Sorted by country')
-        geolocation._print_attempts(self.attempts_sorted_by_country, None)
+        geolocation._print_locations(self.attempts_sorted_by_country, None)
         print()
 
     def test_print_sorted_by_country_and_city(self):
         print('Sorted by country and city')
-        geolocation._print_attempts(self.attempts_sorted_by_country, self.attempts_sorted_by_country_and_city)
+        geolocation._print_locations(self.attempts_sorted_by_country, self.attempts_sorted_by_country_and_city)
         print()
 
     def test_print_not_geolocated(self):
