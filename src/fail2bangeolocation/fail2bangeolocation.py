@@ -3,7 +3,7 @@
 import argparse
 import signal
 
-from fail2bangeolocation.application.handlers.signal_handler import handle_sigint
+from src.fail2bangeolocation.application.handlers.signal_handler import handle_sigint
 from src.fail2bangeolocation.application.geolocation import analyze
 from src.fail2bangeolocation.application.utils.python_utils import get_interpreter_version
 from src.fail2bangeolocation.crosscutting import constants, strings
