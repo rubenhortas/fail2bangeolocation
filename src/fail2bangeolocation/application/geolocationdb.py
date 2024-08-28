@@ -3,19 +3,19 @@ from urllib.request import urlopen
 import requests
 import json
 
-GEOLOCATIONDB_URL = 'https://geolocation-db.com'
+_URL = 'https://geolocation-db.com'
 
 
-def is_online():
+def is_online() -> bool:
     # noinspection PyBroadException
     try:
-        urlopen(GEOLOCATIONDB_URL, timeout=10)
+        urlopen(_URL, timeout=10)
         return True
     except Exception:
         return False
 
 
-def get_geolocation_info(ip):
+def get_geolocation_info(ip: str) -> (str, str):
     # Result: {'country_code': 'JP', 'country_name': 'Japan', 'city': None, 'postal': None, 'latitude': 35.69,
     # 'longitude': 139.69, 'IPv4': '43.154.214.179', 'state': None}
     # noinspection PyBroadException
