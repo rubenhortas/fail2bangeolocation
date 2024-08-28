@@ -4,7 +4,7 @@ import argparse
 import signal
 
 from src.fail2bangeolocation.application.handlers.signal_handler import handle_sigint
-from src.fail2bangeolocation.application.geolocation import analyze
+from src.fail2bangeolocation.application.geolocation import geolocate
 from src.fail2bangeolocation.application.utils.python_utils import get_interpreter_version
 from src.fail2bangeolocation.crosscutting import constants, strings
 from src.fail2bangeolocation.crosscutting.condition_messages import print_error
@@ -39,11 +39,11 @@ def main():
         args = parser.parse_args()
 
         if args.__contains__(_FAIL2BAN_OPTION):
-            analyze(fail2ban_output=True, group_by_city=args.show_city)
+            geolocate(fail2ban_output=True, group_by_city=args.show_city)
         elif args.__contains__(_LOG_OPTION):
-            analyze(log_file=args.log[0], add_unbanned=args.add_unbanned, group_by_city=args.show_city)
+            geolocate(log_file=args.log[0], add_unbanned=args.add_unbanned, group_by_city=args.show_city)
         elif args.__contains__(_SERVER_OPTION):
-            analyze(server=args.server[0], group_by_city=args.show_city)
+            geolocate(server=args.server[0], group_by_city=args.show_city)
         else:
             parser.print_help()
     else:

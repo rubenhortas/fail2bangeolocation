@@ -4,6 +4,7 @@ from src.fail2bangeolocation.application import geolocation
 from src.fail2bangeolocation.crosscutting import strings
 
 
+# noinspection SpellCheckingInspection
 class PrintTest(unittest.TestCase):
     def setUp(self):
         self.attempts_sorted_by_country = {'Spain': 4, 'France': 2, 'Japan': 2, 'Portugal': 1, 'USA': 1}
