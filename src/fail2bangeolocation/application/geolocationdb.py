@@ -3,13 +3,13 @@ from urllib.request import urlopen
 import requests
 import json
 
-_URL = 'https://geolocation-db.com'
+URL = 'https://geolocation-db.com'
 
 
 def is_online() -> bool:
     # noinspection PyBroadException
     try:
-        urlopen(_URL, timeout=10)
+        urlopen(URL, timeout=10)
         return True
     except Exception:
         return False

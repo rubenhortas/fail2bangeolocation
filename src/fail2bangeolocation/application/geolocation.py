@@ -38,7 +38,7 @@ def analyze(fail2ban_output: bool = None, server: str = None, log_file: str = No
             if len(ips_not_found) > 0:
                 _print_not_found(ips_not_found)
     else:
-        print_error(f"{geolocationdb._URL} {strings.IS_NOT_REACHABLE}")
+        print_error(f"{geolocationdb.URL} {strings.IS_NOT_REACHABLE}")
         exit(0)
 
 
