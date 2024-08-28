@@ -4,16 +4,16 @@ from urllib.request import urlopen, Request
 
 from tqdm import tqdm
 
+from src.fail2bangeolocation.application import fail2ban, fail2banlog
 from src.fail2bangeolocation.application.handlers.error_handler import handle_error
 from src.fail2bangeolocation.application.reallyfreegeoip import URL, get_location
-from src.fail2bangeolocation.application import fail2ban, fail2banlog
 from src.fail2bangeolocation.crosscutting import strings
 from src.fail2bangeolocation.crosscutting.condition_messages import print_info
-from src.fail2bangeolocation.presentation import messages
 
 
 def geolocate(fail2ban_output: bool = None, server: str = None, log_file: str = None, add_unbanned: bool = None,
               group_by_city: bool = None) -> None:
+    # noinspection SpellCheckingInspection
     print_info('fail2bangeolocation')
 
     ips = []
@@ -44,14 +44,12 @@ def geolocate(fail2ban_output: bool = None, server: str = None, log_file: str = 
 
 def _is_online():
     try:
-        req = Request(
+        request = Request(
             url=URL,
             headers={'User-Agent': 'Mozilla/5.0'}
         )
-        _ = urlopen(req).read()
+        _ = urlopen(request).read()
         return True
-    except Exception as e:
-        err = e
     except HTTPError or URLError or OSError:
         handle_error(f"{URL} {strings.IS_NOT_REACHABLE}", True)
 
