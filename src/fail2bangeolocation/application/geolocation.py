@@ -10,7 +10,7 @@ NOT_FOUND = "Not found"
 
 
 def analyze(fail2ban_output: bool = None, server: str = None, log_file: str = None, add_unbanned: bool = None,
-            group_by_city: bool = None):
+            group_by_city: bool = None) -> None:
     banned_ips = []
 
     print_info('fail2bangeolocation')
