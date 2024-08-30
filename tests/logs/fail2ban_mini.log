@@ -1,0 +1,22 @@
+2022-06-12 00:00:32,620 fail2ban.server         [25075]: INFO    rollover performed on /var/log/fail2ban.log
+2022-06-12 00:25:11,003 fail2ban.filter         [25075]: INFO    [sshd] Found 8.38.172.54 - 2022-06-12 00:25:10
+2022-06-12 00:25:11,254 fail2ban.actions        [25075]: NOTICE  [sshd] Ban 8.38.172.54
+2022-06-12 00:25:41,177 fail2ban.filter         [25075]: INFO    [sshd] Found 138.68.131.49 - 2022-06-12 00:25:41
+2022-06-12 00:25:41,766 fail2ban.actions        [25075]: NOTICE  [sshd] Ban 138.68.131.49
+2022-06-12 00:56:58,902 fail2ban.filter         [25075]: INFO    [sshd] Found 167.99.89.94 - 2022-06-12 00:56:58
+2022-06-12 00:56:59,498 fail2ban.actions        [25075]: NOTICE  [sshd] Ban 167.99.89.94
+2022-06-12 01:15:38,664 fail2ban.filter         [25075]: INFO    [sshd] Found 43.156.124.114 - 2022-06-12 01:15:38
+2022-06-12 01:15:38,988 fail2ban.actions        [25075]: NOTICE  [sshd] Ban 43.156.124.114
+2022-06-12 01:27:32,696 fail2ban.filter         [25075]: INFO    [sshd] Found 178.62.111.142 - 2022-06-12 01:27:32
+2022-06-12 01:27:32,993 fail2ban.actions        [25075]: NOTICE  [sshd] Ban 178.62.111.142
+2022-06-12 01:32:26,500 fail2ban.filter         [25075]: INFO    [sshd] Found 163.172.87.64 - 2022-06-12 01:32:26
+2022-06-12 01:32:26,639 fail2ban.actions        [25075]: NOTICE  [sshd] Ban 163.172.87.64
+2022-06-12 02:24:18,218 fail2ban.filter         [25075]: INFO    [sshd] Found 120.92.111.55 - 2022-06-12 02:24:18
+2022-06-12 02:24:18,608 fail2ban.actions        [25075]: NOTICE  [sshd] Ban 120.92.111.55
+2022-06-12 02:24:31,298 fail2ban.filter         [25075]: INFO    [sshd] Found 43.155.113.19 - 2022-06-12 02:24:31
+2022-06-12 02:24:31,346 fail2ban.actions        [25075]: NOTICE  [sshd] Ban 43.155.113.19
+2022-06-12 02:27:22,045 fail2ban.filter         [25075]: INFO    [sshd] Found 68.168.142.91 - 2022-06-12 02:27:22
+2022-06-12 02:27:22,045 fail2ban.filter         [25075]: INFO    [sshd] Unban 1.1.1.1 - 2022-06-12 02:27:22
+2022-06-12 02:27:22,045 fail2ban.filter         [25075]: INFO    [sshd] Unban 2.2.2.2 - 2022-06-12 02:27:22
+2022-06-12 02:27:22,045 fail2ban.filter         [25075]: INFO    [sshd] Unban 0.0.0.0 - 2022-06-12 02:27:22
+2022-06-12 02:27:22,045 fail2ban.filter         [25075]: INFO    [sshd] Unban 0.0.0.1 - 2022-06-12 02:27:22
