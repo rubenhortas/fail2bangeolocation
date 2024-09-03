@@ -14,3 +14,7 @@ class GeolocationTest(unittest.TestCase):
 
     def test_group_locations(self):
         return True
+
+
+if __name__ == '__main__':
+    unittest.main()  # run all tests
