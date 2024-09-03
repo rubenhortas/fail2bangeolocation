@@ -37,6 +37,10 @@ This means you will need an active internet connection in order to geolocate the
 
 ## Requirements
 
+* requests
+* tqdm
+* colorama
+
 ## Installation 
 
 You can install *fail2bangeolocation* via *pip3*:
