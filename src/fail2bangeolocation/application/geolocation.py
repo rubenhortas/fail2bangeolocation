@@ -1,12 +1,10 @@
 from collections import defaultdict
-from urllib.error import HTTPError, URLError
-from urllib.request import urlopen, Request
 
 from tqdm import tqdm
 
+from fail2bangeolocation.application.utils.url_utils import is_online
 from src.fail2bangeolocation.application import fail2ban, fail2banlog
-from src.fail2bangeolocation.application.handlers.error_handler import handle_error
-from src.fail2bangeolocation.application.reallyfreegeoip import URL, get_location
+from src.fail2bangeolocation.application.reallyfreegeoip import get_location, URL
 from src.fail2bangeolocation.crosscutting import strings
 from src.fail2bangeolocation.crosscutting.condition_messages import print_info
 
@@ -18,7 +16,7 @@ def geolocate(fail2ban_output: bool = None, server: str = None, log_file: str = 
 
     ips = []
 
-    if _is_online():
+    if is_online(URL):
         if fail2ban_output:
             ips = fail2ban.get_banned_ips()
         elif server:
@@ -40,18 +38,6 @@ def geolocate(fail2ban_output: bool = None, server: str = None, log_file: str = 
             #
             # if len(ips_not_found) > 0:
             #     _print_not_found(ips_not_found)
-
-
-def _is_online():
-    try:
-        request = Request(
-            url=URL,
-            headers={'User-Agent': 'Mozilla/5.0'}
-        )
-        _ = urlopen(request).read()
-        return True
-    except HTTPError or URLError or OSError:
-        handle_error(f"{URL} {strings.IS_NOT_REACHABLE}", True)
 
 
 def _geolocate(ips: list) -> (dict, list):
