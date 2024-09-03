@@ -15,10 +15,6 @@ def get_banned_ips(server: str = None) -> list:
         command_stdout = execute_command(_FAIL2BAN_CLIENT, _STATUS, server)
 
     if command_stdout:
-        return _parse_banned_ips(command_stdout)
+        return _REGEX_IP.findall(command_stdout.decode('UTF-8'))
     else:
         return []
-
-
-def _parse_banned_ips(command_stdout: bytes) -> list:
-    return _REGEX_IP.findall(command_stdout.decode('UTF-8'))
