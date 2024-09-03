@@ -4,7 +4,7 @@ from tqdm import tqdm
 
 from fail2bangeolocation.application.utils.url_utils import is_online
 from src.fail2bangeolocation.application import fail2ban, fail2banlog
-from src.fail2bangeolocation.application.reallyfreegeoip import get_location, URL
+from src.fail2bangeolocation.application.reallyfreegeoip import get_location, REALLYFREEGEOIP_URL
 from src.fail2bangeolocation.crosscutting import strings
 from src.fail2bangeolocation.crosscutting.condition_messages import print_info
 
@@ -16,7 +16,7 @@ def geolocate(fail2ban_output: bool = None, server: str = None, log_file: str = 
 
     ips = []
 
-    if is_online(URL):
+    if is_online(REALLYFREEGEOIP_URL):
         if fail2ban_output:
             ips = fail2ban.get_banned_ips()
         elif server:

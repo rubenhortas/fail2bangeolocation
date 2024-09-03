@@ -2,7 +2,8 @@ import json
 
 import requests
 
-URL = 'https://reallyfreegeoip.org'
+# noinspection SpellCheckingInspection
+REALLYFREEGEOIP_URL = 'https://reallyfreegeoip.org'
 
 
 def get_location(ip: str) -> (str, str):
@@ -23,7 +24,7 @@ def get_location(ip: str) -> (str, str):
      }'
     """
     try:
-        request_url = f'{URL}/json/{ip}'
+        request_url = f'{REALLYFREEGEOIP_URL}/json/{ip}'
         response = requests.get(request_url)
         result = response.content.decode()
         result = json.loads(result)
