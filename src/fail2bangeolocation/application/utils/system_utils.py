@@ -4,7 +4,7 @@ from src.fail2bangeolocation.crosscutting import strings
 from src.fail2bangeolocation.crosscutting.condition_messages import print_info, print_exception
 
 
-def execute_command(command, *args):
+def execute_command(command: str, *args) -> bytes | None:
     try:
         subprocess_command = [command]
         subprocess_command.extend(args)
