@@ -27,24 +27,15 @@ You can group locations by country or by country and by city.
 * Grouped by country
 <img src="https://github.com/rubenhortas/fail2bangeolocation/blob/main/screenshots/screenshot_grouped_by_country.png" alt="Output grouped by country" width="600">
 
-
 * Grouped by country and city
 <img src="https://github.com/rubenhortas/fail2bangeolocation/blob/main/screenshots/screenshot_grouped_by_country_and_city.png" alt="Output grouped by country and city" width="600">
 
 ## Geolocation DB
 
-IP geolocation is done through [Geolocation DB](https://geolocation-db.com). This means you will need an active internet connection in order to geolocate the IPs.
+IP geolocation is done through reallyfreegeoip.org](https://reallyfreegeoip.org). 
+This means you will need an active internet connection in order to geolocate the IPs.
 
 ## Requirements
-
-* an active internet connection
-* python3
-* fail2ban
-* python libraries:
-  * setuptools
-  * requests
-  * tqdm
-  * colorama 
 
 ## Installation 
 
