@@ -66,7 +66,7 @@ $ sudo pip3 install fail2bangeolocation
   positional arguments:
     {fail2ban,log,server}
                           These options are mutually exclusive
-      fail2ban            analyze all banned IPs by fail2ban
+      fail2ban            analyze all banned IPs by fail2ban (from fail2ban output)
       log                 analyze a fail2ban log file. Use "log -h" to see more options
       server              analyze all banned IPs by fail2ban (e.g. "server sshd")
   
