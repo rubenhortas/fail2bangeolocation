@@ -29,7 +29,7 @@ def main():
                                    help=f"{strings.OUTPUT_OPTION_HELP}")
 
         parser_log = subparsers.add_parser(_LOG_OPTION, help=f"{strings.LOG_OPTIONS_HELP}")
-        parser_log.add_argument(_LOG_OPTION, nargs=1, help=f'{strings.LOG_OPTION_HELP}')
+        parser_log.add_argument(_LOG_OPTION, nargs=1, help=f"{strings.LOG_OPTION_HELP}")
         parser_log.add_argument('-u', '--add-unbanned', default=False, action='store_true',
                                 help=f"{strings.UNBANNED_IPS_OPTION_HELP}")
 
