@@ -5,7 +5,7 @@ from fail2bangeolocation.application.handlers.error_handler import handle_error
 from fail2bangeolocation.crosscutting import strings
 
 
-def is_online(url: str):
+def is_online(url: str) -> bool:
     try:
         request = Request(
             url=url,
