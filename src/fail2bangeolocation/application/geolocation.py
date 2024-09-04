@@ -27,7 +27,7 @@ def geolocate(fail2ban_output: bool = None, server: str = None, log_file: str = 
         print_info(f"{len(ips)} {strings.IPS_FOUND}")
 
         if len(ips) > 0:
-            print_info(strings.GEOLOCATING_IPS)
+            print_info(strings.LOCATING_IPS)
 
             locations, ips_not_found = _geolocate(ips)
             # grouped_locations = _group_locations(locations)
