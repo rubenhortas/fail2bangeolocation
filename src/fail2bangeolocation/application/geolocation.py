@@ -22,6 +22,7 @@ def geolocate(fail2ban_output: bool = None, server: str = None, log_file: str = 
         elif server:
             ips = fail2ban.get_banned_ips(server)
         elif log_file:
+            print_info(f"{strings.ANALYZING}: {log_file}")
             ips = fail2banlog.get_banned_ips(log_file, add_unbanned)
 
         print_info(f"{len(ips)} {strings.IPS_FOUND}")
@@ -56,7 +57,6 @@ def _geolocate(ips: list) -> (dict, list):
             ips_not_located.append(ip)
 
     return locations, ips_not_located
-
 
 # def _group_locations(locations: list) -> dict:
 #     countries = {}

@@ -13,8 +13,6 @@ def get_banned_ips(log_file: str, add_unbanned: bool) -> list:
 
     try:
         with open(log_file, mode='r') as log:
-            print_info(f"{strings.ANALYZING}: {log_file}")
-
             for line in log:
                 match = _REGEX_BANNED_IPS.search(line)
 
