@@ -12,7 +12,6 @@ class Fail2banLogTest(unittest.TestCase):
         self.empty_log = os.path.join(absolute_test_logs_path, 'empty.log')
         self.mini_log = os.path.join(absolute_test_logs_path, 'fail2ban_mini.log')
         self.log = os.path.join(absolute_test_logs_path, 'fail2ban.log')
-
         self.mini_log_add_unbanned_expected_result = ['68.168.142.91', '1.1.1.1', '0.0.0.0', '43.155.113.19',
                                                       '120.92.111.55', '178.62.111.142', '138.68.131.49', '2.2.2.2',
                                                       '8.38.172.54', '163.172.87.64', '167.99.89.94', '0.0.0.1',
@@ -20,7 +19,6 @@ class Fail2banLogTest(unittest.TestCase):
         self.mini_log_expected_result = ['120.92.111.55', '43.156.124.114', '167.99.89.94', '43.155.113.19',
                                          '68.168.142.91', '178.62.111.142', '8.38.172.54', '138.68.131.49',
                                          '163.172.87.64']
-
         self.log_add_unbanned_expected_result = ['8.210.155.49', '134.209.175.24', '103.139.42.55', '189.29.171.10',
                                                  '147.182.188.81', '3.138.36.133', '143.244.190.237', '43.154.38.204',
                                                  '217.92.15.51', '35.185.183.125', '106.241.33.158', '68.168.142.91',
