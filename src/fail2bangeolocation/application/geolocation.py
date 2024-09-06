@@ -1,8 +1,7 @@
-from collections import defaultdict
-
 from tqdm import tqdm
 
 from fail2bangeolocation.application.utils.url_utils import is_online
+from fail2bangeolocation.presentation import messages
 from src.fail2bangeolocation.application import fail2ban, fail2banlog
 from src.fail2bangeolocation.application.reallyfreegeoip import get_location, REALLYFREEGEOIP_URL
 from src.fail2bangeolocation.crosscutting import strings
@@ -30,59 +29,62 @@ def geolocate(fail2ban_output: bool = None, server: str = None, log_file: str = 
         if len(ips) > 0:
             print_info(strings.LOCATING_IPS)
 
-            locations, ips_not_found = _geolocate(ips)
-            # grouped_locations = _group_locations(locations)
-            # locations_sorted_by_country, locations_sorted_by_country_and_city = _sort(grouped_locations, group_by_city)
-            #
-            # print_info(strings.LOCATIONS)
+            locations, ips_not_located = _get_locations(ips)
+            grouped_locations = _group_locations(locations)
+            grouped_locations_sorted = _sort_grouped_locations(grouped_locations)
+
+            print_info(strings.LOCATIONS)
+
             # _print_locations(locations_sorted_by_country, locations_sorted_by_country_and_city)
             #
-            # if len(ips_not_found) > 0:
-            #     _print_not_found(ips_not_found)
+            if ips_not_located:
+                _print_not_located(ips_not_located)
 
 
-def _geolocate(ips: list) -> (dict, list):
-    locations = defaultdict(list)
+def _get_locations(ips: list) -> (str, str):
+    locations = []
     ips_not_located = []
 
     for ip in tqdm(ips):
         country, city = get_location(ip)
 
         if country:
-            if city:
-                locations[country].append(city)
-            else:
-                locations[country].append(strings.UNKNOWN)
+            locations.append((country, city))
         else:
             ips_not_located.append(ip)
 
     return locations, ips_not_located
 
-# def _group_locations(locations: list) -> dict:
-#     countries = {}
-#
-#     for location in locations:
-#         country = location[0]
-#         city = location[1]
-#
-#         if country not in countries:
-#             countries[country] = {city: 0}
-#
-#         if city not in countries[country]:
-#             (countries[country])[city] = 0
-#
-#         (countries[country])[city] = (countries[country])[city] + 1
-#
-#     return countries
-#
-#
-# def _sort(locations: dict, group_by_city: bool) -> (dict, dict):
-#     if group_by_city:
-#         return _sort_by_country_and_city(locations)
-#     else:
-#         return _sort_by_country(locations)
-#
-#
+
+def _group_locations(locations: list) -> dict:
+    grouped_locations = dict({})
+
+    for location in locations:
+        country = location[0]
+        city = location[1] if location[1] else 'Unknown'
+
+        if country not in grouped_locations:
+            grouped_locations[country] = {city: 0}
+
+        if city not in grouped_locations[country]:
+            (grouped_locations[country])[city] = 0
+
+        (grouped_locations[country])[city] = (grouped_locations[country])[city] + 1
+
+    return grouped_locations
+
+
+def _sort_grouped_locations(locations: dict) -> dict:
+    # Sort by country alphabetically
+    sorted_dict = {k: v for k, v in sorted(locations.items(), key=lambda item: item[0], reverse=False)}
+
+    for country, cities in sorted_dict:
+        sorted_dict[country] = {k: v for k, v in sorted(cities.items(), key=lambda item: item[0], reverse=False)}
+        sorted_dict[country] = {k: v for k, v in sorted(cities.items(), key=lambda item: item[1], reverse=False)}
+
+    return sorted_dict
+
+
 # def _sort_by_country_and_city(locations: dict) -> (dict, dict):
 #     attempts_sorted_by_country = _sort_by_country(locations)[0]
 #     attempts_sorted_by_city = {}
@@ -127,5 +129,5 @@ def _geolocate(ips: list) -> (dict, list):
 #                 messages.print_city(city, (locations_sorted_by_country_and_city[country])[city])
 #
 #
-# def _print_not_found(ips: list) -> None:
-#     messages.print_error(f"{strings.IPS_NOT_FOUND} {', '.join(ips)}")
+def _print_not_located(ips: list) -> None:
+    messages.print_error(f"{strings.IPS_NOT_LOCATED} {', '.join(ips)}")
