@@ -28,7 +28,7 @@ class PrintTest(unittest.TestCase):
 
     def test_print_not_geolocated(self):
         print('Ips not geolocated')
-        geolocation._print_not_found(self.ips_not_geolocated)
+        geolocation._print_not_located(self.ips_not_geolocated)
         print()
 
 
