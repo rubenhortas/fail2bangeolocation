@@ -1,5 +1,6 @@
 from tqdm import tqdm
 
+from src.fail2bangeolocation.crosscutting.strings import UNKNOWN
 from src.fail2bangeolocation.application import fail2ban, fail2banlog
 from src.fail2bangeolocation.application.reallyfreegeoip import get_location, REALLYFREEGEOIP_URL
 from src.fail2bangeolocation.application.utils.country import Country
@@ -62,7 +63,7 @@ def _group_locations(locations: list) -> dict:
 
     for location in locations:
         country = location[0]
-        city = location[1] if location[1] else 'Unknown'
+        city = location[1] if location[1] else UNKNOWN
 
         if country not in grouped_locations:
             grouped_locations[country] = {city: 0}
