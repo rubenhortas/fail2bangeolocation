@@ -84,6 +84,7 @@ def _sort_grouped_locations(locations: dict, group_by_city: bool) -> list:
 
     return sorted(countries, reverse=True)
 
+
 # def _print_locations(locations_sorted_by_country: dict, locations_sorted_by_country_and_city: dict | None) -> None:
 #     for country in locations_sorted_by_country:
 #         messages.print_country(country, locations_sorted_by_country[country])
