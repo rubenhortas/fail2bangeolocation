@@ -1,35 +1,52 @@
 import unittest
 
-from fail2bangeolocation.application.geolocation import _group_locations, _sort_grouped_locations
+# noinspection PyProtectedMember
+from src.fail2bangeolocation.application.geolocation import _group_locations, _sort_grouped_locations
+from src.fail2bangeolocation.application.utils.country import Country
 
 
 # noinspection SpellCheckingInspection
 class GeolocationTest(unittest.TestCase):
     def setUp(self):
-        self.ips = ['68.168.142.91', '1.1.1.1', '0.0.0.0', '43.155.113.19', '120.92.111.55', '178.62.111.142',
-                    '138.68.131.49', '2.2.2.2', '8.38.172.54', '163.172.87.64', '167.99.89.94', '0.0.0.1',
-                    '43.156.124.114']
-        self.returned_locations = [('United States', 'Los Angeles'), ('Australia', ''), ('Japan', ''), ('China', ''),
-                                   ('United Kingdom', 'London'), ('United Kingdom', 'London'), ('France', ''),
-                                   ('Japan', 'Osaka'), ('France', 'Reims'), ('United Kingdom', 'London'), ('Japan', '')]
-        self.expected_grouped_locations = {'Australia': {'Unknown': 1}, 'China': {'Unknown': 1},
-                                           'France': {'Reims': 1, 'Unknown': 1}, 'Japan': {'Osaka': 1, 'Unknown': 2},
-                                           'United Kingdom': {'London': 3}, 'United States': {'Los Angeles': 1}}
         self.unsorted_locations = {'United Kingdom': {'London': 3}, 'France': {'Reims': 1, 'Unknown': 1},
                                    'China': {'Unknown': 1}, 'United States': {'Los Angeles': 1},
                                    'Japan': {'Osaka': 1, 'Unknown': 2}, 'Australia': {'Unknown': 1}}
-        self.sorted_locations = {'Australia': {'Unknown': 1}, 'China': {'Unknown': 1},
-                                 'France': {'Reims': 1, 'Unknown': 1}, 'Japan': {'Unknown': 2, 'Osaka': 1},
-                                 'United Kingdom': {'London': 3}, 'United States': {'Los Angeles': 1}}
 
     def test_group_locations(self):
-        self.assertDictEqual(self.expected_grouped_locations, _group_locations(self.returned_locations))
+        returned_locations = [('United States', 'Los Angeles'), ('Australia', ''), ('Japan', ''), ('China', ''),
+                              ('United Kingdom', 'London'), ('United Kingdom', 'London'), ('France', ''),
+                              ('Japan', 'Osaka'), ('France', 'Reims'), ('United Kingdom', 'London'), ('Japan', '')]
+        expected_grouped_locations = {'Australia': {'Unknown': 1}, 'China': {'Unknown': 1},
+                                      'France': {'Reims': 1, 'Unknown': 1}, 'Japan': {'Osaka': 1, 'Unknown': 2},
+                                      'United Kingdom': {'London': 3}, 'United States': {'Los Angeles': 1}}
 
-    def test_sort_grouped_locations(self):
-        try:
-            _sort_grouped_locations(self.unsorted_locations)
-        except Exception as e:
-            msg = e
+        self.assertDictEqual(expected_grouped_locations, _group_locations(returned_locations))
+
+    def test_sort_grouped_locations_by_country(self):
+        expected_sorted_locations_by_country = [Country('United Kingdom', {'London': 3}, False),
+                                                Country('Japan', {'Osaka': 1, 'Unknown': 2}, False),
+                                                Country('France', {'Reims': 1, 'Unknown': 1}, False),
+                                                Country('United States', {'Los Angeles': 1}, False),
+                                                Country('China', {'Unknown': 1}, False),
+                                                Country('Australia', {'Unknown': 1}, False)]
+
+        self.assertListEqual(expected_sorted_locations_by_country,
+                             _sort_grouped_locations(self.unsorted_locations, False))
+
+    def test_sort_grouped_locations_by_country_and_city(self):
+        # show_cities = False to avoid sorting the cities when creating the Country object
+        expected_sorted_locations_by_country_and_city = [Country('United Kingdom', {'London': 3}, False),
+                                                         Country('Japan', {'Unknown': 2, 'Osaka': 1}, False),
+                                                         Country('France', {'Reims': 1, 'Unknown': 1}, False),
+                                                         Country('United States', {'Los Angeles': 1}, False),
+                                                         Country('China', {'Unknown': 1}, False),
+                                                         Country('Australia', {'Unknown': 1}, False)]
+
+        sorted_locations = _sort_grouped_locations(self.unsorted_locations, True)
+
+        for expected_result, result in zip(expected_sorted_locations_by_country_and_city, sorted_locations):
+            self.assertEqual(expected_result, result)
+            self.assertEqual(list(expected_result.cities), list(result.cities))
 
 
 if __name__ == '__main__':
