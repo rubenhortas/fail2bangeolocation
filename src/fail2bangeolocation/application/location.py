@@ -4,17 +4,10 @@ from src.fail2bangeolocation.application import fail2ban, fail2banlog
 from src.fail2bangeolocation.application.country import Country
 from src.fail2bangeolocation.application.reallyfreegeoip import get_location, REALLYFREEGEOIP_URL
 from src.fail2bangeolocation.application.utils.url_utils import is_online
-from src.fail2bangeolocation.crosscutting import strings
-from src.fail2bangeolocation.crosscutting.condition_messages import print_info
 from src.fail2bangeolocation.crosscutting.strings import UNKNOWN
-from src.fail2bangeolocation.presentation.cli_print import print_locations, print_not_located
 
 
-def geolocate(fail2ban_output: bool = None, server: str = None, log_file: str = None, add_unbanned: bool = None,
-              group_by_city: bool = False) -> None:
-    # noinspection SpellCheckingInspection
-    print_info('fail2bangeolocation')
-
+def get_ips(fail2ban_output: bool = None, server: str = None, log_file: str = None, add_unbanned: bool = None) -> list:
     ips = []
 
     if is_online(REALLYFREEGEOIP_URL):
@@ -23,23 +16,16 @@ def geolocate(fail2ban_output: bool = None, server: str = None, log_file: str = 
         elif server:
             ips = fail2ban.get_banned_ips(server)
         elif log_file:
-            print_info(f"{strings.ANALYZING}: {log_file}")
             ips = fail2banlog.get_banned_ips(log_file, add_unbanned)
 
-        print_info(f"{len(ips)} {strings.IPS_FOUND}")
+        return ips
 
-        if len(ips) > 0:
-            print_info(strings.LOCATING_IPS)
 
-            locations, ips_not_located = _get_locations(ips)
-            grouped_locations = _group_locations(locations)
-            grouped_locations_sorted = _sort_grouped_locations(grouped_locations, group_by_city)
+def locate(ips: list, group_by_city: bool) -> (list, list):
+    locations, ips_not_located = _get_locations(ips)
+    grouped_locations = _group_locations(locations)
 
-            print_info(strings.LOCATIONS)
-            print_locations(grouped_locations_sorted, group_by_city)
-
-            if ips_not_located:
-                print_not_located(ips_not_located)
+    return _sort_grouped_locations(grouped_locations, group_by_city), ips_not_located
 
 
 def _get_locations(ips: list) -> (str, str):

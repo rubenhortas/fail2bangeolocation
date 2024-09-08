@@ -1,12 +1,12 @@
 import unittest
 
 # noinspection PyProtectedMember
-from src.fail2bangeolocation.application.geolocation import _group_locations, _sort_grouped_locations
+from src.fail2bangeolocation.application.location import _group_locations, _sort_grouped_locations
 from src.fail2bangeolocation.application.country import Country
 
 
 # noinspection SpellCheckingInspection
-class GeolocationTest(unittest.TestCase):
+class LocationTest(unittest.TestCase):
     def setUp(self):
         self.unsorted_locations = {'United Kingdom': {'London': 3}, 'France': {'Reims': 1, 'Unknown': 1},
                                    'China': {'Unknown': 1}, 'United States': {'Los Angeles': 1},

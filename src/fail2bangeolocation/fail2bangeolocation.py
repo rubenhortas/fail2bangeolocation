@@ -4,10 +4,11 @@ import argparse
 import signal
 
 from src.fail2bangeolocation.application.handlers.signal_handler import handle_sigint
-from src.fail2bangeolocation.application.geolocation import geolocate
+from src.fail2bangeolocation.application.location import get_ips, locate
 from src.fail2bangeolocation.application.utils.python_utils import get_python_interpreter_version
 from src.fail2bangeolocation.crosscutting import constants, strings
-from src.fail2bangeolocation.crosscutting.condition_messages import print_error
+from src.fail2bangeolocation.crosscutting.condition_messages import print_error, print_info
+from src.fail2bangeolocation.presentation.cli_print import print_locations, print_not_located
 from src.fail2bangeolocation.presentation.utils.screen import clear_screen
 
 _FAIL2BAN_OPTION = 'fail2ban'
@@ -37,15 +38,33 @@ def main():
         parser_server.add_argument(_SERVER_OPTION, nargs=1, help=f"{strings.SERVER_OPTION_HELP}")
 
         args = parser.parse_args()
+        ips = None
 
         if args.__contains__(_FAIL2BAN_OPTION):
-            geolocate(fail2ban_output=True, group_by_city=args.show_city)
+            ips = get_ips(fail2ban_output=True)
         elif args.__contains__(_LOG_OPTION):
-            geolocate(log_file=args.log[0], add_unbanned=args.add_unbanned, group_by_city=args.show_city)
+            print_info(f"{strings.ANALYZING}: {args.log[0]}")
+            ips = get_ips(log_file=args.log[0], add_unbanned=args.add_unbanned)
         elif args.__contains__(_SERVER_OPTION):
-            geolocate(server=args.server[0], group_by_city=args.show_city)
+            ips = get_ips(server=args.server[0])
         else:
             parser.print_help()
+            exit(0)
+
+        # noinspection SpellCheckingInspection
+        print_info('fail2bangeolocation')
+        print_info(f"{len(ips)} {strings.IPS_FOUND}")
+
+        if ips:
+            print_info(strings.LOCATING_IPS)
+
+            locations, ips_not_located = locate(ips, args.show_city)
+
+            print_info(strings.LOCATIONS)
+            print_locations(locations, args.show_city)
+
+            if ips_not_located:
+                print_not_located(ips_not_located)
     else:
         print_error(f"{strings.REQUIRES_PYTHON} {constants.REQUIRED_PYTHON_VERSION}")
         exit(0)
