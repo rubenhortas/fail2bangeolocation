@@ -32,7 +32,7 @@ You can group locations by country or by country and by city.
 
 ## Geolocation DB
 
-IP geolocation is done through reallyfreegeoip.org](https://reallyfreegeoip.org). 
+IP geolocation is done through [reallyfreegeoip.org](https://reallyfreegeoip.org). 
 This means you will need an active internet connection in order to geolocate the IPs.
 
 ## Requirements
