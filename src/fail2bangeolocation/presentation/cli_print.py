@@ -11,7 +11,7 @@ def print_locations(locations: List[Country], print_cities: bool) -> None:
         _print_country(location, print_cities)
 
 
-def print_not_located(ips: list) -> None:
+def print_unlocated_ips(ips: list) -> None:
     print(f"{Style.BRIGHT}{Fore.RED}(!){Style.RESET_ALL} {strings.IPS_NOT_LOCATED} {', '.join(ips)}")
 
 

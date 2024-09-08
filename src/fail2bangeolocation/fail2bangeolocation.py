@@ -8,7 +8,7 @@ from src.fail2bangeolocation.application.location import get_ips, locate
 from src.fail2bangeolocation.application.utils.python_utils import get_python_interpreter_version
 from src.fail2bangeolocation.crosscutting import constants, strings
 from src.fail2bangeolocation.crosscutting.condition_messages import print_error, print_info
-from src.fail2bangeolocation.presentation.cli_print import print_locations, print_not_located
+from src.fail2bangeolocation.presentation.cli_print import print_locations, print_unlocated_ips
 from src.fail2bangeolocation.presentation.utils.screen import clear_screen
 
 _FAIL2BAN_OPTION = 'fail2ban'
@@ -63,7 +63,7 @@ def main():
             print_locations(locations, args.show_city)
 
             if ips_not_located:
-                print_not_located(ips_not_located)
+                print_unlocated_ips(ips_not_located)
     else:
         print_error(f"{strings.REQUIRES_PYTHON} {constants.REQUIRED_PYTHON_VERSION}")
         exit(0)
