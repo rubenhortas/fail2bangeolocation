@@ -2,7 +2,7 @@ import unittest
 
 # noinspection PyProtectedMember
 from src.fail2bangeolocation.application.geolocation import _group_locations, _sort_grouped_locations
-from src.fail2bangeolocation.application.utils.country import Country
+from src.fail2bangeolocation.application.country import Country
 
 
 # noinspection SpellCheckingInspection
