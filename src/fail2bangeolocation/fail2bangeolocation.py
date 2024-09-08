@@ -38,7 +38,6 @@ def main():
         parser_server.add_argument(_SERVER_OPTION, nargs=1, help=f"{strings.SERVER_OPTION_HELP}")
 
         args = parser.parse_args()
-        ips = None
 
         if args.__contains__(_FAIL2BAN_OPTION):
             ips = get_ips(fail2ban_output=True)
