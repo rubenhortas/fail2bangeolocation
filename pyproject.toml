@@ -5,14 +5,17 @@ build-backend = "hatchling.build"
 [project]
 name = "fail2bangeolocation"
 version = "2.0.1"
-authors = [
-  { name="Rubén Hortas", email="rubenhortas@gmail.com" },
-]
+authors = [{ name = "Rubén Hortas", email = "rubenhortas@gmail.com" }]
 description = "Shows geolocation of the IPs of the failed attempts recorded by fail2ban"
 readme = "README.md"
-license = { file="LICENSE" }
+license = { file = "LICENSE" }
 requires-python = ">=3.0"
-keywords = [ "fail2ban", "geolocation", "network", "networking", "montitoring", "firewall", "security" ]
+keywords = ["fail2ban", "geolocation", "network", "networking", "montitoring", "firewall", "security"]
+dependencies = [
+    "requests",
+    "tqdm",
+    "colorama"
+]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Programming Language :: Python :: 3 :: Only",
@@ -33,9 +36,10 @@ classifiers = [
     "Topic :: System :: Networking :: Firewalls"
 ]
 
-[project.scripts]
-fail2bangeolocation = "fail2bangeolocation.fail2bangeolocation:main"
-
 [project.urls]
 "Homepage" = "https://github.com/rubenhortas/fail2bangeolocation"
 "Bug Tracker" = "https://github.com/rubenhortas/fail2bangeolocation/issues"
+
+[project.scripts]
+fail2bangeolocation = "fail2bangeolocation.fail2bangeolocation:main"
+
