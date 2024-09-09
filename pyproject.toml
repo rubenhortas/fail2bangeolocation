@@ -8,11 +8,13 @@ version = "2.0.1"
 authors = [
   { name="Rubén Hortas", email="rubenhortas@gmail.com" },
 ]
-description = "Shows geolocation of failed attempts registered by fail2ban"
+description = "Shows geolocation of the IPs of the failed attempts recorded by fail2ban"
 readme = "README.md"
 license = { file="LICENSE" }
 requires-python = ">=3.0"
+keywords = [ "fail2ban", "geolocation", "network", "networking", "montitoring", "firewall", "security" ]
 classifiers = [
+    "Development Status :: 5 - Production/Stable",
     "Programming Language :: Python :: 3 :: Only",
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Operating System :: MacOS",
@@ -20,9 +22,15 @@ classifiers = [
     "Environment :: Console",
     "Intended Audience :: System Administrators",
     "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Topic :: Internet",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Scientific/Engineering :: Visualization",
     "Topic :: Security",
     "Topic :: System :: Monitoring",
     "Topic :: System :: Networking",
+    "Topic :: System :: Networking :: Firewalls"
 ]
 
 [project.scripts]
