@@ -43,3 +43,7 @@ classifiers = [
 [project.scripts]
 fail2bangeolocation = "fail2bangeolocation.fail2bangeolocation:main"
 
+[tool.hatch.envs.hatch-test]
+default-args = ["tests"]
+parallel = true
+
