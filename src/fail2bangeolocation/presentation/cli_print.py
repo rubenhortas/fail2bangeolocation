@@ -2,7 +2,7 @@ from typing import List
 
 from colorama import Style, Fore
 
-from src.fail2bangeolocation.application.country import Country
+from src.fail2bangeolocation.domain.country import Country
 from src.fail2bangeolocation.crosscutting import strings
 
 

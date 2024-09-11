@@ -1,6 +1,6 @@
 import re
 
-from src.fail2bangeolocation.application.handlers.exception_handler import handle_exception
+from src.fail2bangeolocation.domain.handlers.exception_handler import handle_exception
 
 _REGEX_BANNED_IPS = re.compile(r'^.*\s(Found|Ban)\s(?P<ip>(\d{1,3}.){3}\d{1,3}).*$')
 _REGEX_UNBANNED_IPS = re.compile(r'^.*\sUnban\s(?P<ip>(\d{1,3}.){3}\d{1,3}).*$')

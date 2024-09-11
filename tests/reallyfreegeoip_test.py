@@ -1,6 +1,6 @@
 import unittest
 
-from src.fail2bangeolocation.application.reallyfreegeoip import get_location
+from src.fail2bangeolocation.infrastructure.reallyfreegeoip import get_location
 
 
 # noinspection SpellCheckingInspection

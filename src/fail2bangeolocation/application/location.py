@@ -1,9 +1,9 @@
 from tqdm import tqdm
 
-from src.fail2bangeolocation.application import fail2ban, fail2banlog
-from src.fail2bangeolocation.application.country import Country
-from src.fail2bangeolocation.application.reallyfreegeoip import get_location, REALLYFREEGEOIP_URL
-from src.fail2bangeolocation.application.utils.url_utils import is_online
+from src.fail2bangeolocation.domain import fail2ban, fail2banlog
+from src.fail2bangeolocation.domain.country import Country
+from src.fail2bangeolocation.infrastructure.reallyfreegeoip import get_location, REALLYFREEGEOIP_URL
+from src.fail2bangeolocation.domain.utils.url_utils import is_online
 from src.fail2bangeolocation.crosscutting.strings import UNKNOWN
 
 

@@ -1,7 +1,7 @@
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-from src.fail2bangeolocation.application.handlers.error_handler import handle_error
+from src.fail2bangeolocation.domain.handlers.error_handler import handle_error
 from src.fail2bangeolocation.crosscutting import strings
 
 

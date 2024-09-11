@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from src.fail2bangeolocation.application.fail2ban import get_banned_ips
+from src.fail2bangeolocation.domain.fail2ban import get_banned_ips
 
 
 # noinspection SpellCheckingInspection
@@ -20,17 +20,17 @@ class Fail2banTest(unittest.TestCase):
                                             `- Banned IP list:   5.181.86.251'''
         self.fail2ban_status_sshd_expected_result = ['5.181.86.251']
 
-    @patch('src.fail2bangeolocation.application.fail2ban.execute_command')
+    @patch('src.fail2bangeolocation.domain.fail2ban.execute_command')
     def test_server_none(self, mock_execute_command):
         mock_execute_command.return_value = None
         self.assertEqual([], get_banned_ips())
 
-    @patch('src.fail2bangeolocation.application.fail2ban.execute_command')
+    @patch('src.fail2bangeolocation.domain.fail2ban.execute_command')
     def test_command_returns_none(self, mock_execute_command):
         mock_execute_command.return_value = self.fail2ban_banned
         self.assertEqual(self.fail2ban_banned_expected_result, get_banned_ips())
 
-    @patch('src.fail2bangeolocation.application.fail2ban.execute_command')
+    @patch('src.fail2bangeolocation.domain.fail2ban.execute_command')
     def test_server_sshd(self, mock_execute_command):
         mock_execute_command.return_value = self.fail2ban_status_sshd
         self.assertEqual(self.fail2ban_status_sshd_expected_result, get_banned_ips('sshd'))
