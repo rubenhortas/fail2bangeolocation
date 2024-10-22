@@ -43,10 +43,10 @@ This means you will need an active internet connection in order to geolocate the
 
 ## Installation 
 
-You can install *fail2bangeolocation* via *pip3*:
+You can install *fail2bangeolocation* via *pipx*:
 
 ```shell
-$ sudo pip3 install fail2bangeolocation
+$ pipx install fail2bangeolocation
 ```
 ## Usage
 
