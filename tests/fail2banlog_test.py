@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from domain.fail2banlog import get_banned_ips
+from src.fail2bangeolocation.domain.fail2banlog import get_banned_ips
 
 
 class Fail2banLogTest(unittest.TestCase):

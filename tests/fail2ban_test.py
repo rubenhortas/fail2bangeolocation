@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from domain.fail2ban import get_banned_ips
+from src.fail2bangeolocation.domain.fail2ban import get_banned_ips
 
 
 # noinspection SpellCheckingInspection

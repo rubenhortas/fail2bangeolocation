@@ -1,8 +1,8 @@
 import unittest
 
-from domain.country import Country
+from src.fail2bangeolocation.domain.country import Country
 # noinspection PyProtectedMember
-from application.location import _group_locations, _sort_grouped_locations
+from src.fail2bangeolocation.application.location import _group_locations, _sort_grouped_locations
 
 
 # noinspection SpellCheckingInspection

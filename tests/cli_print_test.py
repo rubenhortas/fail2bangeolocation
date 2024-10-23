@@ -1,6 +1,6 @@
 import unittest
 
-from domain.country import Country
+from src.fail2bangeolocation.domain.country import Country
 from presentation.cli_print import print_locations, print_unlocated_ips
 
 
