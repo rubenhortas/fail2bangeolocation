@@ -1,10 +1,10 @@
 from tqdm import tqdm
 
+from fail2bangeolocation.crosscutting.strings import UNKNOWN
 from fail2bangeolocation.domain import fail2ban, fail2banlog
 from fail2bangeolocation.domain.country import Country
-from fail2bangeolocation.infrastructure.reallyfreegeoip import get_location, REALLYFREEGEOIP_URL
 from fail2bangeolocation.domain.utils.url_utils import is_online
-from fail2bangeolocation.crosscutting.strings import UNKNOWN
+from fail2bangeolocation.infrastructure.reallyfreegeoip import get_location, REALLYFREEGEOIP_URL
 
 
 def get_ips(fail2ban_output: bool = None, server: str = None, log_file: str = None, add_unbanned: bool = None) -> list:

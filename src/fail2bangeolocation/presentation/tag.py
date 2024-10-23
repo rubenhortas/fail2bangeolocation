@@ -1,5 +1,6 @@
-from fail2bangeolocation.crosscutting import strings
 from colorama import Fore, Style
+
+from fail2bangeolocation.crosscutting import strings
 
 
 class Tag:
