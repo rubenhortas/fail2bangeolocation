@@ -1,6 +1,6 @@
 import re
 
-from src.fail2bangeolocation.domain.utils.system_utils import execute_command
+from domain.utils.system_utils import execute_command
 
 _FAIL2BAN_CLIENT = 'fail2ban-client'
 _BANNED = 'banned'

@@ -1,7 +1,7 @@
 import subprocess
 
-from src.fail2bangeolocation.crosscutting import strings
-from src.fail2bangeolocation.crosscutting.condition_messages import print_info, print_exception
+from crosscutting import strings
+from crosscutting.condition_messages import print_info, print_exception
 
 
 def execute_command(command: str, *args) -> bytes | None:

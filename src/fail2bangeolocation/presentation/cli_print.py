@@ -2,8 +2,8 @@ from typing import List
 
 from colorama import Style, Fore
 
-from src.fail2bangeolocation.domain.country import Country
-from src.fail2bangeolocation.crosscutting import strings
+from domain.country import Country
+from crosscutting import strings
 
 
 def print_locations(locations: List[Country], print_cities: bool) -> None:

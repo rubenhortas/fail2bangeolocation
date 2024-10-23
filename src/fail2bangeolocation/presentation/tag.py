@@ -1,4 +1,4 @@
-from src.fail2bangeolocation.crosscutting import strings
+from crosscutting import strings
 from colorama import Fore, Style
 
 

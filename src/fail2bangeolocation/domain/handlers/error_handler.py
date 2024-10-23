@@ -1,4 +1,4 @@
-from src.fail2bangeolocation.crosscutting.condition_messages import print_error
+from crosscutting.condition_messages import print_error
 
 
 def handle_error(error: str, exit_: bool = False) -> None:
