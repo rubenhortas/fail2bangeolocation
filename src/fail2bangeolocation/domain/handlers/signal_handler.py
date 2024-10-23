@@ -1,6 +1,6 @@
 from types import FrameType
 
-from crosscutting import condition_messages, strings
+from fail2bangeolocation.crosscutting import condition_messages, strings
 
 
 # noinspection PyUnusedLocal

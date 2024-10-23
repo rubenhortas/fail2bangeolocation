@@ -1,8 +1,8 @@
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-from domain.handlers.error_handler import handle_error
-from crosscutting import strings
+from fail2bangeolocation.domain.handlers.error_handler import handle_error
+from fail2bangeolocation.crosscutting import strings
 
 
 def is_online(url: str) -> bool:

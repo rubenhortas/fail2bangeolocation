@@ -3,13 +3,13 @@
 import argparse
 import signal
 
-from application.location import get_ips, locate
-from domain.handlers.signal_handler import handle_sigint
-from domain.utils.python_utils import get_python_interpreter_version
-from crosscutting import constants, strings
-from crosscutting.condition_messages import print_error, print_info
-from presentation.cli_print import print_locations, print_unlocated_ips
-from presentation.utils.screen import clear_screen
+from fail2bangeolocation.application.location import get_ips, locate
+from fail2bangeolocation.domain.handlers.signal_handler import handle_sigint
+from fail2bangeolocation.domain.utils.python_utils import get_python_interpreter_version
+from fail2bangeolocation.crosscutting import constants, strings
+from fail2bangeolocation.crosscutting.condition_messages import print_error, print_info
+from fail2bangeolocation.presentation.cli_print import print_locations, print_unlocated_ips
+from fail2bangeolocation.presentation.utils.screen import clear_screen
 
 _FAIL2BAN_OPTION = 'fail2ban'
 _LOG_OPTION = 'log'
