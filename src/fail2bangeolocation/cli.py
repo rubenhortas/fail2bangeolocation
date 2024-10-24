@@ -42,7 +42,6 @@ def main():
         if args.__contains__(_FAIL2BAN_OPTION):
             ips = get_ips(fail2ban_output=True)
         elif args.__contains__(_LOG_OPTION):
-            print_info(f"{strings.ANALYZING}: {args.log[0]}")
             ips = get_ips(log_file=args.log[0], add_unbanned=args.add_unbanned)
         elif args.__contains__(_SERVER_OPTION):
             ips = get_ips(server=args.server[0])
