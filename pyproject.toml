@@ -41,7 +41,7 @@ classifiers = [
 "Bug Tracker" = "https://github.com/rubenhortas/fail2bangeolocation/issues"
 
 [project.scripts]
-fail2bangeolocation = "fail2bangeolocation.fail2bangeolocation:main"
+fail2bangeolocation = "fail2bangeolocation.cli:main"
 
 [tool.hatch.envs.hatch-test]
 default-args = ["tests"]
