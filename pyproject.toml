@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "fail2bangeolocation"
-version = "2.0.3"
+version = "2.0.4"
 authors = [{ name = "Rubén Hortas", email = "rubenhortas@gmail.com" }]
 description = "Shows geolocation of the IPs of the failed attempts recorded by fail2ban"
 readme = "README.md"
@@ -12,9 +12,13 @@ license = { file = "LICENSE" }
 requires-python = ">=3.0"
 keywords = ["fail2ban", "geolocation", "network", "networking", "montitoring", "firewall", "security"]
 dependencies = [
+    "certifi",
+    "charset-normalizer",
+    "colorama",
+    "idna",
     "requests",
     "tqdm",
-    "colorama"
+    "urllib3"
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
