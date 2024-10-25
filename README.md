@@ -37,9 +37,10 @@ This means you will need an active internet connection in order to geolocate the
 
 ## Requirements
 
+* colorama
 * requests
 * tqdm
-* colorama
+* urllib3
 
 ## Installation 
 
