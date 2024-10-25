@@ -128,10 +128,10 @@ $ sudo su
   
 ## Troubleshooting
 
-In case of any problem create an [issue](https://github.com/rubenhortas/fail2bangeolocation/issues/new)
+In case of any problem, you create an [issue](https://github.com/rubenhortas/fail2bangeolocation/issues/new).
 
 ## Discussions
-If you want ask (or answer) a question, leave an opinion or have an open-ended conversation you can create (or join) a [discussion](https://github.com/rubenhortas/fail2bangeolocation/discussions/new)
+If you want ask (or answer) a question, leave an opinion or have an open-ended conversation you can create (or join) a [discussion](https://github.com/rubenhortas/fail2bangeolocation/discussions/new).
 
 ## Support
 
