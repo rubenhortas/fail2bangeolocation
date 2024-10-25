@@ -45,15 +45,25 @@ This means you will need an active internet connection in order to geolocate the
 
 You can install *fail2bangeolocation* via *pipx*:
 
+### Installation as user
+
 ```shell
 $ pipx install fail2bangeolocation
 ```
+
+### Installation as root
+
+```shell
+$ sudo su
+# pipx install fail2bangeolocation
+```
+
 ## Usage
 
 * You can run *fail2bangeolocation* directly from the command line interface:
 
   ```shell
-  $ fail2bangeolocation [-h] [-c] {fail2ban,log,server}
+  fail2bangeolocation [-h] [-c] {fail2ban,log,server}
   ```
 
 * *fail2bangeolocation* arguments
@@ -82,7 +92,7 @@ $ pipx install fail2bangeolocation
   Run *fail2bangeolocation* using the *fail2ban* argument:
 
   ```shell
-  $ fail2bangeolocation fail2ban
+  # fail2bangeolocation fail2ban
   ```
 
 * ### Analyze all IPs registered by fail2ban for a given jailed server/service, e.g. sshd 
@@ -91,7 +101,7 @@ $ pipx install fail2bangeolocation
   Run *fail2bangeolocation* with the *server* argument and the jailed server name:
 
   ```shell
-  $ fail2bangeolocation server sshd
+  # fail2bangeolocation server sshd
   ```
 
 * ### Analyze a log file
@@ -99,20 +109,20 @@ $ pipx install fail2bangeolocation
   Run *fail2bangeolocation* with the *log* argument and the path to the log file:
 
   ```shell
-  $ fail2bangeolocation log /var/log/fai2ban.log
+  fail2bangeolocation log /var/log/fai2ban.log
   ```
 
   You can also geolocate the unbanned IPs contained in the log adding the **-u** argument:
 
   ```shell
-  $ fail2bangeolocation log -u /var/log/fai2ban.log
+  fail2bangeolocation log -u /var/log/fai2ban.log
   ```
   
 * ### Group the output by country and city
   Run *fail2bangeolocation* with "**-c**" as first argument:
 
   ```shell
-  $ fail2bangeolocation -c {fail2ban,log,server}
+  fail2bangeolocation -c {fail2ban,log,server}
   ```
   
 ## Troubleshooting
