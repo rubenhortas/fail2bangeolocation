@@ -82,7 +82,7 @@ $ pipx install fail2bangeolocation
   Run *fail2bangeolocation* using the *fail2ban* argument:
 
   ```shell
-  $ sudo fail2bangeolocation fail2ban
+  $ fail2bangeolocation fail2ban
   ```
 
 * ### Analyze all IPs registered by fail2ban for a given jailed server/service, e.g. sshd 
@@ -91,7 +91,7 @@ $ pipx install fail2bangeolocation
   Run *fail2bangeolocation* with the *server* argument and the jailed server name:
 
   ```shell
-  $ sudo fail2bangeolocation server sshd
+  $ fail2bangeolocation server sshd
   ```
 
 * ### Analyze a log file
