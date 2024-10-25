@@ -35,13 +35,6 @@ You can group locations by country or by country and by city.
 IP geolocation is done through [reallyfreegeoip.org](https://reallyfreegeoip.org). 
 This means you will need an active internet connection in order to geolocate the IPs.
 
-## Requirements
-
-* colorama
-* requests
-* tqdm
-* urllib3
-
 ## Installation 
 
 You can install *fail2bangeolocation* via *pipx*:
