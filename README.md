@@ -86,6 +86,7 @@ $ sudo su
   Run *fail2bangeolocation* using the *fail2ban* argument:
 
   ```shell
+  $ sudo su
   # fail2bangeolocation fail2ban
   ```
 
@@ -95,6 +96,7 @@ $ sudo su
   Run *fail2bangeolocation* with the *server* argument and the jailed server name:
 
   ```shell
+  $sudo su
   # fail2bangeolocation server sshd
   ```
 
