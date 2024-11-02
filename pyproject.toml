@@ -48,3 +48,10 @@ fail2bangeolocation = "fail2bangeolocation.cli:main"
 default-args = ["tests"]
 parallel = true
 
+[tool.hatch.build.targets.sdist]
+ignore-vcs = true
+exclude = [
+    "/screenshots",
+    "pyproject.toml",
+    "requirements.txt"
+]
