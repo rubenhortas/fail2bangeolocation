@@ -1,4 +1,4 @@
-﻿name: Publish Python 🐍 distribution 📦
+﻿name: Publish Python distribution 🐍📦
 
 on:
   push:
@@ -32,9 +32,9 @@ jobs:
         path: dist/
 
   publish-to-testpypi:
-      name: Publish Python 🐍 distribution 📦 to TestPyPI
+      name: Publish to TestPyPI 🐍📦 
       needs:
-      - build # Start the job only if the build job has completed
+        - build # Start the job only if the build job has completed
       runs-on: ubuntu-latest
   
       environment:
@@ -59,9 +59,9 @@ jobs:
 
   publish-to-pypi:
       name: >-
-        Publish Python 🐍 distribution 📦 to PyPI
+        Publish to PyPI 🐍 📦
       needs:
-      - build # Start the job only if the build job has completed
+        - build # Start the job only if the build job has completed
       runs-on: ubuntu-latest
       environment:
         name: pypi # Enter the environment name set in the Publisher
@@ -82,7 +82,7 @@ jobs:
 
   github-release:
       name: >-
-        Create GitHub Release with source code
+        Create GitHub Release with source code 📦
       needs:
       - publish-to-pypi # Start the job only if the PyPI publishing job has completed
       runs-on: ubuntu-latest
