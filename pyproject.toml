@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "fail2bangeolocation"
-version = "2.0.8"
+version = "2.0.9"
 authors = [{ name = "Rubén Hortas", email = "rubenhortas@gmail.com" }]
 description = "Shows geolocation of the IPs of the failed attempts recorded by fail2ban"
 readme = "README.md"
