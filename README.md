@@ -131,4 +131,4 @@ If you want ask (or answer) a question, leave an opinion or have an open-ended c
 
 ## :star: Support
 
-If you find this application useful, please consider starring this repository!
+If you find this application useful, please, consider starring this repository!
