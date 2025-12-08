@@ -121,13 +121,14 @@ $ sudo su
   fail2bangeolocation -c {fail2ban,log,server}
   ```
   
-## Troubleshooting
+## :boom: Troubleshooting
 
 In case of any problem, you create an [issue](https://github.com/rubenhortas/fail2bangeolocation/issues/new).
 
-## Discussions
+## :question: Discussions
+
 If you want ask (or answer) a question, leave an opinion or have an open-ended conversation you can create (or join) a [discussion](https://github.com/rubenhortas/fail2bangeolocation/discussions/new).
 
-## Support
+## :star: Support
 
 If you find this application useful you can star this repo.
