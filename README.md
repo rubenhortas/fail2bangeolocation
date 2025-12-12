@@ -4,7 +4,6 @@ Shows geolocation of failed attempts registered by *fail2ban*.
 It's useful to know from which locations you are being attacked the most.  
 You can group locations by country or by country and by city.  
 
-![GitHub repo file count](https://img.shields.io/github/directory-file-count/rubenhortas/fail2bangeolocation)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rubenhortas/fail2bangeolocation)
 ![GitHub repo size](https://img.shields.io/github/repo-size/rubenhortas/fail2bangeolocation)
 
